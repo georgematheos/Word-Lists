@@ -1,0 +1,10 @@
+{
+    "default_port": 3000,
+    "website_name": "word-lists",
+    "routes_directory": "typescript/lib/routes/",
+    "db_url": "mongodb://localhost:27017/word-lists",
+    "users_collection_name": "users",
+    "word_lists_collection_name": "lists",
+    "token_secret": "This is a supah secret secret...!",
+    "salt_rounds": 10
+}

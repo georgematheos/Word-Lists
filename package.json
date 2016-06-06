@@ -1,0 +1,20 @@
+{
+  "name": "word-lists",
+  "version": "0.0.1",
+  "description": "A web application that allows users to create, view, and modify lists of words.",
+  "main": "javascript/server.js",
+  "scripts": {
+    "start": "node javascript/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Geroge Matheos",
+  "license": "Unlicense",
+  "dependencies": {
+    "bcrypt": "^0.8.6",
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^6.2.0",
+    "mongodb": "^2.1.18",
+    "morgan": "^1.7.0"
+  }
+}
