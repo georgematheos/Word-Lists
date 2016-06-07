@@ -37,7 +37,7 @@ module.exports = function (config) {
                 return;
             }
             // check if a list with this title already exists for the user
-            db.collection(config.word_lists_collection_name).find({ username: req.body.username, title: req.body.title }).toArray(function (err, documents) {
+            db.collection(config.word_lists_collection_name).find({ username: req.params.username, title: req.body.title }).toArray(function (err, documents) {
                 if (err) {
                     res.status(502).json({ error: 'Bad Gateway', reason: err.message });
                     db.close();
@@ -170,7 +170,16 @@ module.exports = function (config) {
         });
     });
     // MODIFY WORD LIST
-    router.patch('/:username/:title/', function (req, res) {
+    router.put('/:username/:title/', function (req, res) {
+        // if a title or words field is not included in the body, return an error
+        if (!req.body.title) {
+            res.status(400).json({ error: 'Bad Request', message: 'no title provided in request body' });
+            return;
+        }
+        if (!req.body.words) {
+            res.status(400).json({ error: 'Bad Request', message: 'no words array provided in request body' });
+            return;
+        }
         // connect to mongodb database
         mongodb_1.MongoClient.connect(config.db_url, function (err, db) {
             if (err) {
@@ -196,15 +205,33 @@ module.exports = function (config) {
                     db.close();
                     return;
                 }
-                // create object for database update
-                /*
-                let update_spec {};
-                if (req.body.words) {
-                update_spec.words = req.body.words;
-            }
-            if (req.body.title)
-            */
-                //        db.collection(config.word_lists_collection_name).updateOne({ username: req.params.username, title: req.params.title }, ,function(err, result) )
+                // get the current document for this word list
+                var current_list = documents[0];
+                // check if the new title is already in use
+                db.collection(config.word_lists_collection_name).find({ username: req.params.username, title: req.body.title }).toArray(function (err, documents) {
+                    // if the title was changed and the new title is in use, return an error
+                    if (req.body.title !== req.params.title && documents.length > 0) {
+                        res.status(409).json({ error: 'Conflict', message: 'word list with this title already exists', username: req.body.username });
+                        db.close();
+                        return;
+                    }
+                    // replace the file with the new information
+                    db.collection(config.word_lists_collection_name).replaceOne({ username: req.params.username, title: req.params.title }, {
+                        username: req.params.username,
+                        title: req.body.title,
+                        words: req.body.words,
+                        dateTimeCreated: current_list.dateTimeCreated,
+                        dateTimeLastModified: new Date()
+                    }, function (err, results) {
+                        if (err) {
+                            res.status(502).json({ error: 'Bad Gateway', reason: err.message });
+                            db.close();
+                            return;
+                        }
+                        res.status(200).json({ success: true, message: 'word list modified', username: req.params.username, title: req.body.title });
+                        db.close();
+                    });
+                });
             });
         });
     });
