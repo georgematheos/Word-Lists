@@ -4,17 +4,42 @@
   "description": "A web application that allows users to create, view, and modify lists of words.",
   "main": "javascript/server.js",
   "scripts": {
-    "start": "node javascript/server.js",
+    "start": "node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Geroge Matheos",
   "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/georgematheos/Word-Lists.git"
+  },
   "dependencies": {
+    "@angular/common": "^2.0.0-rc.1",
+    "@angular/compiler": "^2.0.0-rc.1",
+    "@angular/core": "^2.0.0-rc.1",
+    "@angular/platform-browser": "^2.0.0-rc.1",
+    "@angular/platform-browser-dynamic": "^2.0.0-rc.1",
     "bcrypt": "^0.8.6",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "jsonwebtoken": "^6.2.0",
     "mongodb": "^2.1.18",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "rxjs": "5.0.0-beta.6",
+    "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jspm": "^0.16.37"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "dist/public"
+    },
+    "configFile": "dist/public/jspm-config.js",
+    "dependencies": {},
+    "devDependencies": {}
   }
 }

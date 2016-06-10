@@ -1,7 +1,7 @@
 {
     "default_port": 3000,
     "website_name": "word-lists",
-    "routes_directory": "typescript/lib/routes/",
+    "routes_directory": "dist/lib/routes/",
     "db_url": "mongodb://localhost:27017/word-lists",
     "users_collection_name": "users",
     "word_lists_collection_name": "lists",
