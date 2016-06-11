@@ -1,0 +1,10 @@
+{
+    "packages": [
+        "@angular",
+        "systemjs",
+        "rxjs",
+        "zone.js",
+        "core-js",
+        "reflect-metadata"
+    ]
+}
