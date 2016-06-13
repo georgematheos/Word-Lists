@@ -5,6 +5,8 @@
         "rxjs",
         "zone.js",
         "core-js",
-        "reflect-metadata"
+        "reflect-metadata",
+        "bootstrap",
+        "jquery"
     ]
 }

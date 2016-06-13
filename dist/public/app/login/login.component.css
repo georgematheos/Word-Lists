@@ -1,0 +1,64 @@
+.test {
+  color: blue; }
+
+.container {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  height: 100%; }
+  .container form {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center; }
+    .container form button,
+    .container form input {
+      font-size: 30px;
+      height: 50px; }
+    .container form .wl-input-container {
+      position: relative;
+      max-width: 400px;
+      margin: auto;
+      margin-bottom: 10px; }
+      .container form .wl-input-container input {
+        margin: 0;
+        padding-left: 45px;
+        color: black; }
+        .container form .wl-input-container input ::-webkit-input-placeholder {
+          color: #95989A; }
+        .container form .wl-input-container input :-moz-placeholder {
+          /* Firefox 18- */
+          color: #95989A; }
+        .container form .wl-input-container input ::-moz-placeholder {
+          /* Firefox 19+ */
+          color: #95989A; }
+        .container form .wl-input-container input :-ms-input-placeholder {
+          color: #95989A; }
+        .container form .wl-input-container input.ng-invalid {
+          border-right: 7.5px solid #C46D6D; }
+        .container form .wl-input-container input.ng-valid {
+          border-right: 7.5px solid #00D59B; }
+      .container form .wl-input-container svg {
+        position: absolute;
+        bottom: 8px;
+        left: 7.5px;
+        width: 28px;
+        height: 33px; }
+      .container form .wl-input-container.wl-empty-input svg {
+        fill: #95989A; }
+    .container form button {
+      margin: auto;
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      color: white;
+      background-color: #00D59B; }
+      .container form button:disabled {
+        color: rgba(255, 255, 255, 0.75);
+        background-color: rgba(0, 213, 155, 0.5); }
+      .container form button .wl-login-btn-text {
+        position: relative;
+        top: -4px; }
+
+/*# sourceMappingURL=login.component.css.map */

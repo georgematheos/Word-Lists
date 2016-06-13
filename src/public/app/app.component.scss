@@ -1,0 +1,24 @@
+.container {
+    text-align: center;
+    height: 100vh;
+
+    /deep/ {
+
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+        h1 {
+            position: absolute; // don't interfere with vertical centering of other elements
+
+            // center it horizontally
+            left: 0;
+            right: 0;
+            margin: auto;
+            padding-top: 20px;
+
+            font-size: 40px;
+            font-weight: bold;
+
+            color: rgba(0, 0, 0, 0.66);
+        }
+    }
+}

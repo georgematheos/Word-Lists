@@ -1,0 +1,107 @@
+// variable(s):
+$placeholder_text_color: #95989A;
+$user_icon: '/images/user-icon.svg';
+
+.test {
+    color: blue;
+}
+
+.container {
+    position: relative;
+    margin: 0; // cancel the -30px right margin that seems to be added by bootstrap
+    width: 100%;
+    height: 100%;
+
+    form {
+        // center vertically
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+
+        button,
+        input {
+            font-size: 30px;
+            height: 50px;
+        }
+
+        .wl-input-container {
+            position: relative;
+            max-width: 400px;
+            margin: auto;
+            margin-bottom: 10px;
+
+            input {
+                margin: 0;
+                padding-left: 45px;
+
+                // set the placeholder text color
+                ::-webkit-input-placeholder {
+                    color: $placeholder_text_color;
+                }
+
+                :-moz-placeholder {
+                    /* Firefox 18- */
+                    color: $placeholder_text_color;
+                }
+
+                ::-moz-placeholder {
+                    /* Firefox 19+ */
+                    color: $placeholder_text_color;
+                }
+
+                :-ms-input-placeholder {
+                    color: $placeholder_text_color;
+                }
+
+                // text color
+                color: black;
+
+                // have colored right borders to show validity of field
+                &.ng-invalid {
+                    border-right: 7.5px solid #C46D6D;
+                }
+
+                &.ng-valid {
+                    border-right: 7.5px solid #00D59B;
+                }
+            }
+
+            svg {
+                position: absolute;
+                bottom: 8px;
+                left: 7.5px;
+                width: 28px;
+                height: 33px;
+
+                $fill: black;
+            }
+
+            &.wl-empty-input svg{
+                fill: $placeholder_text_color;
+            }
+        }
+
+        button {
+            margin: auto;
+            margin-bottom: 10px;
+
+            width: 100%;
+            max-width: 400px; // this overrides the width set to 100% if it needs too
+
+            text-align: center;
+            color: white;
+            background-color: #00D59B;
+
+            &:disabled {
+                color: rgba(255, 255, 255, 0.75);
+                background-color: rgba(0, 213, 155, 0.50);
+            }
+
+            .wl-login-btn-text {
+                position: relative;
+                top: -4px;
+            }
+        }
+    }
+}
