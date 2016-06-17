@@ -10,9 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
+var router_deprecated_1 = require('@angular/router-deprecated');
+var authentication_service_1 = require('../authentication.service');
 var LoginComponent = (function () {
-    function LoginComponent(builder) {
+    function LoginComponent(builder, router, authenticationService) {
         this.builder = builder;
+        this.router = router;
+        this.authenticationService = authenticationService;
+        this.displayError = false; // whether an error should be shown to the user (eg. Invalid Password)
         this.minUsernameLength = 4;
         this.minPasswordLength = 8;
         // create username and password controls
@@ -40,21 +45,47 @@ var LoginComponent = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(LoginComponent.prototype, "diagnostic", {
-        get: function () {
-            return JSON.stringify({ form_value: this.form.value, form_valid: this.form.valid });
-        },
-        enumerable: true,
-        configurable: true
-    });
+    LoginComponent.prototype.onSubmit = function (event) {
+        var _this = this;
+        this.authenticationService.login(this.username.value, this.password.value)
+            .subscribe(function (token) {
+            console.log('Hello there!');
+            console.log(token);
+            if (token) {
+                _this.router.parent.navigate(['Home']);
+            }
+        }, function (err) {
+            // TODO: deal with errors better
+            console.log('TODO: REMOVE:');
+            console.log(err); // TODO: REMOVE
+            switch (err.status) {
+                // username not recognized
+                case 404:
+                    console.log('In 404 handler');
+                    _this.displayErrorText = 'Username not recognized.  Please try again.';
+                    _this.displayError = true;
+                    _this.password.updateValue('');
+                    break;
+                // password does not match one on file
+                case 401:
+                    console.log('In 401 handler');
+                    _this.displayErrorText = 'Password does not match one on file for this username.  Please try again.';
+                    _this.displayError = true;
+                    _this.password.updateValue('');
+                    break;
+            }
+        });
+        event.preventDefault(); // prevent the default page reload on submit button click
+    };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'wl-login',
             moduleId: module.id,
             templateUrl: 'login.component.html',
-            styleUrls: ['login.component.css']
+            styleUrls: ['login.component.css'],
+            directives: [router_deprecated_1.ROUTER_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [common_1.FormBuilder])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_deprecated_1.Router, authentication_service_1.AuthenticationService])
     ], LoginComponent);
     return LoginComponent;
 }());

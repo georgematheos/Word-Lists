@@ -1,106 +1,129 @@
-// variable(s):
-$placeholder_text_color: #95989A;
-$user_icon: '/images/user-icon.svg';
+@import "../misc_libraries/bourbon/bourbon"; // the default path is /src, since I run the command sass --watch src:dist
 
-.test {
-    color: blue;
+// MIXINS:
+// creates a glow (as bootstrap would normally, just this lets you set the color) around a focused item
+@mixin focus-glow($color) {
+    &:focus {
+        border-color: $color;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba($color, 0.6);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba($color, 0.6);
+        outline: 0 none;
+    }
 }
 
+// VARIABLES:
+$placeholder_text_color: #95989A;
+$text_color: black;
+$green_color: #00D59B;
+$red_color: #C46D6D;
+
+$rel_line_height: 1em;
+$alert_bottom_margin_height: 10px;
+
 .container {
-    position: relative;
-    margin: 0; // cancel the -30px right margin that seems to be added by bootstrap
+    position: absolute;
+
+    // bring to top left corner of outer container div
+    top: 0;
+    left: 0;
+
+    // make as large as outer container div
     width: 100%;
     height: 100%;
 
-    form {
+    .wl-form-wrapper {
         // center vertically
         position: relative;
         top: 50%;
         transform: translateY(-50%);
         text-align: center;
 
-        button,
-        input {
-            font-size: 30px;
-            height: 50px;
+        // move up the div when the alert text is showing so the form is still centered
+        &.wl-alert-visible {
+            transform: translateY(-50%) translateY(-$alert_bottom_margin_height / 2); // move up by half the margin (and, of course, half the whole div height, as always)
+            margin-top: -$rel_line_height / 2; // move up by half the height of the text line
         }
 
-        .wl-input-container {
-            position: relative;
-            max-width: 400px;
-            margin: auto;
-            margin-bottom: 10px;
+        .wl-error-alert {
+            line-height: $rel_line_height; // set the line height to a known value
+            margin: 0 0 $alert_bottom_margin_height 0; // no margin except on bottom
 
+            color: $red_color;
+            font-weight: bold;
+        }
+
+        form {
+
+
+            button,
             input {
-                margin: 0;
-                padding-left: 45px;
-
-                // set the placeholder text color
-                ::-webkit-input-placeholder {
-                    color: $placeholder_text_color;
-                }
-
-                :-moz-placeholder {
-                    /* Firefox 18- */
-                    color: $placeholder_text_color;
-                }
-
-                ::-moz-placeholder {
-                    /* Firefox 19+ */
-                    color: $placeholder_text_color;
-                }
-
-                :-ms-input-placeholder {
-                    color: $placeholder_text_color;
-                }
-
-                // text color
-                color: black;
-
-                // have colored right borders to show validity of field
-                &.ng-invalid {
-                    border-right: 7.5px solid #C46D6D;
-                }
-
-                &.ng-valid {
-                    border-right: 7.5px solid #00D59B;
-                }
+                font-size: 30px;
+                height: 50px;
             }
 
-            svg {
-                position: absolute;
-                bottom: 8px;
-                left: 7.5px;
-                width: 28px;
-                height: 33px;
-
-                $fill: black;
-            }
-
-            &.wl-empty-input svg{
-                fill: $placeholder_text_color;
-            }
-        }
-
-        button {
-            margin: auto;
-            margin-bottom: 10px;
-
-            width: 100%;
-            max-width: 400px; // this overrides the width set to 100% if it needs too
-
-            text-align: center;
-            color: white;
-            background-color: #00D59B;
-
-            &:disabled {
-                color: rgba(255, 255, 255, 0.75);
-                background-color: rgba(0, 213, 155, 0.50);
-            }
-
-            .wl-login-btn-text {
+            .wl-input-container {
                 position: relative;
-                top: -4px;
+                max-width: 400px;
+                margin: auto auto 10px;
+
+                input {
+                    margin: 0;
+                    padding-left: 45px;
+
+                    // set the placeholder text color
+                    @include placeholder {
+                        color: $placeholder_text_color;
+                    }
+
+                    // text color
+                    color: $text_color;
+
+                    // have colored right borders to show validity of field
+                    &.ng-invalid {
+                        border-right: 7.5px solid $red_color;
+                        @include focus-glow($red_color);
+                    }
+
+                    &.ng-valid {
+                        border-right: 7.5px solid $green_color;
+                        @include focus-glow($green_color);
+                    }
+                }
+
+                svg {
+                    position: absolute;
+                    bottom: 8px;
+                    left: 7.5px;
+                    width: 28px;
+                    height: 33px;
+
+                    $fill: $text_color;
+                }
+
+                &.wl-empty-input svg {
+                    fill: $placeholder_text_color;
+                }
+            }
+
+            button {
+
+                width: 100%;
+                max-width: 400px; // this overrides the width set to 100% if it needs too
+
+                text-align: center;
+                color: white;
+                background-color: $green_color;
+
+                &:disabled {
+                    color: rgba(255, 255, 255, 0.75);
+                    background-color: rgba($green_color, 0.50);
+                }
+                @include focus-glow($green_color);
+
+                .wl-login-btn-text {
+                    position: relative;
+                    top: -4px;
+                }
             }
         }
     }

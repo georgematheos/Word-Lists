@@ -1,16 +1,15 @@
 .container {
   text-align: center;
   height: 100vh; }
+  .container h1 {
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding-top: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.66); }
   .container /deep/ {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
-    .container /deep/ h1 {
-      position: absolute;
-      left: 0;
-      right: 0;
-      margin: auto;
-      padding-top: 20px;
-      font-size: 40px;
-      font-weight: bold;
-      color: rgba(0, 0, 0, 0.66); }
 
 /*# sourceMappingURL=app.component.css.map */

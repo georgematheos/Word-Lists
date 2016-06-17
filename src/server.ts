@@ -43,7 +43,11 @@ app.use(express.static(__dirname + '/public'));
 // for each package in node_modules specified in the servable-packages.json file, tell express to serve it
 servable_packages.forEach(function(pkgName) {
     app.use('/node_modules/' + pkgName, express.static(__dirname + '/../node_modules/' + pkgName));
+});
 
+// finally, if none of those worked, just send the index.html file and let angular handle the routing
+app.use(function(req, res) {
+    res.sendfile(__dirname + '/public/index.html');
 });
 
 // have the express app listen

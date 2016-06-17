@@ -29,7 +29,6 @@ export = function(config) {
         MongoClient.connect(config.db_url, function(err, db) {
             if (err) {
                 res.status(502).json({ error: 'Bad Gateway', reason: err.message });
-                db.close();
                 return;
             }
 

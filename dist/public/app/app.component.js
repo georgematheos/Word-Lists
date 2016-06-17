@@ -10,7 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
+var http_1 = require('@angular/http');
+var authentication_service_1 = require('./authentication.service');
 var login_component_1 = require('./login/login.component');
+var home_component_1 = require('./home/home.component');
+var unrecognized_path_component_1 = require('./unrecognized-path/unrecognized-path.component');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -21,10 +25,22 @@ var AppComponent = (function () {
             templateUrl: 'app.component.html',
             styleUrls: ['app.component.css'],
             directives: [
-                login_component_1.LoginComponent
+                login_component_1.LoginComponent,
+                home_component_1.HomeComponent,
+                unrecognized_path_component_1.UnrecognizedPathComponent,
+                router_deprecated_1.ROUTER_DIRECTIVES
+            ],
+            providers: [
+                http_1.HTTP_PROVIDERS,
+                authentication_service_1.AuthenticationService
             ]
         }),
-        router_deprecated_1.RouteConfig([]), 
+        router_deprecated_1.RouteConfig([
+            { path: '/', redirectTo: ['Login'] },
+            { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
+            { path: '/home', name: 'Home', component: home_component_1.HomeComponent },
+            { path: '/*path', name: 'UnrecognizedPath', component: unrecognized_path_component_1.UnrecognizedPathComponent } // unrecognized url
+        ]), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;

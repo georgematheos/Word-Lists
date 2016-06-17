@@ -25,7 +25,6 @@ module.exports = function (config) {
         mongodb_1.MongoClient.connect(config.db_url, function (err, db) {
             if (err) {
                 res.status(502).json({ error: 'Bad Gateway', reason: err.message });
-                db.close();
                 return;
             }
             // send an error message if no username or no password is provided

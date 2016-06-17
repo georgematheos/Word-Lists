@@ -30,6 +30,8 @@ The rest of the fields are optional and result in different modifications to the
   If the authentication is successful, the JSON document returned is guaranteed to include the following field:
   - `"token"`: a valid token for the user who logged on
 
+  If authentication is not successful, the status code of the response will be `401`.
+
 ## Interact with Word Lists
 
 #### Create Word List:

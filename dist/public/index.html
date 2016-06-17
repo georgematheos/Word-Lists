@@ -3,8 +3,6 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Load in bootstrap -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -23,6 +21,9 @@
     <!-- Load in System.js -->
     <script src="node_modules/systemjs/dist/system.js"></script>
     <script src="system-config.js"></script>
+
+    <base href="/">
+
     <title>Word Lists</title>
 </head>
 
@@ -32,7 +33,7 @@
         System.import('app/main.js');
     </script>
 
-    <wl-app></wl-app>
+    <wl-app>Loading...</wl-app>
 </body>
 
 </html>
