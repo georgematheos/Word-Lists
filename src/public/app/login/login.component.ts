@@ -56,9 +56,6 @@ export class LoginComponent {
                     this.router.parent.navigate(['Home']);
                 }
             }, (err) => {
-                // TODO: deal with errors better
-                console.log('TODO: REMOVE:')
-                console.log(err);  // TODO: REMOVE
                 switch (err.status) {
                     // username not recognized
                     case 404:
@@ -73,6 +70,9 @@ export class LoginComponent {
                         this.displayErrorText = 'Password does not match one on file for this username.  Please try again.';
                         this.displayError = true;
                         this.password.updateValue('');
+                        break;
+                    default:
+                        // TODO: HANDLE THIS SCENARIO
                         break;
                 }
             });

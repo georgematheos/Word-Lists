@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="wl-left-side-space-filler"></div>
+
+    <div class="wl-outer-form-wrapper">
+        <div class="wl-inner-form-wrapper" [class.wl-alert-visible]="false">
+
+            <h5 class="wl-error-alert" [hidden]="true">ERR</h5>
+
+            <form [ngFormModel]="form">
+
+                <div class="form-group wl-input-container" [class.wl-empty-input]="usernameEmpty">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="575 1619 56.051 66.773">
+                        <g id="group-22" transform="translate(-950.75 1160)">
+                            <path id="path-1" d="M1540.131,604.383c-.024.036-10.743,3.679-14.38,21.754,10.129,12.64,34.779,23.905,56.051,0-3.083-15.627-10.15-18.959-14.282-21.754C1553.061,618.211,1540.156,604.346,1540.131,604.383Z" transform="translate(-0.001 -114.38)" />
+                            <circle id="ellipse-2" cx="16.74" cy="16.74" r="16.74" transform="translate(1537.105 459)" />
+                        </g>
+                    </svg>
+
+                    <input type="text" class="form-control wl-username" placeholder="Username" ngControl="username">
+                </div>
+
+                <div class="form-group wl-input-container" [class.wl-empty-input]="passwordEmpty">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="575 4190 57.478 79.72">
+                        <path id="path-7" d="M-473.208-144.28A72.431,72.431,0,0,1-503-150.811c0-.22.182-22.908,0-33.854q2.656-1.281,5.432-2.294v-16.024c3.829-25.769,40.6-30.19,46.578,0v16.271a55.584,55.584,0,0,1,5.457,2.047v.151c.005,3.805.022,17.481,0,33.7a60.2,60.2,0,0,1-27.673,6.531Zm-7.3-29.214a6.4,6.4,0,0,0,3.189,5.526V-157.9a3.194,3.194,0,0,0,3.19,3.189,3.193,3.193,0,0,0,3.189-3.189v-10.067a6.4,6.4,0,0,0,3.189-5.526,6.386,6.386,0,0,0-6.378-6.379A6.386,6.386,0,0,0-480.512-173.494Zm21.546-15.374v-14.114c-2.488-15.9-25.952-18.635-30.418.021V-189.3a66.469,66.469,0,0,1,13.8-1.41A78.56,78.56,0,0,1-458.966-188.868Z"
+                            transform="translate(1078 4414)" />
+                    </svg>
+
+                    <input type="PASSWORD" class="form-control wl-password" placeholder="Password" ngControl="password">
+                </div>
+
+
+                <div class="form-group wl-input-container" [class.wl-empty-input]="confirmPasswordEmpty">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="2552 4251 75.348 76.146">
+                        <path id="path-9" d="M2168,604.331s16.151,32.076,17.561,32.076h3.4c6.68-11.633,38.9-61.261,54.383-76.146-15.645,5.391-55.786,56.068-55.786,56.068s-3.516-10.258-5.194-17.02C2169.831,598.324,2168,604.331,2168,604.331Z" transform="translate(383.999 3690.738)"
+                        />
+                    </svg>
+
+
+                    <input type="PASSWORD" class="form-control wl-password" [class.wl-not-matched]="passwordMismatch" placeholder="Confirm Password" ngControl="confirmPassword">
+                </div>
+
+                <button type="submit" (click)="onSubmit($event)" [disabled]="!form.valid" class="btn btn-default">
+                    <div class="wl-login-btn-text">Sign Up</div>
+                </button>
+            </form>
+            <a class="wl-link" [routerLink]="['Login']">Already have an account?  Log in here!</a>
+        </div>
+    </div>
+
+
+    <div class="wl-requirements-outer">
+        <div class="wl-requirements-inner">
+            <div class="wl-requirement-wrapper">
+                <ul>
+                    <li [class.wl-valid-req]="!usernameTooShort">Must be 4+ characters.</li>
+                </ul>
+            </div>
+            <div class="wl-requirement-wrapper">
+                <ul>
+                    <li [class.wl-valid-req]="!passwordTooShort">Must be 8+ characters.</li>
+                </ul>
+
+            </div>
+            <div class="wl-requirement-wrapper">
+                <ul>
+                    <li [class.wl-valid-req]="!confirmPasswordTooShort">Must be 8+ characters.</li>
+                    <li [class.wl-valid-req]="!passwordMismatch">Must match password.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

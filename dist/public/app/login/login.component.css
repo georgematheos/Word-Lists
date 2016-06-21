@@ -7,16 +7,31 @@
   .container .wl-form-wrapper {
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
-    text-align: center; }
+    -webkit-transform: translateY(-50%) translateY(5px) translateY(0.5em);
+    -moz-transform: translateY(-50%) translateY(5px) translateY(0.5em);
+    -ms-transform: translateY(-50%) translateY(5px) translateY(0.5em);
+    -o-transform: translateY(-50%) translateY(5px) translateY(0.5em);
+    transform: translateY(-50%) translateY(5px) translateY(0.5em); }
     .container .wl-form-wrapper.wl-alert-visible {
-      transform: translateY(-50%) translateY(-5px);
-      margin-top: -0.5em; }
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%); }
     .container .wl-form-wrapper .wl-error-alert {
       line-height: 1em;
       margin: 0 0 10px 0;
       color: #C46D6D;
       font-weight: bold; }
+    .container .wl-form-wrapper .wl-link {
+      display: block;
+      line-height: 1em;
+      margin-top: 10px;
+      color: #27A7FF;
+      font-weight: bold; }
+      .container .wl-form-wrapper .wl-link:hover {
+        text-decoration: none;
+        color: #0090f3; }
     .container .wl-form-wrapper form button,
     .container .wl-form-wrapper form input {
       font-size: 30px;

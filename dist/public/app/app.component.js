@@ -12,8 +12,9 @@ var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var http_1 = require('@angular/http');
 var authentication_service_1 = require('./authentication.service');
-var login_component_1 = require('./login/login.component');
 var home_component_1 = require('./home/home.component');
+var login_component_1 = require('./login/login.component');
+var signup_component_1 = require('./signup/signup.component');
 var unrecognized_path_component_1 = require('./unrecognized-path/unrecognized-path.component');
 var AppComponent = (function () {
     function AppComponent() {
@@ -36,8 +37,9 @@ var AppComponent = (function () {
             ]
         }),
         router_deprecated_1.RouteConfig([
-            { path: '/', redirectTo: ['Login'] },
+            { path: '/', redirectTo: ['Signup'] },
             { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
+            { path: '/signup', name: 'Signup', component: signup_component_1.SignupComponent },
             { path: '/home', name: 'Home', component: home_component_1.HomeComponent },
             { path: '/*path', name: 'UnrecognizedPath', component: unrecognized_path_component_1.UnrecognizedPathComponent } // unrecognized url
         ]), 

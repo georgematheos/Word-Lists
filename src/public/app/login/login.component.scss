@@ -16,9 +16,10 @@ $placeholder_text_color: #95989A;
 $text_color: black;
 $green_color: #00D59B;
 $red_color: #C46D6D;
+$blue_color: #27A7FF;
 
-$rel_line_height: 1em;
-$alert_bottom_margin_height: 10px;
+$line_height: 1em;
+$text_margin_height: 10px;
 
 .container {
     position: absolute;
@@ -35,21 +36,36 @@ $alert_bottom_margin_height: 10px;
         // center vertically
         position: relative;
         top: 50%;
-        transform: translateY(-50%);
-        text-align: center;
+        @include transform(
+            translateY(-50%) // as always, move up by half the div height
+            translateY($text_margin_height / 2) // move down by half the margin
+            translateY($line_height / 2)); // move down by half the height of the text line
 
         // move up the div when the alert text is showing so the form is still centered
         &.wl-alert-visible {
-            transform: translateY(-50%) translateY(-$alert_bottom_margin_height / 2); // move up by half the margin (and, of course, half the whole div height, as always)
-            margin-top: -$rel_line_height / 2; // move up by half the height of the text line
+            @include transform(translateY(-50%)); // ONLY move up by half the div height; there is a text field above and below that balance out so no other translations are needed
         }
 
         .wl-error-alert {
-            line-height: $rel_line_height; // set the line height to a known value
-            margin: 0 0 $alert_bottom_margin_height 0; // no margin except on bottom
+            line-height: $line_height; // set the line height to a known value
+            margin: 0 0 $text_margin_height 0; // no margin except ond bottom
 
             color: $red_color;
             font-weight: bold;
+        }
+
+        .wl-link {
+            display: block; // this prevents behavior that stops the margins from joining
+            line-height: $line_height;
+            margin-top: $text_margin_height;
+
+            color: $blue_color;
+            font-weight: bold;
+
+            &:hover {
+                text-decoration: none;
+                color: darken($blue_color, 10%);
+            }
         }
 
         form {
