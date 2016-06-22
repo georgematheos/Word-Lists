@@ -4,12 +4,16 @@ import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
 import { matching } from './matching.validator';
 
+import { SignupService } from './signup.service';
+import { AuthenticationService } from '../authentication.service';
+
 @Component({
-  moduleId: module.id,
-  selector: 'wl-signup',
-  templateUrl: 'signup.component.html',
-  styleUrls: ['signup.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+    moduleId: module.id,
+    selector: 'wl-signup',
+    templateUrl: 'signup.component.html',
+    styleUrls: ['signup.component.css'],
+    directives: [ROUTER_DIRECTIVES],
+    providers: [SignupService]
 })
 export class SignupComponent {
     username: Control;
@@ -24,18 +28,18 @@ export class SignupComponent {
     minUsernameLength: number = 4; // TODO: MOVE THIS SOMEWHERE ELSE OUTSIDE SIGNUP OR LOGIN COMPONENTS
     minPasswordLength: number = 8;
 
-    constructor(private builder: FormBuilder) {
+    constructor(private authenticationService: AuthenticationService, private builder: FormBuilder, private router: Router, private signupService: SignupService) {
         // create username and password controls
         this.username = new Control('', Validators.compose([Validators.required, Validators.minLength(this.minUsernameLength)]));
         this.password = new Control('', Validators.compose([Validators.required, Validators.minLength(this.minPasswordLength)]));
-        this.confirmPassword = new Control('', Validators.compose([Validators.required, Validators.minLength(this.minPasswordLength)])); // TODO: MAKE A VALIDATOR SO THAT IT MUST EQUAL PASSWORD
+        this.confirmPassword = new Control('', Validators.compose([Validators.required, Validators.minLength(this.minPasswordLength)]));
 
         // create the form
         this.form = builder.group({
             username: this.username,
             password: this.password,
             confirmPassword: this.confirmPassword
-        }, {validator: matching('password', 'confirmPassword')});
+        }, { validator: matching('password', 'confirmPassword') });
 
     }
 
@@ -74,7 +78,28 @@ export class SignupComponent {
     }
 
     onSubmit(event) {
-        console.log(this.form);
-    }
+        this.signupService.signup(this.username.value, this.password.value).subscribe((res) => {
+            // log in the newly created user
+            this.authenticationService.login(this.username.value, this.password.value).subscribe((res) => {
+                // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
+            });
+            this.router.parent.navigate(['Home']);
+        },
+            (err) => {
+                switch (err.status) {
+                    // user with username already exists
+                    case 409:
+                        this.displayErrorText = `Username taken.  Try again with a different username.`
+                        this.displayError = true;
+                        this.password.updateValue('');
+                        this.confirmPassword.updateValue('');
+                        break;
+                    default:
+                        // TODO: handle this situation better
+                        console.log(err);
+                }
+            });
 
+        event.preventDefault(); // prevent the default page reload on submit button click
+    }
 }

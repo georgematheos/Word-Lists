@@ -12,16 +12,21 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var matching_validator_1 = require('./matching.validator');
+var signup_service_1 = require('./signup.service');
+var authentication_service_1 = require('../authentication.service');
 var SignupComponent = (function () {
-    function SignupComponent(builder) {
+    function SignupComponent(authenticationService, builder, router, signupService) {
+        this.authenticationService = authenticationService;
         this.builder = builder;
+        this.router = router;
+        this.signupService = signupService;
         this.displayError = false; // whether an error should be shown to the user (eg. Invalid Password)
         this.minUsernameLength = 4; // TODO: MOVE THIS SOMEWHERE ELSE OUTSIDE SIGNUP OR LOGIN COMPONENTS
         this.minPasswordLength = 8;
         // create username and password controls
         this.username = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(this.minUsernameLength)]));
         this.password = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(this.minPasswordLength)]));
-        this.confirmPassword = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(this.minPasswordLength)])); // TODO: MAKE A VALIDATOR SO THAT IT MUST EQUAL PASSWORD
+        this.confirmPassword = new common_1.Control('', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(this.minPasswordLength)]));
         // create the form
         this.form = builder.group({
             username: this.username,
@@ -84,7 +89,28 @@ var SignupComponent = (function () {
         configurable: true
     });
     SignupComponent.prototype.onSubmit = function (event) {
-        console.log(this.form);
+        var _this = this;
+        this.signupService.signup(this.username.value, this.password.value).subscribe(function (res) {
+            // log in the newly created user
+            _this.authenticationService.login(_this.username.value, _this.password.value).subscribe(function (res) {
+                // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
+            });
+            _this.router.parent.navigate(['Home']);
+        }, function (err) {
+            switch (err.status) {
+                // user with username already exists
+                case 409:
+                    _this.displayErrorText = "Username taken.  Try again with a different username.";
+                    _this.displayError = true;
+                    _this.password.updateValue('');
+                    _this.confirmPassword.updateValue('');
+                    break;
+                default:
+                    // TODO: handle this situation better
+                    console.log(err);
+            }
+        });
+        event.preventDefault(); // prevent the default page reload on submit button click
     };
     SignupComponent = __decorate([
         core_1.Component({
@@ -92,9 +118,10 @@ var SignupComponent = (function () {
             selector: 'wl-signup',
             templateUrl: 'signup.component.html',
             styleUrls: ['signup.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+            directives: [router_deprecated_1.ROUTER_DIRECTIVES],
+            providers: [signup_service_1.SignupService]
         }), 
-        __metadata('design:paramtypes', [common_1.FormBuilder])
+        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, common_1.FormBuilder, router_deprecated_1.Router, signup_service_1.SignupService])
     ], SignupComponent);
     return SignupComponent;
 }());

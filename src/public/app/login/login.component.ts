@@ -50,8 +50,6 @@ export class LoginComponent {
     onSubmit(event) {
         this.authenticationService.login(this.username.value, this.password.value)
             .subscribe((token) => {
-                console.log('Hello there!');
-                console.log(token);
                 if (token) {
                     this.router.parent.navigate(['Home']);
                 }

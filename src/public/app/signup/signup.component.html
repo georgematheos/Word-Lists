@@ -2,9 +2,9 @@
     <div class="wl-left-side-space-filler"></div>
 
     <div class="wl-outer-form-wrapper">
-        <div class="wl-inner-form-wrapper" [class.wl-alert-visible]="false">
+        <div class="wl-inner-form-wrapper" [class.wl-alert-visible]="displayError">
 
-            <h5 class="wl-error-alert" [hidden]="true">ERR</h5>
+            <h5 class="wl-error-alert" [hidden]="!displayError">{{displayErrorText}}</h5>
 
             <form [ngFormModel]="form">
 
