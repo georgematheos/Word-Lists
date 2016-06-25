@@ -5,6 +5,7 @@ import { Observable, Observer } from 'rxjs/Rx';
 
 import { AuthenticateBody } from './types/AuthenticateBody';
 
+
 @Injectable()
 export class AuthenticationService {
     private loggedIn = false;
@@ -34,6 +35,10 @@ export class AuthenticationService {
     }
 
     isLoggedIn() {
+        // check to make sure the user is truly logged in
+        this.loggedIn = !!localStorage.getItem('auth_token'); // logged in is true if there is a token stored
+        // TODO: CHECK IF TOKEN IS STILL VALID
+
         return this.loggedIn;
     }
 

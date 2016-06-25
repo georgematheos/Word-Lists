@@ -1,0 +1,61 @@
+.container {
+  position: absolute;
+  top: 20px;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%); }
+  .container .wl-nav-btns {
+    margin-bottom: 10px;
+    height: 47.5px; }
+    .container .wl-nav-btns .wl-logout,
+    .container .wl-nav-btns .wl-new-list {
+      position: absolute;
+      top: 0;
+      cursor: pointer; }
+      .container .wl-nav-btns .wl-logout svg,
+      .container .wl-nav-btns .wl-new-list svg {
+        fill: #00D59B; }
+        .container .wl-nav-btns .wl-logout svg:hover,
+        .container .wl-nav-btns .wl-new-list svg:hover {
+          fill: #00b685; }
+    .container .wl-nav-btns .wl-new-list {
+      left: 0;
+      height: 47.5px;
+      width: 47px; }
+    .container .wl-nav-btns .wl-logout {
+      right: 0;
+      height: 47.5px;
+      width: 43px; }
+  .container .wl-lists-list ul {
+    list-style: none;
+    padding: 0; }
+    .container .wl-lists-list ul li {
+      margin-bottom: 10px; }
+      .container .wl-lists-list ul li .btn-group {
+        width: 100%;
+        height: 40px; }
+        .container .wl-lists-list ul li .btn-group button {
+          width: 100%;
+          height: 100%;
+          font-size: 25px;
+          background-color: #00D59B;
+          color: white;
+          border: none; }
+          .container .wl-lists-list ul li .btn-group button:focus {
+            border-color: #00D59B;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 213, 155, 0.6);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 213, 155, 0.6);
+            outline: 0 none; }
+          .container .wl-lists-list ul li .btn-group button:hover {
+            background-color: #00b685; }
+          .container .wl-lists-list ul li .btn-group button .wl-btn-text {
+            position: relative;
+            top: -4px; }
+
+/*# sourceMappingURL=home.component.css.map */

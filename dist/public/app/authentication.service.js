@@ -33,6 +33,9 @@ var AuthenticationService = (function () {
         this.loggedIn = false;
     };
     AuthenticationService.prototype.isLoggedIn = function () {
+        // check to make sure the user is truly logged in
+        this.loggedIn = !!localStorage.getItem('auth_token'); // logged in is true if there is a token stored
+        // TODO: CHECK IF TOKEN IS STILL VALID
         return this.loggedIn;
     };
     AuthenticationService.prototype.extractToken = function (res) {

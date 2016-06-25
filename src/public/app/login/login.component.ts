@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Control, ControlGroup, FormBuilder, NgForm, Validators } from '@angular/common';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 
@@ -11,7 +11,7 @@ import { AuthenticationService } from '../authentication.service';
     styleUrls: ['login.component.css'],
     directives: [ROUTER_DIRECTIVES]
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
     username: Control;
     password: Control;
 
@@ -35,6 +35,12 @@ export class LoginComponent {
             username: this.username,
             password: this.password
         });
+    }
+
+    ngOnInit() {
+        if (this.authenticationService.isLoggedIn()) {
+            this.router.parent.navigate(['Home']);
+        }
     }
 
     // whether the username field is empty

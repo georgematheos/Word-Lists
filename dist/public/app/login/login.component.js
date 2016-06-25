@@ -29,6 +29,11 @@ var LoginComponent = (function () {
             password: this.password
         });
     }
+    LoginComponent.prototype.ngOnInit = function () {
+        if (this.authenticationService.isLoggedIn()) {
+            this.router.parent.navigate(['Home']);
+        }
+    };
     Object.defineProperty(LoginComponent.prototype, "usernameEmpty", {
         // whether the username field is empty
         get: function () {

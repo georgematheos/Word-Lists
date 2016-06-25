@@ -1,22 +1,10 @@
 @import "../misc_libraries/bourbon/bourbon"; // the default path is /src, since I run the command sass --watch src:dist
 
 // MIXINS:
-// creates a glow (as bootstrap would normally, just this lets you set the color) around a focused item
-@mixin focus-glow($color) {
-    &:focus {
-        border-color: $color;
-        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba($color, 0.6);
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba($color, 0.6);
-        outline: 0 none;
-    }
-}
+@import 'public/global-mixins';
 
 // VARIABLES:
-$placeholder_text_color: #95989A;
-$text_color: black;
-$green_color: #00D59B;
-$red_color: #C46D6D;
-$blue_color: #27A7FF;
+@import 'public/global-variables';
 
 $line_height: 1em;
 $text_margin_height: 10px;
