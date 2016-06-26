@@ -3,6 +3,7 @@ import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { HTTP_PROVIDERS } from '@angular/http';
 
 import { AuthenticationService } from './authentication.service';
+import { ListService } from './list.service';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -22,7 +23,8 @@ import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path
     ],
     providers: [
         HTTP_PROVIDERS,
-        AuthenticationService
+        AuthenticationService,
+        ListService
     ]
 })
 @RouteConfig([

@@ -38,6 +38,14 @@ var AuthenticationService = (function () {
         // TODO: CHECK IF TOKEN IS STILL VALID
         return this.loggedIn;
     };
+    // retrns the current auth_token or null if there is no tokens
+    AuthenticationService.prototype.getToken = function () {
+        if (this.isLoggedIn()) {
+            return localStorage.getItem('auth_token');
+        }
+        // if the user is not logged in, the auth token is invalid, so return null
+        return null;
+    };
     AuthenticationService.prototype.extractToken = function (res) {
         // extract the json body
         var body = res.json() || {};

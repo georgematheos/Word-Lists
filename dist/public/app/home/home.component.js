@@ -11,11 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var authentication_service_1 = require('../authentication.service');
+var list_service_1 = require('../list.service');
 var HomeComponent = (function () {
-    function HomeComponent(router, authenticationService) {
+    function HomeComponent(router, authenticationService, listService) {
         this.router = router;
         this.authenticationService = authenticationService;
-        this.listTitles = ['Victor\'s Words', 'Ingredients', 'Strangest Plant Names', 'Shoe Brands', 'Cookie Types']; // TODO: GET THIS FROM SERVER RATHER THAN HARDCODING IT
+        this.listService = listService;
+        this.username = 'user'; // TODO: MAKE THIS CHANGE DEPENDING ON WHO THE USER IS
+        //        this.listTitles = ['Victor\'s Words', 'Ingredients', 'Strangest Plant Names', 'Shoe Brands', 'Cookie Types']; // TODO: GET THIS FROM SERVER RATHER THAN HARDCODING IT
     }
     Object.defineProperty(HomeComponent.prototype, "token", {
         get: function () {
@@ -25,11 +28,20 @@ var HomeComponent = (function () {
         configurable: true
     });
     HomeComponent.prototype.ngOnInit = function () {
+        var _this = this;
         // if the user is not logged in, navigate to the login page
         // TODO: ACCOUNT FOR INVALID TOKENS
         if (!this.authenticationService.isLoggedIn()) {
             this.router.parent.navigate(['Login']);
         }
+        // get the word lists the user has
+        this.listService.getLists(this.username).subscribe(function (lists) {
+            _this.listTitles = lists;
+            console.log(lists);
+        }, function (err) {
+            // TODO: NAVIGATE TO ERROR PAGE
+            console.log(err);
+        });
     };
     HomeComponent.prototype.logout = function () {
         this.authenticationService.logout();
@@ -43,7 +55,7 @@ var HomeComponent = (function () {
             styleUrls: ['home.component.css'],
             directives: [router_deprecated_1.ROUTER_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [router_deprecated_1.Router, authentication_service_1.AuthenticationService])
+        __metadata('design:paramtypes', [router_deprecated_1.Router, authentication_service_1.AuthenticationService, list_service_1.ListService])
     ], HomeComponent);
     return HomeComponent;
 }());

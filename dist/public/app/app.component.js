@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var router_deprecated_1 = require('@angular/router-deprecated');
 var http_1 = require('@angular/http');
 var authentication_service_1 = require('./authentication.service');
+var list_service_1 = require('./list.service');
 var home_component_1 = require('./home/home.component');
 var login_component_1 = require('./login/login.component');
 var signup_component_1 = require('./signup/signup.component');
@@ -33,7 +34,8 @@ var AppComponent = (function () {
             ],
             providers: [
                 http_1.HTTP_PROVIDERS,
-                authentication_service_1.AuthenticationService
+                authentication_service_1.AuthenticationService,
+                list_service_1.ListService
             ]
         }),
         router_deprecated_1.RouteConfig([

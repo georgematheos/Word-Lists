@@ -54,9 +54,7 @@ var LoginComponent = (function () {
         var _this = this;
         this.authenticationService.login(this.username.value, this.password.value)
             .subscribe(function (token) {
-            if (token) {
-                _this.router.parent.navigate(['Home']);
-            }
+            _this.router.parent.navigate(['Home']);
         }, function (err) {
             switch (err.status) {
                 // username not recognized
