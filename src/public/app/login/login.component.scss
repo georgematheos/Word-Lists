@@ -1,10 +1,10 @@
 @import "../misc_libraries/bourbon/bourbon"; // the default path is /src, since I run the command sass --watch src:dist
 
 // MIXINS:
-@import 'public/global-mixins';
+@import 'public/styles/global-mixins';
 
 // VARIABLES:
-@import 'public/global-variables';
+@import 'public/styles/global-variables';
 
 $line_height: 1em;
 $text_margin_height: 10px;
