@@ -28,7 +28,7 @@ export = function(config) {
 
             // make sure that this is a token for the correct user
             if (decoded.username !== req.params.username) {
-                res.status(401).json({ error: 'Unauthorized', message: 'the token provided is not for the user specified in the url', username: 'req.params.username' });
+                res.status(401).json({ error: 'Unauthorized', message: 'the token provided is not for the user specified in the url', username: req.params.username });
                 return;
             }
 
@@ -38,5 +38,5 @@ export = function(config) {
             // run the next middeware function or route handler
             next();
         });
-    };    
+    };
 }
