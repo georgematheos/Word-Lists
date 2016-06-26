@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Control, ControlGroup, FormBuilder, NgForm, Validators } from '@angular/common';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AuthenticationService } from '../authentication.service';
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit{
 
     ngOnInit() {
         if (this.authenticationService.isLoggedIn()) {
-            this.router.parent.navigate(['Home']);
+            this.router.navigate(['/']);
         }
     }
 
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit{
     onSubmit(event) {
         this.authenticationService.login(this.username.value, this.password.value)
             .subscribe((token) => {
-                this.router.parent.navigate(['Home']);
+                this.router.navigate(['/']);
             }, (err) => {
                 switch (err.status) {
                     // username not recognized

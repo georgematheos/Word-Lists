@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var authentication_service_1 = require('../authentication.service');
 var LoginComponent = (function () {
     function LoginComponent(builder, router, authenticationService) {
@@ -31,7 +31,7 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         if (this.authenticationService.isLoggedIn()) {
-            this.router.parent.navigate(['Home']);
+            this.router.navigate(['/']);
         }
     };
     Object.defineProperty(LoginComponent.prototype, "usernameEmpty", {
@@ -54,7 +54,7 @@ var LoginComponent = (function () {
         var _this = this;
         this.authenticationService.login(this.username.value, this.password.value)
             .subscribe(function (token) {
-            _this.router.parent.navigate(['Home']);
+            _this.router.navigate(['/']);
         }, function (err) {
             switch (err.status) {
                 // username not recognized
@@ -84,9 +84,9 @@ var LoginComponent = (function () {
             moduleId: module.id,
             templateUrl: 'login.component.html',
             styleUrls: ['login.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, router_deprecated_1.Router, authentication_service_1.AuthenticationService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, router_1.Router, authentication_service_1.AuthenticationService])
     ], LoginComponent);
     return LoginComponent;
 }());

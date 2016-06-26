@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RouteConfig, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
 import { HTTP_PROVIDERS } from '@angular/http';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AuthenticationService } from './authentication.service';
 import { ListService } from './list.service';
@@ -27,10 +27,4 @@ import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path
         ListService
     ]
 })
-@RouteConfig([
-    {path: '/', name: 'Home', component: HomeComponent},
-    {path: '/login', name: 'Login', component: LoginComponent},
-    {path: '/signup', name: 'Signup', component: SignupComponent},
-    {path: '/*path', name: 'UnrecognizedPath', component: UnrecognizedPathComponent} // unrecognized url
-])
 export class AppComponent { }
