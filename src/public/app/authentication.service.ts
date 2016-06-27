@@ -9,10 +9,9 @@ import { AuthenticateBody } from './types/AuthenticateBody';
 @Injectable()
 export class AuthenticationService {
     private loggedIn = false;
-    private username: string;
 
     constructor(private http: Http) {
-        this.loggedIn = !!localStorage.getItem('auth_token'); // logged in is true if there is a token stored
+        this.loggedIn = !!localStorage.getItem('wl-auth_token'); // logged in is true if there is a token stored
     }
 
     login(username, password): Observable<string> {
@@ -31,15 +30,24 @@ export class AuthenticationService {
     }
 
     logout() {
-        localStorage.removeItem('auth_token');
+        localStorage.removeItem('wl-auth_token');
         this.loggedIn = false;
-        this.username = null;
+
+        localStorage.removeItem('wl-username');
     }
 
     isLoggedIn() {
         // check to make sure the user is truly logged in
-        this.loggedIn = !!localStorage.getItem('auth_token'); // logged in is true if there is a token stored
-        // TODO: CHECK IF TOKEN IS STILL VALID
+        this.loggedIn = this.loggedIn || !!localStorage.getItem('wl-auth_token'); // logged in is true if there is a token stored (if this.loggedIn is already true, we are good to go, so don't worry about checking localStorage)
+
+        if (this.loggedIn) {
+            // if the token has expired, the user is NOT logged in
+            let token_exp = localStorage.getItem('wl-token_exp');
+            if (token_exp && new Date() > new Date(token_exp)) {
+                this.logout(); // logout the user
+                this.loggedIn = false;
+            }
+        }
 
         return this.loggedIn;
     }
@@ -47,7 +55,7 @@ export class AuthenticationService {
     // retrns the current auth_token or null if there is no tokens
     getToken(): string | null {
         if (this.isLoggedIn()) {
-            return localStorage.getItem('auth_token');
+            return localStorage.getItem('wl-auth_token');
         }
 
         // if the user is not logged in, the auth token is invalid, so return null
@@ -55,7 +63,7 @@ export class AuthenticationService {
     }
 
     getUsername() {
-        return this.username;
+        return localStorage.getItem('wl-username');
     }
 
     private extractToken(res: Response, username: string): string {
@@ -68,9 +76,16 @@ export class AuthenticationService {
         }
 
         // set the token in the local storage
-        localStorage.setItem('auth_token', body.token);
+        localStorage.setItem('wl-auth_token', body.token);
         this.loggedIn = true; // set the logged in value
-        this.username = username; // get the username
+
+        // set the username in local storage
+        localStorage.setItem('wl-username', username);
+
+        // if included, store the expiration date for the token
+        if (body.exp) {
+            localStorage.setItem('wl-token_exp', body.exp);
+        }
 
         // return the token
         return body.token;

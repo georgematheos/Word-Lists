@@ -6,5 +6,6 @@
     "users_collection_name": "users",
     "word_lists_collection_name": "lists",
     "token_secret": "This is a supah secret secret...!",
-    "salt_rounds": 10
+    "salt_rounds": 10,
+    "time_until_token_expiration": 86400
 }

@@ -1,4 +1,6 @@
 ### Yet to be done
+- Make the browser update the jwt periodically
+- Should the browser check to make sure the server still thinks the jwt is valid periodically?
 - Style unrecognized path page and make it look better.
 - Make it so error messages on the signup page can be longer and still work with the centering.
 - Handle the situation in which a login or signup error occurs that is not in the switch statement (write the default behavior).
