@@ -34,6 +34,7 @@ export class AuthenticationService {
         this.loggedIn = false;
 
         localStorage.removeItem('wl-username');
+        localStorage.removeItem('wl-token_exp');
     }
 
     isLoggedIn() {

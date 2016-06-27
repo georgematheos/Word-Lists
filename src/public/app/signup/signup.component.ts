@@ -81,9 +81,9 @@ export class SignupComponent {
         this.signupService.signup(this.username.value, this.password.value).subscribe((res) => {
             // log in the newly created user
             this.authenticationService.login(this.username.value, this.password.value).subscribe((res) => {
+                this.router.navigate(['/home', this.authenticationService.getUsername()]);
                 // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
-            });
-            this.router.navigate(['/home', this.authenticationService.getUsername()]);
+            }, err => console.log(err));
         },
             (err) => {
                 switch (err.status) {

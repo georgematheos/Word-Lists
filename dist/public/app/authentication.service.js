@@ -33,6 +33,7 @@ var AuthenticationService = (function () {
         localStorage.removeItem('wl-auth_token');
         this.loggedIn = false;
         localStorage.removeItem('wl-username');
+        localStorage.removeItem('wl-token_exp');
     };
     AuthenticationService.prototype.isLoggedIn = function () {
         // check to make sure the user is truly logged in
