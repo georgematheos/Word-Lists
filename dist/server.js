@@ -36,7 +36,7 @@ servable_packages.forEach(function (pkgName) {
 });
 // finally, if none of those worked, just send the index.html file and let angular handle the routing
 app.use(function (req, res) {
-    res.sendfile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 // have the express app listen
 var port = (process.argv.length > 2) ? process.argv[2] : config.default_port; // port to be used
