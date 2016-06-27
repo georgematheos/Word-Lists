@@ -95,7 +95,7 @@ var SignupComponent = (function () {
             _this.authenticationService.login(_this.username.value, _this.password.value).subscribe(function (res) {
                 // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
             });
-            _this.router.parent.navigate(['Home']);
+            _this.router.parent.navigate(['Home', { username: _this.authenticationService.getUsername() }]);
         }, function (err) {
             switch (err.status) {
                 // user with username already exists

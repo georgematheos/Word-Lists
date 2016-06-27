@@ -18,6 +18,7 @@ var AuthenticationService = (function () {
         this.loggedIn = !!localStorage.getItem('auth_token'); // logged in is true if there is a token stored
     }
     AuthenticationService.prototype.login = function (username, password) {
+        var _this = this;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         var url = 'http://' + location.host + '/api/authenticate/local';
@@ -26,11 +27,12 @@ var AuthenticationService = (function () {
             password: password
         });
         return this.http.post(url, body, { headers: headers })
-            .map(this.extractToken);
+            .map(function (res) { return _this.extractToken(res, username); });
     };
     AuthenticationService.prototype.logout = function () {
         localStorage.removeItem('auth_token');
         this.loggedIn = false;
+        this.username = null;
     };
     AuthenticationService.prototype.isLoggedIn = function () {
         // check to make sure the user is truly logged in
@@ -46,7 +48,10 @@ var AuthenticationService = (function () {
         // if the user is not logged in, the auth token is invalid, so return null
         return null;
     };
-    AuthenticationService.prototype.extractToken = function (res) {
+    AuthenticationService.prototype.getUsername = function () {
+        return this.username;
+    };
+    AuthenticationService.prototype.extractToken = function (res, username) {
         // extract the json body
         var body = res.json() || {};
         // make sure a token is within the body (if no body provided, this error will be triggered)
@@ -55,7 +60,8 @@ var AuthenticationService = (function () {
         }
         // set the token in the local storage
         localStorage.setItem('auth_token', body.token);
-        this.loggedIn = true;
+        this.loggedIn = true; // set the logged in value
+        this.username = username; // get the username
         // return the token
         return body.token;
     };

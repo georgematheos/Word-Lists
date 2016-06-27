@@ -31,7 +31,7 @@ var LoginComponent = (function () {
     }
     LoginComponent.prototype.ngOnInit = function () {
         if (this.authenticationService.isLoggedIn()) {
-            this.router.parent.navigate(['Home']);
+            this.router.parent.navigate(['Home', { username: this.authenticationService.getUsername() }]);
         }
     };
     Object.defineProperty(LoginComponent.prototype, "usernameEmpty", {
@@ -54,7 +54,7 @@ var LoginComponent = (function () {
         var _this = this;
         this.authenticationService.login(this.username.value, this.password.value)
             .subscribe(function (token) {
-            _this.router.parent.navigate(['Home']);
+            _this.router.parent.navigate(['Home', { username: _this.authenticationService.getUsername() }]);
         }, function (err) {
             switch (err.status) {
                 // username not recognized

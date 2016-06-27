@@ -13,10 +13,10 @@ import { ListService } from '../list.service';
 })
 export class HomeComponent implements OnInit {
     private listTitles: Array<string>;
-    private username = 'user'; // TODO: MAKE THIS CHANGE DEPENDING ON WHO THE USER IS
+    private username: string;
 
     constructor(private router: Router, private authenticationService: AuthenticationService, private listService: ListService) {
-//        this.listTitles = ['Victor\'s Words', 'Ingredients', 'Strangest Plant Names', 'Shoe Brands', 'Cookie Types']; // TODO: GET THIS FROM SERVER RATHER THAN HARDCODING IT
+        this.username = this.authenticationService.getUsername();
     }
 
     get token(): string {

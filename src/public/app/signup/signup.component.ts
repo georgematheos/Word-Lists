@@ -83,7 +83,7 @@ export class SignupComponent {
             this.authenticationService.login(this.username.value, this.password.value).subscribe((res) => {
                 // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
             });
-            this.router.parent.navigate(['Home']);
+            this.router.parent.navigate(['Home', { username: this.authenticationService.getUsername() }]);
         },
             (err) => {
                 switch (err.status) {

@@ -17,8 +17,7 @@ var HomeComponent = (function () {
         this.router = router;
         this.authenticationService = authenticationService;
         this.listService = listService;
-        this.username = 'user'; // TODO: MAKE THIS CHANGE DEPENDING ON WHO THE USER IS
-        //        this.listTitles = ['Victor\'s Words', 'Ingredients', 'Strangest Plant Names', 'Shoe Brands', 'Cookie Types']; // TODO: GET THIS FROM SERVER RATHER THAN HARDCODING IT
+        this.username = this.authenticationService.getUsername();
     }
     Object.defineProperty(HomeComponent.prototype, "token", {
         get: function () {

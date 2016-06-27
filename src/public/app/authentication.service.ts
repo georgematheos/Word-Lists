@@ -9,6 +9,7 @@ import { AuthenticateBody } from './types/AuthenticateBody';
 @Injectable()
 export class AuthenticationService {
     private loggedIn = false;
+    private username: string;
 
     constructor(private http: Http) {
         this.loggedIn = !!localStorage.getItem('auth_token'); // logged in is true if there is a token stored
@@ -26,12 +27,13 @@ export class AuthenticationService {
         });
 
         return this.http.post(url, body, { headers })
-            .map(this.extractToken);
+            .map(res => this.extractToken(res, username));
     }
 
     logout() {
         localStorage.removeItem('auth_token');
         this.loggedIn = false;
+        this.username = null;
     }
 
     isLoggedIn() {
@@ -52,7 +54,11 @@ export class AuthenticationService {
         return null;
     }
 
-    private extractToken(res: Response): string {
+    getUsername() {
+        return this.username;
+    }
+
+    private extractToken(res: Response, username: string): string {
         // extract the json body
         let body: AuthenticateBody = res.json() || {};
 
@@ -63,7 +69,8 @@ export class AuthenticationService {
 
         // set the token in the local storage
         localStorage.setItem('auth_token', body.token);
-        this.loggedIn = true;
+        this.loggedIn = true; // set the logged in value
+        this.username = username; // get the username
 
         // return the token
         return body.token;

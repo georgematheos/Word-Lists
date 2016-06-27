@@ -39,7 +39,8 @@ var AppComponent = (function () {
             ]
         }),
         router_deprecated_1.RouteConfig([
-            { path: '/', name: 'Home', component: home_component_1.HomeComponent },
+            { path: '/', redirectTo: ['Login'] },
+            { path: '/home/:username', name: 'Home', component: home_component_1.HomeComponent },
             { path: '/login', name: 'Login', component: login_component_1.LoginComponent },
             { path: '/signup', name: 'Signup', component: signup_component_1.SignupComponent },
             { path: '/*path', name: 'UnrecognizedPath', component: unrecognized_path_component_1.UnrecognizedPathComponent } // unrecognized url

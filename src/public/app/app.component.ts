@@ -28,7 +28,8 @@ import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path
     ]
 })
 @RouteConfig([
-    {path: '/', name: 'Home', component: HomeComponent},
+    {path: '/', redirectTo: ['Login']},
+    {path: '/home/:username', name: 'Home', component: HomeComponent},
     {path: '/login', name: 'Login', component: LoginComponent},
     {path: '/signup', name: 'Signup', component: SignupComponent},
     {path: '/*path', name: 'UnrecognizedPath', component: UnrecognizedPathComponent} // unrecognized url
