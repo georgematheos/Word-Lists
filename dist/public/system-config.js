@@ -3,9 +3,9 @@
 (function (global) {
     // tell systemjs where to find things
     var map = {
-        'app': 'app',
-        '@angular': 'node_modules/@angular',
-        'rxjs': 'node_modules/rxjs'
+        'app': '/app',
+        '@angular': '/node_modules/@angular',
+        'rxjs': '/node_modules/rxjs'
     };
     // tell systemjs the default extension and entry points for certain packages
     var packages = {
