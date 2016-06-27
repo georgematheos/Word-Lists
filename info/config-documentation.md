@@ -14,4 +14,4 @@ Here is a list of fields which must be included in the config.json file:
 - `word_lists_collection_name`: the name of the collection used to store word lists
 - `token_secret`: the secret to use to generate web tokens
 - `salt_rounds`: the number of rounds to apply the salt when generating password hashes
-- `time_until_token_expiration`: the amount of time (in milliseconds) before authentication tokens expire
+- `time_until_token_expiration`: the amount of time (in seconds) before authentication tokens expire

@@ -94,7 +94,7 @@ export = function(config) {
 
                         // when the token will expire
                         let exp_date = new Date();
-                        exp_date.setMilliseconds(exp_date.getMilliseconds() + config.time_until_token_expiration);
+                        exp_date.setSeconds(exp_date.getSeconds() + config.time_until_token_expiration);
 
                         res.status(200).json({ message: 'here is a token', token: token, exp: exp_date });
                         db.close();
@@ -144,7 +144,7 @@ export = function(config) {
                 }
 
                 let exp_date = new Date();
-                exp_date.setMilliseconds(exp_date.getMilliseconds() + config.time_until_token_expiration);
+                exp_date.setSeconds(exp_date.getSeconds() + config.time_until_token_expiration);
 
                 res.status(200).json({ message: 'here is a new token', token: token, exp: exp_date });
             });
