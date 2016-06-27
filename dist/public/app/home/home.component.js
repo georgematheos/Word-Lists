@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var authentication_service_1 = require('../authentication.service');
 var list_service_1 = require('../list.service');
 var HomeComponent = (function () {
@@ -31,7 +31,7 @@ var HomeComponent = (function () {
         // if the user is not logged in, navigate to the login page
         // TODO: ACCOUNT FOR INVALID TOKENS
         if (!this.authenticationService.isLoggedIn()) {
-            this.router.parent.navigate(['Login']);
+            this.router.navigate(['/login']);
         }
         // get the word lists the user has
         this.listService.getLists(this.username).subscribe(function (lists) {
@@ -44,7 +44,7 @@ var HomeComponent = (function () {
     };
     HomeComponent.prototype.logout = function () {
         this.authenticationService.logout();
-        this.router.parent.navigate(['Login']);
+        this.router.navigate(['/login']);
     };
     HomeComponent = __decorate([
         core_1.Component({
@@ -52,9 +52,9 @@ var HomeComponent = (function () {
             selector: 'wl-home',
             templateUrl: 'home.component.html',
             styleUrls: ['home.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [router_deprecated_1.Router, authentication_service_1.AuthenticationService, list_service_1.ListService])
+        __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, list_service_1.ListService])
     ], HomeComponent);
     return HomeComponent;
 }());

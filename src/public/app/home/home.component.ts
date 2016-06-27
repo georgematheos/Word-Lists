@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { AuthenticationService } from '../authentication.service';
 import { ListService } from '../list.service';
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
         // if the user is not logged in, navigate to the login page
         // TODO: ACCOUNT FOR INVALID TOKENS
         if (!this.authenticationService.isLoggedIn()) {
-            this.router.parent.navigate(['Login']);
+            this.router.navigate(['/login']);
         }
 
         // get the word lists the user has
@@ -42,6 +42,6 @@ export class HomeComponent implements OnInit {
 
     logout() {
         this.authenticationService.logout();
-        this.router.parent.navigate(['Login']);
+        this.router.navigate(['/login']);
     }
 }

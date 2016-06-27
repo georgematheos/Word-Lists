@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var router_deprecated_1 = require('@angular/router-deprecated');
+var router_1 = require('@angular/router');
 var matching_validator_1 = require('./matching.validator');
 var signup_service_1 = require('./signup.service');
 var authentication_service_1 = require('../authentication.service');
@@ -95,7 +95,7 @@ var SignupComponent = (function () {
             _this.authenticationService.login(_this.username.value, _this.password.value).subscribe(function (res) {
                 // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
             });
-            _this.router.parent.navigate(['Home', { username: _this.authenticationService.getUsername() }]);
+            _this.router.navigate(['/home', _this.authenticationService.getUsername()]);
         }, function (err) {
             switch (err.status) {
                 // user with username already exists
@@ -118,10 +118,10 @@ var SignupComponent = (function () {
             selector: 'wl-signup',
             templateUrl: 'signup.component.html',
             styleUrls: ['signup.component.css'],
-            directives: [router_deprecated_1.ROUTER_DIRECTIVES],
+            directives: [router_1.ROUTER_DIRECTIVES],
             providers: [signup_service_1.SignupService]
         }), 
-        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, common_1.FormBuilder, router_deprecated_1.Router, signup_service_1.SignupService])
+        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, common_1.FormBuilder, router_1.Router, signup_service_1.SignupService])
     ], SignupComponent);
     return SignupComponent;
 }());

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Control, ControlGroup, FormBuilder, NgForm, Validators } from '@angular/common';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router-deprecated';
+import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 
 import { matching } from './matching.validator';
 
@@ -83,7 +83,7 @@ export class SignupComponent {
             this.authenticationService.login(this.username.value, this.password.value).subscribe((res) => {
                 // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
             });
-            this.router.parent.navigate(['Home', { username: this.authenticationService.getUsername() }]);
+            this.router.navigate(['/home', this.authenticationService.getUsername()]);
         },
             (err) => {
                 switch (err.status) {

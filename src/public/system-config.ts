@@ -29,7 +29,7 @@
 
     // add to each angular package to the packages list
     ngPackageNames.forEach(function(pkgName) {
-        packages['@angular/' + pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
+        packages['@angular/' + pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
     });
 
     // create the config object
