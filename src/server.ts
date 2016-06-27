@@ -45,6 +45,9 @@ servable_packages.forEach(function(pkgName) {
     app.use('/node_modules/' + pkgName, express.static(__dirname + '/../node_modules/' + pkgName));
 });
 
+// TODO: REMOVE ONCE DONE WITH TESTING:
+app.use('/src/public/', express.static(__dirname + '/../src/public')); // serve source files for debugging use
+
 // finally, if none of those worked, just send the index.html file and let angular handle the routing
 app.use(function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
