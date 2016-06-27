@@ -29,8 +29,21 @@ The rest of the fields are optional and result in different modifications to the
 
   If the authentication is successful, the JSON document returned is guaranteed to include the following field:
   - `"token"`: a valid token for the user who logged on
+  - `"exp"`: the date and time when the token expires (in the form of an ISO date)
 
   If authentication is not successful, the status code of the response will be `401`.
+
+## Check if Token is Valid
+    GET /api/authenticate/local/check_validity/:token/
+
+  Returns with a status code of `200` if the token is valid and with a status code of `401` if it is invalid.
+
+## Refresh Token
+    GET /api/authenticate/local/refresh_token/:token/
+
+  If the token given is valid, returns with a 200 status code and a JSON body with the following fields:
+  - `"token"`: a new valid token to replace the old one
+  - `"exp"`: the date and time when the new token expires (in the form of an ISO date)
 
 ## Interact with Word Lists
 

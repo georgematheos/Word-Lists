@@ -71,7 +71,7 @@ module.exports = function (config) {
                         username: req.body.username
                     };
                     var options = {
-                        expiresIn: 86400 // expires in 24 hours
+                        expiresIn: config.time_until_token_expiration
                     };
                     // create a token and send it to the user
                     var token = jwt.sign(payload, config.token_secret, options, function (err, token) {
@@ -80,10 +80,49 @@ module.exports = function (config) {
                             db.close();
                             return;
                         }
-                        res.status(200).json({ message: 'here is a token', token: token });
+                        // when the token will expire
+                        var exp_date = new Date();
+                        exp_date.setMilliseconds(exp_date.getMilliseconds() + config.time_until_token_expiration);
+                        res.status(200).json({ message: 'here is a token', token: token, exp: exp_date });
                         db.close();
                     });
                 });
+            });
+        });
+    });
+    // CHECK TOKEN VALIDITY
+    router.get('/check_validity/:token', function (req, res) {
+        jwt.verify(req.params.token, config.token_secret, function (err, decoded) {
+            if (err) {
+                res.status(401).json({ error: 'Unauthorized', message: 'failed to authenticate token' });
+                return;
+            }
+            // otherwise, it is valid, so send a 200 status code and we're done!
+            res.status(200).end();
+        });
+    });
+    // REFRESH TOKEN
+    router.get('/refresh_token/:token', function (req, res) {
+        jwt.verify(req.params.token, config.token_secret, function (err, decoded) {
+            if (err) {
+                res.status(401).json({ error: 'Unauthorized', message: 'failed to authenticate token' });
+                return;
+            }
+            // create the payload for the token
+            var payload = decoded; // reuse the payload
+            delete payload.exp; // remove the exp date from the payload
+            var options = {
+                expiresIn: config.time_until_token_expiration
+            };
+            // create a token and send it to the user
+            var token = jwt.sign(payload, config.token_secret, options, function (err, token) {
+                if (err) {
+                    res.status(500).json({ error: 'Internal Server Error', message: 'error generating token', username: req.body.username });
+                    return;
+                }
+                var exp_date = new Date();
+                exp_date.setMilliseconds(exp_date.getMilliseconds() + config.time_until_token_expiration);
+                res.status(200).json({ message: 'here is a new token', token: token, exp: exp_date });
             });
         });
     });
