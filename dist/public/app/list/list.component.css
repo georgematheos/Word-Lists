@@ -1,0 +1,138 @@
+.container {
+  position: absolute;
+  top: 20px;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%); }
+  .container .wl-nav-btns {
+    margin-bottom: 10px;
+    height: 47.5px; }
+    .container .wl-nav-btns .wl-logout,
+    .container .wl-nav-btns .wl-home-link {
+      position: absolute;
+      top: 0;
+      cursor: pointer; }
+      .container .wl-nav-btns .wl-logout svg,
+      .container .wl-nav-btns .wl-home-link svg {
+        fill: #00D59B; }
+        .container .wl-nav-btns .wl-logout svg:hover,
+        .container .wl-nav-btns .wl-home-link svg:hover {
+          fill: #00b685; }
+    .container .wl-nav-btns .wl-home-link {
+      left: 0;
+      height: 47.5px;
+      width: 33.5px; }
+    .container .wl-nav-btns .wl-logout {
+      right: 0;
+      height: 47.5px;
+      width: 43px; }
+  .container form .form-group {
+    margin-bottom: 10px; }
+    .container form .form-group input {
+      height: 40px;
+      width: 100%;
+      padding: 0;
+      text-align: center;
+      border: 2px solid #00D59B;
+      font-size: 25px;
+      color: #00D59B;
+      -webkit-box-shadow: none;
+      box-shadow: none; }
+      .container form .form-group input::-webkit-input-placeholder {
+        color: rgba(0, 213, 155, 0.5); }
+      .container form .form-group input::-moz-placeholder {
+        color: rgba(0, 213, 155, 0.5); }
+      .container form .form-group input:-moz-placeholder {
+        color: rgba(0, 213, 155, 0.5); }
+      .container form .form-group input:-ms-input-placeholder {
+        color: rgba(0, 213, 155, 0.5); }
+      .container form .form-group input:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none; }
+      .container form .form-group input.wl-list-title {
+        font-weight: bold; }
+  .container form .wl-list-buttons {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-justify-content: space-between;
+    -o-justify-content: space-between;
+    justify-content: space-between;
+    -ms-flex-pack: justify; }
+    .container form .wl-list-buttons .wl-button-wrapper {
+      max-width: 187.5px;
+      width: 100%;
+      height: 40px; }
+      .container form .wl-list-buttons .wl-button-wrapper button {
+        width: 100%;
+        height: 100%;
+        font-size: 25px;
+        color: white;
+        border: none; }
+        .container form .wl-list-buttons .wl-button-wrapper button .wl-button-text {
+          position: relative;
+          top: -4px; }
+        .container form .wl-list-buttons .wl-button-wrapper button.wl-delete-button {
+          background-color: #C46D6D; }
+          .container form .wl-list-buttons .wl-button-wrapper button.wl-delete-button:focus {
+            border-color: #C46D6D;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(196, 109, 109, 0.6);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(196, 109, 109, 0.6);
+            outline: 0 none; }
+        .container form .wl-list-buttons .wl-button-wrapper button.wl-cancel-button {
+          background-color: #27A7FF; }
+          .container form .wl-list-buttons .wl-button-wrapper button.wl-cancel-button:focus {
+            border-color: #27A7FF;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(39, 167, 255, 0.6);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(39, 167, 255, 0.6);
+            outline: 0 none; }
+        .container form .wl-list-buttons .wl-button-wrapper button.wl-save-button {
+          background-color: #00D59B; }
+          .container form .wl-list-buttons .wl-button-wrapper button.wl-save-button:focus {
+            border-color: #00D59B;
+            -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 213, 155, 0.6);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 213, 155, 0.6);
+            outline: 0 none; }
+  .container form .wl-plus-button {
+    width: 100%;
+    height: 40px;
+    border: 2px solid #00D59B; }
+    .container form .wl-plus-button:hover {
+      background-color: white;
+      border-color: #00b685; }
+      .container form .wl-plus-button:hover svg {
+        fill: #00b685; }
+    .container form .wl-plus-button:focus {
+      background-color: white; }
+      .container form .wl-plus-button:focus:focus {
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        outline: none; }
+    .container form .wl-plus-button:active {
+      border-color: #00D59B; }
+      .container form .wl-plus-button:active svg {
+        fill: #00D59B; }
+    .container form .wl-plus-button svg {
+      width: 30px;
+      height: 30px;
+      position: relative;
+      top: -2px;
+      fill: #00D59B; }
+
+/*# sourceMappingURL=list.component.css.map */
