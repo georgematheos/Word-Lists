@@ -9,7 +9,7 @@ exports.routes = [
     { path: 'home/:username', component: home_component_1.HomeComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'signup', component: signup_component_1.SignupComponent },
-    { path: '*path', component: unrecognized_path_component_1.UnrecognizedPathComponent } // unrecognized url TODO: Make sure this works
+    { path: '**', component: unrecognized_path_component_1.UnrecognizedPathComponent }
 ];
 exports.APP_ROUTER_PROVIDERS = [
     router_1.provideRouter(exports.routes)

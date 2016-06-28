@@ -10,7 +10,7 @@ export const routes: RouterConfig = [
     {path: 'home/:username', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
-    {path: '*path', component: UnrecognizedPathComponent} // unrecognized url TODO: Make sure this works
+    {path: '**', component: UnrecognizedPathComponent}
 ];
 
 export const APP_ROUTER_PROVIDERS = [
