@@ -45,6 +45,20 @@ var ListService = (function () {
         // return an observable of the array of word lists
         return this.http.get(url, { headers: headers }).map(function (res) { return _this.extractData(res, 'words'); });
     };
+    ListService.prototype.getWordListData = function (username, listTitle) {
+        // get the token and throw an error if none is available
+        var auth_token = this.authenticationService.getToken();
+        if (!auth_token) {
+            return Rx_1.Observable.throw(new Error('no auth token available from the authenticationService'));
+        }
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json'); // add the content type to the headers
+        headers.append('x-auth-token', auth_token); // add the token to the headers
+        var url = 'http://' + location.host + ("/api/word_lists/" + username + "/" + listTitle);
+        // return an observable of the body returned by the server
+        return this.http.get(url, { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
     ListService.prototype.updateList = function (username, oldListTitle, updateData) {
         // put together object to send to the server in case the one passed in is badly formatted and to strip off unneeded fields
         var requestBody = { title: updateData.title, words: updateData.words };
