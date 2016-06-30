@@ -1,2 +1,2 @@
 # Types Folder
-This folder contains typescript files defining types of request and response body objects.
+This folder contains typescript files defining various types.
