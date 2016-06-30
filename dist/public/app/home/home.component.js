@@ -42,6 +42,9 @@ var HomeComponent = (function () {
             console.log(err);
         });
     };
+    HomeComponent.prototype.titleButtonClick = function (listTitle) {
+        this.router.navigate(['/list', this.username, listTitle]);
+    };
     HomeComponent.prototype.logout = function () {
         this.authenticationService.logout();
         this.router.navigate(['/login']);

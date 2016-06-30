@@ -55,7 +55,7 @@
         <ul>
             <li *ngFor="let listTitle of listTitles">
                 <div class="btn-group">
-                    <button class="btn btn-default">
+                    <button class="btn btn-default" (click)="titleButtonClick(listTitle)">
                         <div class="wl-btn-text">{{listTitle}}</div>
                     </button>
                 </div>

@@ -40,6 +40,10 @@ export class HomeComponent implements OnInit {
         });
     }
 
+    titleButtonClick(listTitle) {
+        this.router.navigate(['/list', this.username, listTitle]);
+    }
+
     logout() {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
