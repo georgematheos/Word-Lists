@@ -9,7 +9,8 @@ import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path
 export const routes: RouterConfig = [
     {path: '', redirectTo: '/login', terminal: true},
     {path: 'home/:username', component: HomeComponent},
-    {path: 'list/:username/:title', component: ListComponent},
+    {path: 'list/:username', component: ListComponent}, // new list
+    {path: 'list/:username/:title', component: ListComponent}, // already-created list
     {path: 'login', component: LoginComponent},
     {path: 'signup', component: SignupComponent},
     {path: '**', component: UnrecognizedPathComponent}

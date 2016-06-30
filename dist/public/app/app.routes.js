@@ -8,6 +8,7 @@ var unrecognized_path_component_1 = require('./unrecognized-path/unrecognized-pa
 exports.routes = [
     { path: '', redirectTo: '/login', terminal: true },
     { path: 'home/:username', component: home_component_1.HomeComponent },
+    { path: 'list/:username', component: list_component_1.ListComponent },
     { path: 'list/:username/:title', component: list_component_1.ListComponent },
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'signup', component: signup_component_1.SignupComponent },
