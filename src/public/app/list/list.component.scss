@@ -121,6 +121,11 @@ $margin-height: 10px;
                     &.wl-save-button {
                         background-color: $green_color;
                         @include focus-glow($green_color);
+
+                        &[disabled] {
+                            background-color: rgba($green_color, 0.5);
+                            color: rgba(white, 0.5);
+                        }
                     }
 
                     border: none;

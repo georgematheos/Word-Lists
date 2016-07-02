@@ -1,6 +1,6 @@
 <div class="container">
     <div class="wl-nav-btns">
-        <a> <!-- TODO: MAKE THIS LINK TO THE USER's HOMEPAGE -->
+        <a [routerLink]="['/login']"> <!-- TODO: MAKE THIS LINK TO THE USER's HOMEPAGE INSTEAD OF THE LOGIN PAGE -->
             <div class="wl-home-link">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="6517 8034.352 65.608 95.027">
                   <defs>
@@ -58,9 +58,9 @@
         </a>
     </div>
 
-    <form class="">
+    <form #listForm="ngForm">
         <div class="form-group">
-            <input type="text" class="form-control wl-list-title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter a List Title Here (required)'" placeholder="Enter a List Title Here (required)">
+            <input required type="text" name="title" class="form-control wl-list-title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter a List Title Here (required)'" placeholder="Enter a List Title Here (required)" [(ngModel)]="listTitle">
             <!-- TODO: move the logic here mostly to the component file. -->
         </div>
 
@@ -77,19 +77,19 @@
             </div>
 
             <div class="wl-button-wrapper">
-                <button class="btn btn-default wl-save-button">
+                <button class="btn btn-default wl-save-button" type="submit" [disabled]="!listForm.form.valid">
                     <div class="wl-button-text">Save</div>
                 </button>
             </div>
         </div>
 
-        <div *ngIf="false">
-            <div class="form-group" *ngFor="">
-                <input type="text" class="form-control" value="">
+        <div *ngIf="wordCapsules">
+            <div class="form-group" *ngFor="let w of wordCapsules">
+                <input type="text" class="form-control" [value]="w.item"/>
             </div>
         </div>
 
-        <div class="form-group" *ngIf="true">
+        <div class="form-group" *ngIf="!wordCapsules">
             <input type="text" class="form-control" placeholder="Enter Words Here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Words Here'">
             <!-- TODO: REMOVE LOGIC TO COMPONENT FILE -->
         </div>
@@ -105,5 +105,4 @@
             </button>
         </div>
     </form>
-
 </div>

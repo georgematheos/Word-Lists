@@ -1,4 +1,5 @@
 ### Yet to be done
+- Make sure that the username in the url is the same as the username of the signed in user for the home page and the list page
 - Make the browser update the jwt periodically
 - Should the browser check to make sure the server still thinks the jwt is valid periodically?
 - Style unrecognized path page and make it look better.
