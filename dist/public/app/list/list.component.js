@@ -73,7 +73,7 @@ var ListComponent = (function () {
         this.wordPlaceholder = '';
     };
     ListComponent.prototype.newWord = function () {
-        console.log('new word function triggered');
+        this.wordCapsules.push(new Capsule_1.Capsule(''));
     };
     ListComponent.prototype.save = function () {
         console.log('save function triggered');

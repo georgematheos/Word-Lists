@@ -114,7 +114,7 @@ export class ListComponent implements OnInit {
     }
 
     newWord() {
-        console.log('new word function triggered')
+        this.wordCapsules.push(new Capsule(''));
     }
 
     save() {
