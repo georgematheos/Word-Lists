@@ -60,42 +60,34 @@
 
     <form #listForm="ngForm">
         <div class="form-group">
-            <input required type="text" name="title" class="form-control wl-list-title" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter a List Title Here (required)'" placeholder="Enter a List Title Here (required)" [(ngModel)]="listTitle">
-            <!-- TODO: move the logic here mostly to the component file. -->
+            <input type="text" name="title" class="form-control wl-list-title" (blur)="titleBlur()" (focus)="titleFocus()" placeholder="{{titlePlaceholder}}" [(ngModel)]="listTitle" required>
         </div>
 
         <div class="form-group wl-list-buttons">
             <div class="wl-button-wrapper">
-                <button class="btn btn-default wl-delete-button">
+                <button type="button" (click)="delete()" class="btn btn-default wl-delete-button">
                     <div class="wl-button-text">Delete</div>
                 </button>
             </div>
             <div class="wl-button-wrapper">
-                <button class="btn btn-default wl-cancel-button">
+                <button type="button" (click)="cancel()" class="btn btn-default wl-cancel-button">
                     <div class="wl-button-text">Cancel</div>
                 </button>
             </div>
 
             <div class="wl-button-wrapper">
-                <button class="btn btn-default wl-save-button" type="submit" [disabled]="!listForm.form.valid">
+                <button type="button" (click)="save()" class="btn btn-default wl-save-button" [disabled]="!listForm.form.valid">
                     <div class="wl-button-text">Save</div>
                 </button>
             </div>
         </div>
 
-        <div *ngIf="wordCapsules">
-            <div class="form-group" *ngFor="let w of wordCapsules">
-                <input type="text" class="form-control" [value]="w.item"/>
-            </div>
-        </div>
-
-        <div class="form-group" *ngIf="!wordCapsules">
-            <input type="text" class="form-control" placeholder="Enter Words Here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Words Here'">
-            <!-- TODO: REMOVE LOGIC TO COMPONENT FILE -->
+        <div class="form-group" *ngFor="let w of wordCapsules">
+            <input type="text" class="form-control" [value]="w.item" placeholder="{{wordPlaceholder}}" (blur)="wordBlur()" (focus)="wordFocus()">
         </div>
 
         <div class="form-group">
-            <button class="btn btn-default wl-plus-button">
+            <button type="button" (click)="newWord()" class="btn btn-default wl-plus-button">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="6887 10056 60 60">
                     <g id="group-55" transform="translate(6242 10014)">
                         <rect id="rectangle-13" class="cls-1" width="4.286" height="60" rx="3" ry="3" transform="translate(673.286 42)" />

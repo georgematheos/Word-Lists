@@ -32,6 +32,16 @@ export class ListComponent implements OnInit {
     newList: boolean;
     showLoadingMessage: boolean;
 
+    // messages, input field placeholders, etc.
+    loadingMessage: string;
+    titlePlaceholder: string;
+    wordPlaceholder: string;
+
+    // the main value for each field
+    private loadingMessageValue: string;
+    private titlePlaceholderValue: string;
+    private wordPlaceholderValue: string;
+
     constructor(
     private authenticationService: AuthenticationService,
     private listService: ListService,
@@ -39,6 +49,18 @@ export class ListComponent implements OnInit {
     private router: Router) {
         // show the loading message right away
         this.showLoadingMessage = true;
+
+        // by default, have one word capsule with no text in the string
+        this.wordCapsules = [new Capsule('')];
+
+        this.loadingMessageValue = 'Loading Words...';
+        this.titlePlaceholderValue = 'Enter a List Title Here (required)';
+        this.wordPlaceholderValue = 'Enter Words Here';
+
+        this.loadingMessage = this.loadingMessageValue;
+        this.titlePlaceholder = this.titlePlaceholderValue;
+        this.wordPlaceholder = this.wordPlaceholderValue;
+
     }
 
     ngOnInit() {
@@ -73,5 +95,37 @@ export class ListComponent implements OnInit {
                 });
             }
         })
+    }
+
+    titleBlur() {
+        this.titlePlaceholder = this.titlePlaceholderValue;
+    }
+
+    titleFocus() {
+        this.titlePlaceholder = '';
+    }
+
+    wordBlur() {
+        this.wordPlaceholder = this.wordPlaceholderValue;
+    }
+
+    wordFocus() {
+        this.wordPlaceholder = '';
+    }
+
+    newWord() {
+        console.log('new word function triggered')
+    }
+
+    save() {
+        console.log('save function triggered');
+    }
+
+    cancel() {
+        console.log('cancel function triggered');
+    }
+
+    delete() {
+        console.log('delete function triggered');
     }
 }

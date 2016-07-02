@@ -22,6 +22,14 @@ var ListComponent = (function () {
         this.router = router;
         // show the loading message right away
         this.showLoadingMessage = true;
+        // by default, have one word capsule with no text in the string
+        this.wordCapsules = [new Capsule_1.Capsule('')];
+        this.loadingMessageValue = 'Loading Words...';
+        this.titlePlaceholderValue = 'Enter a List Title Here (required)';
+        this.wordPlaceholderValue = 'Enter Words Here';
+        this.loadingMessage = this.loadingMessageValue;
+        this.titlePlaceholder = this.titlePlaceholderValue;
+        this.wordPlaceholder = this.wordPlaceholderValue;
     }
     ListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -51,6 +59,30 @@ var ListComponent = (function () {
                 });
             }
         });
+    };
+    ListComponent.prototype.titleBlur = function () {
+        this.titlePlaceholder = this.titlePlaceholderValue;
+    };
+    ListComponent.prototype.titleFocus = function () {
+        this.titlePlaceholder = '';
+    };
+    ListComponent.prototype.wordBlur = function () {
+        this.wordPlaceholder = this.wordPlaceholderValue;
+    };
+    ListComponent.prototype.wordFocus = function () {
+        this.wordPlaceholder = '';
+    };
+    ListComponent.prototype.newWord = function () {
+        console.log('new word function triggered');
+    };
+    ListComponent.prototype.save = function () {
+        console.log('save function triggered');
+    };
+    ListComponent.prototype.cancel = function () {
+        console.log('cancel function triggered');
+    };
+    ListComponent.prototype.delete = function () {
+        console.log('delete function triggered');
     };
     ListComponent = __decorate([
         core_1.Component({
