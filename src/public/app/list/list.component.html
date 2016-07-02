@@ -83,7 +83,7 @@
         </div>
 
         <div class="form-group" *ngFor="let w of wordCapsules">
-            <input type="text" class="form-control" [value]="w.item" placeholder="{{wordPlaceholder}}" (blur)="wordBlur()" (focus)="wordFocus()">
+            <input type="text" name="word" class="form-control" [(ngModel)]="w.item" placeholder="{{wordPlaceholder}}" (blur)="wordBlur()" (focus)="wordFocus()">
         </div>
 
         <div class="form-group">
