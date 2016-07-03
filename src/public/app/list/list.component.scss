@@ -61,19 +61,27 @@ $margin-height: 10px;
         .wl-word-input-wrapper {
             height: 40px;
 
-            svg {
+            .wl-delete-word {
                 height: 40px;
                 position: absolute;
                 left: 0;
 
-                .cls-1 {
-                    fill: $red_color;
-                }
-                .cls-2 {
-                    fill: white;
+                border-radius: 4px 0 0 4px;
+                @include focus-glow($red_color);
+
+                svg {
+                    height: 100%;
+
+                    .cls-1 {
+                        fill: $red_color;
+                    }
+                    .cls-2 {
+                        fill: white;
+                    }
+
+                    cursor: pointer;
                 }
 
-                cursor: pointer;
             }
         }
 

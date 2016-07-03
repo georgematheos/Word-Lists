@@ -112,6 +112,10 @@ export class ListComponent implements OnInit {
         this.wordCapsules.push(new Capsule(''));
     }
 
+    deleteWord(event: Event, index: number) {
+        this.wordCapsules.splice(index, 1);
+    }
+
     save() {
         console.log('save function triggered');
     }

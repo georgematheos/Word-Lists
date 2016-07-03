@@ -34,15 +34,23 @@
       width: 43px; }
   .container form .wl-word-input-wrapper {
     height: 40px; }
-    .container form .wl-word-input-wrapper svg {
+    .container form .wl-word-input-wrapper .wl-delete-word {
       height: 40px;
       position: absolute;
       left: 0;
-      cursor: pointer; }
-      .container form .wl-word-input-wrapper svg .cls-1 {
-        fill: #C46D6D; }
-      .container form .wl-word-input-wrapper svg .cls-2 {
-        fill: white; }
+      border-radius: 4px 0 0 4px; }
+      .container form .wl-word-input-wrapper .wl-delete-word:focus {
+        border-color: #C46D6D;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(196, 109, 109, 0.6);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(196, 109, 109, 0.6);
+        outline: 0 none; }
+      .container form .wl-word-input-wrapper .wl-delete-word svg {
+        height: 100%;
+        cursor: pointer; }
+        .container form .wl-word-input-wrapper .wl-delete-word svg .cls-1 {
+          fill: #C46D6D; }
+        .container form .wl-word-input-wrapper .wl-delete-word svg .cls-2 {
+          fill: white; }
   .container form .form-group {
     margin-bottom: 10px; }
     .container form .form-group input {

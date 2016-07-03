@@ -83,15 +83,17 @@
         </div>
 
         <div class="form-group wl-word-input-wrapper" *ngFor="let w of wordCapsules; let i = index">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="6116 10676 50 80">
-                <g id="group-98" transform="translate(5957 10296)">
-                    <path id="rectangle-25" class="cls-1" d="M8,0H50a0,0,0,0,1,0,0V80a0,0,0,0,1,0,0H8a8,8,0,0,1-8-8V8A8,8,0,0,1,8,0Z" transform="translate(159 380)" />
-                    <g id="group-74" transform="translate(134.48 -17.701) rotate(45)">
-                        <path id="rectangle-24" class="cls-2" d="M1,0H24a1,1,0,0,1,1,1V4a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4V1A1,1,0,0,1,1,0Z" transform="translate(332 272)" />
-                        <rect id="rectangle-24-2" data-name="rectangle-24" class="cls-2" width="25" height="5" rx="1" ry="1" transform="translate(347 262) rotate(90)" />
+            <div (click)="deleteWord($event, i)" class="wl-delete-word" tabindex="0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="6116 10676 50 80">
+                    <g id="group-98" transform="translate(5957 10296)">
+                        <path id="rectangle-25" class="cls-1" d="M8,0H50a0,0,0,0,1,0,0V80a0,0,0,0,1,0,0H8a8,8,0,0,1-8-8V8A8,8,0,0,1,8,0Z" transform="translate(159 380)" />
+                        <g id="group-74" transform="translate(134.48 -17.701) rotate(45)">
+                            <path id="rectangle-24" class="cls-2" d="M1,0H24a1,1,0,0,1,1,1V4a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4V1A1,1,0,0,1,1,0Z" transform="translate(332 272)" />
+                            <rect id="rectangle-24-2" data-name="rectangle-24" class="cls-2" width="25" height="5" rx="1" ry="1" transform="translate(347 262) rotate(90)" />
+                        </g>
                     </g>
-                </g>
-            </svg>
+                </svg>
+            </div>
 
             <!-- I use [value] and (change) because there seem to be issues with [ngModel] and thus also [(ngModel)] at the moment -->
             <input type="text" name="word" class="form-control" [value]="w.item" (input)="w.item=$event.target.value" placeholder="{{wordPlaceholder}}" (blur)="wordBlur($event)" (focus)="wordFocus($event)">

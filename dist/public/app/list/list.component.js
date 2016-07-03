@@ -73,6 +73,9 @@ var ListComponent = (function () {
     ListComponent.prototype.newWord = function () {
         this.wordCapsules.push(new Capsule_1.Capsule(''));
     };
+    ListComponent.prototype.deleteWord = function (event, index) {
+        this.wordCapsules.splice(index, 1);
+    };
     ListComponent.prototype.save = function () {
         console.log('save function triggered');
     };
