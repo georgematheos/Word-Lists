@@ -83,7 +83,8 @@
         </div>
 
         <div class="form-group" *ngFor="let w of wordCapsules">
-            <input type="text" name="word" class="form-control" [(ngModel)]="w.item" placeholder="{{wordPlaceholder}}" (blur)="wordBlur()" (focus)="wordFocus()">
+            <!-- I use [value] and (change) because there seem to be issues with [ngModel] and thus also [(ngModel)] at the moment -->
+            <input type="text" name="word" class="form-control" [value]="w.item" (input)="w.item=$event.target.value" placeholder="{{wordPlaceholder}}" (blur)="wordBlur()" (focus)="wordFocus()">
         </div>
 
         <div class="form-group">
@@ -97,4 +98,8 @@
             </button>
         </div>
     </form>
+
+    <div *ngFor="let w of wordCapsules">
+        {{w.item}}
+    </div>
 </div>

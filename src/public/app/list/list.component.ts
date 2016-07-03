@@ -12,7 +12,11 @@ import { Capsule } from '../types/Capsule';
     selector: 'wl-list',
     templateUrl: 'list.component.html',
     styleUrls: ['list.component.css'],
-    directives: [ROUTER_DIRECTIVES, FORM_DIRECTIVES],
+    directives: [
+        ROUTER_DIRECTIVES,
+        FORM_DIRECTIVES
+    ],
+    
     // use newer forms version for this component:
     providers: [
         disableDeprecatedForms(),
@@ -51,7 +55,7 @@ export class ListComponent implements OnInit {
         this.showLoadingMessage = true;
 
         // by default, have one word capsule with no text in the string
-        this.wordCapsules = [new Capsule('')];
+        this.wordCapsules = [new Capsule('a')];
 
         this.loadingMessageValue = 'Loading Words...';
         this.titlePlaceholderValue = 'Enter a List Title Here (required)';
@@ -115,6 +119,11 @@ export class ListComponent implements OnInit {
 
     newWord() {
         this.wordCapsules.push(new Capsule(''));
+        console.log(this.wordCapsules);
+
+        if (this.wordCapsules[0].item) {
+            this.wordPlaceholder = '';
+        }
     }
 
     save() {

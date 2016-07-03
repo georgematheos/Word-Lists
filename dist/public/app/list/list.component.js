@@ -23,7 +23,7 @@ var ListComponent = (function () {
         // show the loading message right away
         this.showLoadingMessage = true;
         // by default, have one word capsule with no text in the string
-        this.wordCapsules = [new Capsule_1.Capsule('')];
+        this.wordCapsules = [new Capsule_1.Capsule('a')];
         this.loadingMessageValue = 'Loading Words...';
         this.titlePlaceholderValue = 'Enter a List Title Here (required)';
         this.wordPlaceholderValue = 'Enter Words Here';
@@ -74,6 +74,10 @@ var ListComponent = (function () {
     };
     ListComponent.prototype.newWord = function () {
         this.wordCapsules.push(new Capsule_1.Capsule(''));
+        console.log(this.wordCapsules);
+        if (this.wordCapsules[0].item) {
+            this.wordPlaceholder = '';
+        }
     };
     ListComponent.prototype.save = function () {
         console.log('save function triggered');
@@ -90,7 +94,10 @@ var ListComponent = (function () {
             selector: 'wl-list',
             templateUrl: 'list.component.html',
             styleUrls: ['list.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES, forms_1.FORM_DIRECTIVES],
+            directives: [
+                router_1.ROUTER_DIRECTIVES,
+                forms_1.FORM_DIRECTIVES
+            ],
             // use newer forms version for this component:
             providers: [
                 forms_1.disableDeprecatedForms(),
