@@ -23,13 +23,10 @@ var ListComponent = (function () {
         // show the loading message right away
         this.showLoadingMessage = true;
         // by default, have one word capsule with no text in the string
-        this.wordCapsules = [new Capsule_1.Capsule('a')];
-        this.loadingMessageValue = 'Loading Words...';
-        this.titlePlaceholderValue = 'Enter a List Title Here (required)';
-        this.wordPlaceholderValue = 'Enter Words Here';
-        this.loadingMessage = this.loadingMessageValue;
-        this.titlePlaceholder = this.titlePlaceholderValue;
-        this.wordPlaceholder = this.wordPlaceholderValue;
+        this.wordCapsules = [new Capsule_1.Capsule('')];
+        this.loadingMessage = 'Loading Words...';
+        this.titlePlaceholder = 'Enter a List Title Here (required)';
+        this.wordPlaceholder = 'Enter a Word Here';
     }
     ListComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -60,24 +57,21 @@ var ListComponent = (function () {
             }
         });
     };
-    ListComponent.prototype.titleBlur = function () {
-        this.titlePlaceholder = this.titlePlaceholderValue;
+    // for the following functions, I cast to any since the typescript compiler does not realize that there will be a placeholder property on the event.target
+    ListComponent.prototype.titleBlur = function ($event) {
+        event.target.placeholder = this.titlePlaceholder;
     };
-    ListComponent.prototype.titleFocus = function () {
-        this.titlePlaceholder = '';
+    ListComponent.prototype.titleFocus = function ($event) {
+        event.target.placeholder = '';
     };
-    ListComponent.prototype.wordBlur = function () {
-        this.wordPlaceholder = this.wordPlaceholderValue;
+    ListComponent.prototype.wordBlur = function (event) {
+        event.target.placeholder = this.wordPlaceholder;
     };
-    ListComponent.prototype.wordFocus = function () {
-        this.wordPlaceholder = '';
+    ListComponent.prototype.wordFocus = function (event) {
+        event.target.placeholder = '';
     };
     ListComponent.prototype.newWord = function () {
         this.wordCapsules.push(new Capsule_1.Capsule(''));
-        console.log(this.wordCapsules);
-        if (this.wordCapsules[0].item) {
-            this.wordPlaceholder = '';
-        }
     };
     ListComponent.prototype.save = function () {
         console.log('save function triggered');

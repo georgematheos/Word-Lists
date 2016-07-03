@@ -16,7 +16,7 @@ import { Capsule } from '../types/Capsule';
         ROUTER_DIRECTIVES,
         FORM_DIRECTIVES
     ],
-    
+
     // use newer forms version for this component:
     providers: [
         disableDeprecatedForms(),
@@ -41,30 +41,20 @@ export class ListComponent implements OnInit {
     titlePlaceholder: string;
     wordPlaceholder: string;
 
-    // the main value for each field
-    private loadingMessageValue: string;
-    private titlePlaceholderValue: string;
-    private wordPlaceholderValue: string;
-
     constructor(
-    private authenticationService: AuthenticationService,
-    private listService: ListService,
-    private route: ActivatedRoute,
-    private router: Router) {
+        private authenticationService: AuthenticationService,
+        private listService: ListService,
+        private route: ActivatedRoute,
+        private router: Router) {
         // show the loading message right away
         this.showLoadingMessage = true;
 
         // by default, have one word capsule with no text in the string
-        this.wordCapsules = [new Capsule('a')];
+        this.wordCapsules = [new Capsule('')];
 
-        this.loadingMessageValue = 'Loading Words...';
-        this.titlePlaceholderValue = 'Enter a List Title Here (required)';
-        this.wordPlaceholderValue = 'Enter Words Here';
-
-        this.loadingMessage = this.loadingMessageValue;
-        this.titlePlaceholder = this.titlePlaceholderValue;
-        this.wordPlaceholder = this.wordPlaceholderValue;
-
+        this.loadingMessage = 'Loading Words...';
+        this.titlePlaceholder = 'Enter a List Title Here (required)';
+        this.wordPlaceholder = 'Enter a Word Here';
     }
 
     ngOnInit() {
@@ -80,50 +70,46 @@ export class ListComponent implements OnInit {
             // if this is not a new list, get the words currently in the list and the title
             if (!this.newList) {
                 this.listService.getWordListData(this.username, this.listTitle)
-                .subscribe(data => {
-                    // set the original properties
-                    this.originalListTitle = data.title;
-                    this.originalWords = data.words;
+                    .subscribe(data => {
+                        // set the original properties
+                        this.originalListTitle = data.title;
+                        this.originalWords = data.words;
 
-                    // set the list title capsule
-                    this.listTitle = data.title;
+                        // set the list title capsule
+                        this.listTitle = data.title;
 
-                    // convert the word to a word capsule and add it to the array
-                    this.wordCapsules = [];
-                    data.words.forEach(word => {
-                        this.wordCapsules.push(new Capsule(word));
-                    })
+                        // convert the word to a word capsule and add it to the array
+                        this.wordCapsules = [];
+                        data.words.forEach(word => {
+                            this.wordCapsules.push(new Capsule(word));
+                        })
 
-                    // now that we have the words, we can show them instead of the loading message
-                    this.showLoadingMessage = false;
-                });
+                        // now that we have the words, we can show them instead of the loading message
+                        this.showLoadingMessage = false;
+                    });
             }
         })
     }
 
-    titleBlur() {
-        this.titlePlaceholder = this.titlePlaceholderValue;
+    // for the following functions, I cast to any since the typescript compiler does not realize that there will be a placeholder property on the event.target
+    titleBlur($event: FocusEvent) {
+        (event.target as any).placeholder = this.titlePlaceholder;
     }
 
-    titleFocus() {
-        this.titlePlaceholder = '';
+    titleFocus($event: FocusEvent) {
+        (event.target as any).placeholder = '';
     }
 
-    wordBlur() {
-        this.wordPlaceholder = this.wordPlaceholderValue;
+    wordBlur(event: FocusEvent) {
+        (event.target as any).placeholder = this.wordPlaceholder;
     }
 
-    wordFocus() {
-        this.wordPlaceholder = '';
+    wordFocus(event: FocusEvent) {
+        (event.target as any).placeholder = '';
     }
 
     newWord() {
         this.wordCapsules.push(new Capsule(''));
-        console.log(this.wordCapsules);
-
-        if (this.wordCapsules[0].item) {
-            this.wordPlaceholder = '';
-        }
     }
 
     save() {
