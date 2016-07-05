@@ -64,6 +64,27 @@ export class ListService {
 
     }
 
+    createList(username: string, listData: WordListData): Observable<any> {
+        // put together object to send to the server in case the one passed in is badly formatted and to strip off unneeded fields
+        let requestBody = {title: listData.title, words: listData.words};
+
+        // get the token and throw an error if none is available
+        let auth_token = this.authenticationService.getToken();
+        if (!auth_token) {
+            return Observable.throw(new Error('no auth token available from the authenticationService'));
+        }
+
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json'); // add the content type to the headers
+        headers.append('x-auth-token', auth_token); // add the token to the headers
+
+        let url = 'http://' + location.host + `/api/word_lists/${username}`;
+
+        return this.http.post(url, requestBody, { headers })
+        .map(res => res.json());
+
+    }
+
     updateList(username: string, oldListTitle: string, updateData: WordListData): Observable<any> {
         // put together object to send to the server in case the one passed in is badly formatted and to strip off unneeded fields
         let requestBody = {title: updateData.title, words: updateData.words};
