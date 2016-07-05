@@ -6,6 +6,7 @@ import { AuthenticationService } from '../authentication.service';
 import { ListService } from '../list.service';
 
 import { Capsule } from '../types/Capsule';
+import { WordListData } from '../types/WordListData';
 
 @Component({
     moduleId: module.id,
@@ -117,7 +118,27 @@ export class ListComponent implements OnInit {
     }
 
     save() {
-        console.log('save function triggered');
+        // get the words from the word capsules
+        let extractedWords: string[] = [];
+        this.wordCapsules.forEach(wordCapsule => {
+            extractedWords.push(wordCapsule.item);
+        });
+
+        let newListBody: WordListData = {
+            username: this.username,
+            title: this.listTitle,
+            words: extractedWords
+        }
+
+        this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(responseBody => {
+            // TODO: somehow note that the list has been saved
+        }, err => {
+            switch (err.status) {
+                case 409:
+                    console.log('CONFLICT!!');
+            }
+            // TODO: DEAL WITH ERRORS
+        });
     }
 
     cancel() {

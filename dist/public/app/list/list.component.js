@@ -77,7 +77,25 @@ var ListComponent = (function () {
         this.wordCapsules.splice(index, 1);
     };
     ListComponent.prototype.save = function () {
-        console.log('save function triggered');
+        // get the words from the word capsules
+        var extractedWords = [];
+        this.wordCapsules.forEach(function (wordCapsule) {
+            extractedWords.push(wordCapsule.item);
+        });
+        var newListBody = {
+            username: this.username,
+            title: this.listTitle,
+            words: extractedWords
+        };
+        this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(function (responseBody) {
+            // TODO: somehow note that the list has been saved
+        }, function (err) {
+            switch (err.status) {
+                case 409:
+                    console.log('CONFLICT!!');
+            }
+            // TODO: DEAL WITH ERRORS
+        });
     };
     ListComponent.prototype.cancel = function () {
         console.log('cancel function triggered');
