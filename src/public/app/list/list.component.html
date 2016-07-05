@@ -58,6 +58,10 @@
         </a>
     </div>
 
+    <div class="wl-error-message" *ngIf="showErrorMessage">
+        <h5>{{errorMessage}}</h5>
+    </div>
+
     <form #listForm="ngForm">
         <div class="form-group">
             <input type="text" name="title" class="form-control wl-list-title" (blur)="titleBlur()" (focus)="titleFocus()" placeholder="{{titlePlaceholder}}" [(ngModel)]="listTitle" required>

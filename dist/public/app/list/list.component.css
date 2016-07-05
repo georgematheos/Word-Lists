@@ -10,6 +10,10 @@
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%); }
+  .container .wl-error-message h5 {
+    color: #C46D6D;
+    font-weight: bold;
+    font-size: 12.5px; }
   .container .wl-nav-btns {
     margin-bottom: 10px;
     height: 47.5px; }

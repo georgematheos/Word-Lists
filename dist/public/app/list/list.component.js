@@ -22,6 +22,9 @@ var ListComponent = (function () {
         this.router = router;
         // show the loading message right away
         this.showLoadingMessage = true;
+        // do not show error message until error occurs
+        this.showErrorMessage = true; // TODO: REMOVE TESTING STUFF
+        this.errorMessage = 'Could not save because the list title “Sweets List” is already taken.  Please rename list and try again.';
         // by default, have one word capsule with no text in the string
         this.wordCapsules = [new Capsule_1.Capsule('')];
         this.loadingMessage = 'Loading Words...';
@@ -87,6 +90,7 @@ var ListComponent = (function () {
             title: this.listTitle,
             words: extractedWords
         };
+        // TODO: ONLY DO THIS IF IT IS NOT A NEW LIST
         this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(function (responseBody) {
             // TODO: somehow note that the list has been saved
         }, function (err) {

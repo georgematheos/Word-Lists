@@ -23,6 +23,12 @@ $margin-height: 10px;
     left: 50%;
     @include transform(translateX(-50%));
 
+    .wl-error-message h5 {
+        color: $red_color;
+        font-weight: bold;
+        font-size: 12.5px;
+    }
+
     .wl-nav-btns {
         margin-bottom: $margin-height;
         height: $nav_btn_height;
