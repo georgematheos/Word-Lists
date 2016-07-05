@@ -55,8 +55,18 @@
           fill: #C46D6D; }
         .container form .wl-word-input-wrapper .wl-delete-word svg .cls-2 {
           fill: white; }
+  .container form .wl-saved-changes-marker {
+    margin-bottom: 7.5px;
+    margin-top: -2.5px;
+    font-weight: normal;
+    font-size: 12.5px;
+    color: #C46D6D; }
+    .container form .wl-saved-changes-marker.wl-changes-saved {
+      color: #00D59B; }
   .container form .form-group {
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    position: relative;
+    height: 40px; }
     .container form .form-group input {
       width: 100%;
       height: 100%;

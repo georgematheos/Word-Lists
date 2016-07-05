@@ -14,6 +14,10 @@ var forms_1 = require('@angular/forms');
 var authentication_service_1 = require('../authentication.service');
 var list_service_1 = require('../list.service');
 var Capsule_1 = require('../types/Capsule');
+// constants for use in the methods
+// messages for when the changes are saved or unsaved
+var changesUnsavedMessage = "Changes Unsaved";
+var changesSavedMessage = "Changes Saved";
 var ListComponent = (function () {
     function ListComponent(authenticationService, listService, route, router) {
         this.authenticationService = authenticationService;
@@ -24,6 +28,9 @@ var ListComponent = (function () {
         this.showLoadingMessage = true;
         // do not show error message until error occurs
         this.showErrorMessage = false;
+        // start with the saved changes as false (change it once data is loaded from server)
+        this.changesSaved = false;
+        this.saveStatusMessage = changesUnsavedMessage;
         // by default, have one word capsule with no text in the string
         this.wordCapsules = [new Capsule_1.Capsule('')];
         this.loadingMessage = 'Loading Words...';
@@ -55,6 +62,9 @@ var ListComponent = (function () {
                     });
                     // now that we have the words, we can show them instead of the loading message
                     _this.showLoadingMessage = false;
+                    // changes are saved
+                    _this.changesSaved = true;
+                    _this.saveStatusMessage = changesSavedMessage;
                 });
             }
         });
@@ -71,6 +81,11 @@ var ListComponent = (function () {
     };
     ListComponent.prototype.wordFocus = function (event) {
         event.target.placeholder = '';
+    };
+    // when anything changes in the form, assume the changes are unsaved
+    ListComponent.prototype.onChange = function () {
+        this.changesSaved = false;
+        this.saveStatusMessage = changesUnsavedMessage;
     };
     ListComponent.prototype.newWord = function () {
         this.wordCapsules.push(new Capsule_1.Capsule(''));
@@ -92,7 +107,11 @@ var ListComponent = (function () {
         };
         // the function for when the http request is successful
         var handleSuccess = function (body) {
-            // TODO: somehow show user that the list has been saved
+            // changes are saved
+            _this.changesSaved = true;
+            _this.saveStatusMessage = changesSavedMessage;
+            // stop showing error message if any is being shown
+            _this.showErrorMessage = false;
             console.log('List saved');
         };
         // the function for when the http request returns an error

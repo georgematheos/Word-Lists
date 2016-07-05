@@ -91,8 +91,26 @@ $margin-height: 10px;
             }
         }
 
+        .wl-saved-changes-marker {
+            margin-bottom: $margin-height * 0.75;
+            margin-top: -$margin-height * 0.25;
+
+            font-weight: normal;
+            font-size: 12.5px;
+
+
+            &.wl-changes-saved {
+                color: $green_color;
+            }
+            // otherwise:
+            color: $red_color;
+        }
+
+
         .form-group {
             margin-bottom: $margin-height;
+            position: relative;
+            height: 40px;
 
             input {
                 width: 100%;

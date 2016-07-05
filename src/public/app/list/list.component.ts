@@ -8,6 +8,12 @@ import { ListService } from '../list.service';
 import { Capsule } from '../types/Capsule';
 import { WordListData } from '../types/WordListData';
 
+// constants for use in the methods
+
+// messages for when the changes are saved or unsaved
+const changesUnsavedMessage = "Changes Unsaved";
+const changesSavedMessage = "Changes Saved";
+
 @Component({
     moduleId: module.id,
     selector: 'wl-list',
@@ -37,10 +43,12 @@ export class ListComponent implements OnInit {
     newList: boolean;
     showLoadingMessage: boolean;
     showErrorMessage: boolean;
+    changesSaved: boolean;
 
     // messages, input field placeholders, etc.
     loadingMessage: string;
     errorMessage: string;
+    saveStatusMessage: string;
     titlePlaceholder: string;
     wordPlaceholder: string;
 
@@ -54,6 +62,10 @@ export class ListComponent implements OnInit {
 
         // do not show error message until error occurs
         this.showErrorMessage = false;
+
+        // start with the saved changes as false (change it once data is loaded from server)
+        this.changesSaved = false;
+        this.saveStatusMessage = changesUnsavedMessage;
 
         // by default, have one word capsule with no text in the string
         this.wordCapsules = [new Capsule('')];
@@ -92,6 +104,10 @@ export class ListComponent implements OnInit {
 
                         // now that we have the words, we can show them instead of the loading message
                         this.showLoadingMessage = false;
+
+                        // changes are saved
+                        this.changesSaved = true;
+                        this.saveStatusMessage = changesSavedMessage;
                     });
             }
         })
@@ -112,6 +128,12 @@ export class ListComponent implements OnInit {
 
     wordFocus(event: FocusEvent) {
         (event.target as any).placeholder = '';
+    }
+
+    // when anything changes in the form, assume the changes are unsaved
+    onChange() {
+        this.changesSaved = false;
+        this.saveStatusMessage = changesUnsavedMessage;
     }
 
     newWord() {
@@ -137,7 +159,12 @@ export class ListComponent implements OnInit {
 
         // the function for when the http request is successful
         let handleSuccess = body => {
-            // TODO: somehow show user that the list has been saved
+            // changes are saved
+            this.changesSaved = true;
+            this.saveStatusMessage = changesSavedMessage;
+
+            // stop showing error message if any is being shown
+            this.showErrorMessage = false;
             console.log('List saved');
         }
 
