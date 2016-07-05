@@ -166,9 +166,11 @@ export class ListComponent implements OnInit {
             // now the last saved title is the current title
             this.lastSavedListTitle = this.listTitle;
 
+            // update the url with the new title
+            this.router.navigate(['/list', this.username, this.listTitle]);
+
             // stop showing error message if any is being shown
             this.showErrorMessage = false;
-            console.log('List saved');
         }
 
         // the function for when the http request returns an error

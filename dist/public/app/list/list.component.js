@@ -112,9 +112,10 @@ var ListComponent = (function () {
             _this.saveStatusMessage = changesSavedMessage;
             // now the last saved title is the current title
             _this.lastSavedListTitle = _this.listTitle;
+            // update the url with the new title
+            _this.router.navigate(['/list', _this.username, _this.listTitle]);
             // stop showing error message if any is being shown
             _this.showErrorMessage = false;
-            console.log('List saved');
         };
         // the function for when the http request returns an error
         var handleError = function (err) {
