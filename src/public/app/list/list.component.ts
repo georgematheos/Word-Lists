@@ -145,9 +145,12 @@ export class ListComponent implements OnInit {
     }
 
     save() {
+        // filter away all the empty word capsules
+        let filteredCapsules = this.wordCapsules.filter(capsule => capsule.item !== '');
+
         // get the words from the word capsules
         let extractedWords: string[] = [];
-        this.wordCapsules.forEach(wordCapsule => {
+        filteredCapsules.forEach(wordCapsule => {
             extractedWords.push(wordCapsule.item);
         });
 
@@ -165,6 +168,9 @@ export class ListComponent implements OnInit {
 
             // now the last saved title is the current title
             this.lastSavedListTitle = this.listTitle;
+
+            // now the words array is has had the empty elements filtered away
+            this.wordCapsules = filteredCapsules;
 
             // update the url with the new title
             this.router.navigate(['/list', this.username, this.listTitle]);

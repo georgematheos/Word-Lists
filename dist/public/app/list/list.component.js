@@ -95,9 +95,11 @@ var ListComponent = (function () {
     };
     ListComponent.prototype.save = function () {
         var _this = this;
+        // filter away all the empty word capsules
+        var filteredCapsules = this.wordCapsules.filter(function (capsule) { return capsule.item !== ''; });
         // get the words from the word capsules
         var extractedWords = [];
-        this.wordCapsules.forEach(function (wordCapsule) {
+        filteredCapsules.forEach(function (wordCapsule) {
             extractedWords.push(wordCapsule.item);
         });
         var newListBody = {
@@ -112,6 +114,8 @@ var ListComponent = (function () {
             _this.saveStatusMessage = changesSavedMessage;
             // now the last saved title is the current title
             _this.lastSavedListTitle = _this.listTitle;
+            // now the words array is has had the empty elements filtered away
+            _this.wordCapsules = filteredCapsules;
             // update the url with the new title
             _this.router.navigate(['/list', _this.username, _this.listTitle]);
             // stop showing error message if any is being shown
