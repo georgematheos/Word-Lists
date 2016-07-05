@@ -23,8 +23,7 @@ var ListComponent = (function () {
         // show the loading message right away
         this.showLoadingMessage = true;
         // do not show error message until error occurs
-        this.showErrorMessage = true; // TODO: REMOVE TESTING STUFF
-        this.errorMessage = 'Could not save because the list title “Sweets List” is already taken.  Please rename list and try again.';
+        this.showErrorMessage = false;
         // by default, have one word capsule with no text in the string
         this.wordCapsules = [new Capsule_1.Capsule('')];
         this.loadingMessage = 'Loading Words...';
@@ -80,6 +79,7 @@ var ListComponent = (function () {
         this.wordCapsules.splice(index, 1);
     };
     ListComponent.prototype.save = function () {
+        var _this = this;
         // get the words from the word capsules
         var extractedWords = [];
         this.wordCapsules.forEach(function (wordCapsule) {
@@ -96,9 +96,10 @@ var ListComponent = (function () {
         }, function (err) {
             switch (err.status) {
                 case 409:
-                    console.log('CONFLICT!!');
+                    _this.errorMessage = "Could not save because the list title \u201C" + _this.listTitle + "\u201D is already taken.  Please rename list and try again.";
+                    _this.showErrorMessage = true;
             }
-            // TODO: DEAL WITH ERRORS
+            // TODO: DEAL WITH OTHER ERRORS
         });
     };
     ListComponent.prototype.cancel = function () {

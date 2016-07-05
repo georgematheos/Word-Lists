@@ -53,8 +53,7 @@ export class ListComponent implements OnInit {
         this.showLoadingMessage = true;
 
         // do not show error message until error occurs
-        this.showErrorMessage = true; // TODO: REMOVE TESTING STUFF
-        this.errorMessage = 'Could not save because the list title “Sweets List” is already taken.  Please rename list and try again.'
+        this.showErrorMessage = false;
 
         // by default, have one word capsule with no text in the string
         this.wordCapsules = [new Capsule('')];
@@ -142,9 +141,10 @@ export class ListComponent implements OnInit {
         }, err => {
             switch (err.status) {
                 case 409:
-                    console.log('CONFLICT!!');
+                    this.errorMessage = `Could not save because the list title “${this.listTitle}” is already taken.  Please rename list and try again.`
+                    this.showErrorMessage = true;
             }
-            // TODO: DEAL WITH ERRORS
+            // TODO: DEAL WITH OTHER ERRORS
         });
     }
 
