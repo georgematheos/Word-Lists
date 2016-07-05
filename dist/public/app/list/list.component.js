@@ -90,17 +90,30 @@ var ListComponent = (function () {
             title: this.listTitle,
             words: extractedWords
         };
-        // TODO: ONLY DO THIS IF IT IS NOT A NEW LIST
-        this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(function (responseBody) {
-            // TODO: somehow note that the list has been saved
-        }, function (err) {
+        // the function for when the http request is successful
+        var handleSuccess = function (body) {
+            // TODO: somehow show user that the list has been saved
+            console.log('List saved');
+        };
+        // the function for when the http request returns an error
+        var handleError = function (err) {
             switch (err.status) {
                 case 409:
                     _this.errorMessage = "Could not save because the list title \u201C" + _this.listTitle + "\u201D is already taken.  Please rename list and try again.";
                     _this.showErrorMessage = true;
+                default:
+                    // TODO: handle other errors better
+                    console.log('Error!  More info: ');
+                    console.log(err);
             }
-            // TODO: DEAL WITH OTHER ERRORS
-        });
+        };
+        // TODO: ONLY DO THIS IF IT IS NOT A NEW LIST
+        if (this.newList) {
+            this.listService.createList(this.username, newListBody).subscribe(handleSuccess, handleError);
+        }
+        else {
+            this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(handleSuccess, handleError);
+        }
     };
     ListComponent.prototype.cancel = function () {
         console.log('cancel function triggered');

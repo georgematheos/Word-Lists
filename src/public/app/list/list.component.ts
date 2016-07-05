@@ -135,17 +135,32 @@ export class ListComponent implements OnInit {
             words: extractedWords
         }
 
-        // TODO: ONLY DO THIS IF IT IS NOT A NEW LIST
-        this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(responseBody => {
-            // TODO: somehow note that the list has been saved
-        }, err => {
+        // the function for when the http request is successful
+        let handleSuccess = body => {
+            // TODO: somehow show user that the list has been saved
+            console.log('List saved');
+        }
+
+        // the function for when the http request returns an error
+        let handleError = err => {
             switch (err.status) {
                 case 409:
                     this.errorMessage = `Could not save because the list title “${this.listTitle}” is already taken.  Please rename list and try again.`
                     this.showErrorMessage = true;
+                default:
+                    // TODO: handle other errors better
+                    console.log('Error!  More info: ');
+                    console.log(err);
             }
-            // TODO: DEAL WITH OTHER ERRORS
-        });
+        }
+
+        // TODO: ONLY DO THIS IF IT IS NOT A NEW LIST
+        if (this.newList) {
+            this.listService.createList(this.username, newListBody).subscribe(handleSuccess, handleError);
+        }
+        else {
+            this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(handleSuccess, handleError);
+        }
     }
 
     cancel() {
