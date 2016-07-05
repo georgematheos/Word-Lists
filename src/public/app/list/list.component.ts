@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
     listTitle: string;
     wordCapsules: Capsule<string>[];
 
-    originalListTitle: string;
+    lastSavedListTitle: string;
     originalWords: string[];
 
     newList: boolean;
@@ -90,7 +90,7 @@ export class ListComponent implements OnInit {
                 this.listService.getWordListData(this.username, this.listTitle)
                     .subscribe(data => {
                         // set the original properties
-                        this.originalListTitle = data.title;
+                        this.lastSavedListTitle = data.title;
                         this.originalWords = data.words;
 
                         // set the list title capsule
@@ -163,6 +163,9 @@ export class ListComponent implements OnInit {
             this.changesSaved = true;
             this.saveStatusMessage = changesSavedMessage;
 
+            // now the last saved title is the current title
+            this.lastSavedListTitle = this.listTitle;
+
             // stop showing error message if any is being shown
             this.showErrorMessage = false;
             console.log('List saved');
@@ -186,7 +189,7 @@ export class ListComponent implements OnInit {
             this.listService.createList(this.username, newListBody).subscribe(handleSuccess, handleError);
         }
         else {
-            this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(handleSuccess, handleError);
+            this.listService.updateList(this.username, this.lastSavedListTitle, newListBody).subscribe(handleSuccess, handleError);
         }
     }
 

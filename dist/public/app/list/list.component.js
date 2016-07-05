@@ -51,7 +51,7 @@ var ListComponent = (function () {
                 _this.listService.getWordListData(_this.username, _this.listTitle)
                     .subscribe(function (data) {
                     // set the original properties
-                    _this.originalListTitle = data.title;
+                    _this.lastSavedListTitle = data.title;
                     _this.originalWords = data.words;
                     // set the list title capsule
                     _this.listTitle = data.title;
@@ -110,6 +110,8 @@ var ListComponent = (function () {
             // changes are saved
             _this.changesSaved = true;
             _this.saveStatusMessage = changesSavedMessage;
+            // now the last saved title is the current title
+            _this.lastSavedListTitle = _this.listTitle;
             // stop showing error message if any is being shown
             _this.showErrorMessage = false;
             console.log('List saved');
@@ -131,7 +133,7 @@ var ListComponent = (function () {
             this.listService.createList(this.username, newListBody).subscribe(handleSuccess, handleError);
         }
         else {
-            this.listService.updateList(this.username, this.originalListTitle, newListBody).subscribe(handleSuccess, handleError);
+            this.listService.updateList(this.username, this.lastSavedListTitle, newListBody).subscribe(handleSuccess, handleError);
         }
     };
     ListComponent.prototype.cancel = function () {
