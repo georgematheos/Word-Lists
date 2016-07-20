@@ -228,3 +228,78 @@ $margin-height: 10px;
 
     }
 }
+
+.wl-background-fader {
+    z-index: 1001;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-color: rgba(black, 0.5);
+
+    display: none;
+    &.wl-show {
+        display: block;
+    }
+
+}
+
+.wl-confirmation-popup {
+    z-index: 1002;
+
+    position: absolute;
+    width: 450px;
+    height: 100px;
+    left: 50%;
+    top: 25%;
+    @include transform(translate(-50%, -50%));
+
+    background-color: white;
+    border-radius: 4px;
+
+    h4 {
+        font-size: 15px;
+        font-weight: bold;
+        margin-top: 17.5px;
+
+        &.wl-cancel-confirm-msg {
+            color: $blue_color;
+        }
+        &.wl-delete-confirm-msg {
+            color: $red_color;
+        }
+    }
+
+    button {
+        position: absolute;
+        bottom: 20px;
+
+        width: 125px;
+        font-size: 15px;
+
+        color: white;
+        border: none;
+
+        &.wl-yes-btn {
+            right: 45px;
+
+            background-color: $green_color;
+            @include focus-glow($green_color);
+        }
+        &.wl-no-btn {
+            left: 45px;
+
+            background-color: $red_color;
+            @include focus-glow($red_color)
+        }
+    }
+
+    display: none;
+
+    &.wl-show {
+        display: block;
+    }
+}
