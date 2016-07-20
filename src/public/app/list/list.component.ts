@@ -42,8 +42,8 @@ export class ListComponent implements OnInit {
     listTitle: string;
     wordCapsules: Capsule<string>[];
 
-    lastSavedListTitle: string;
-    originalWords: string[];
+    private lastSavedListTitle: string;
+    private lastSavedWords: string[];
 
     newList: boolean;
     showLoadingMessage: boolean;
@@ -110,7 +110,7 @@ export class ListComponent implements OnInit {
                     .subscribe(data => {
                         // set the original properties
                         this.lastSavedListTitle = data.title;
-                        this.originalWords = data.words;
+                        this.lastSavedWords = data.words;
 
                         // set the list title capsule
                         this.listTitle = data.title;
@@ -185,11 +185,17 @@ export class ListComponent implements OnInit {
             this.changesSaved = true;
             this.saveStatusMessage = changesSavedMessage;
 
+            // now the words array is has had the empty elements filtered away
+            this.wordCapsules = filteredCapsules;
+
             // now the last saved title is the current title
             this.lastSavedListTitle = this.listTitle;
 
-            // now the words array is has had the empty elements filtered away
-            this.wordCapsules = filteredCapsules;
+            // redo the last saved words with the new words
+            this.lastSavedWords = [];
+            for (let capsule of filteredCapsules) {
+                this.lastSavedWords.push(capsule.item);
+            }
 
             // update the url with the new title
             this.router.navigate(['/list', this.username, this.listTitle]);
@@ -231,7 +237,13 @@ export class ListComponent implements OnInit {
     }
 
     private completeCancel() {
+        let capsules: Capsule<string>[] = [];
+        for (let word of this.lastSavedWords) {
+            capsules.push(new Capsule(word));
+        }
 
+        this.wordCapsules = capsules;
+        this.listTitle = this.lastSavedListTitle;
     }
 
     delete() {

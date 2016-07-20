@@ -61,7 +61,7 @@ var ListComponent = (function () {
                     .subscribe(function (data) {
                     // set the original properties
                     _this.lastSavedListTitle = data.title;
-                    _this.originalWords = data.words;
+                    _this.lastSavedWords = data.words;
                     // set the list title capsule
                     _this.listTitle = data.title;
                     // convert the word to a word capsule and add it to the array
@@ -121,10 +121,16 @@ var ListComponent = (function () {
             // changes are saved
             _this.changesSaved = true;
             _this.saveStatusMessage = changesSavedMessage;
-            // now the last saved title is the current title
-            _this.lastSavedListTitle = _this.listTitle;
             // now the words array is has had the empty elements filtered away
             _this.wordCapsules = filteredCapsules;
+            // now the last saved title is the current title
+            _this.lastSavedListTitle = _this.listTitle;
+            // redo the last saved words with the new words
+            _this.lastSavedWords = [];
+            for (var _i = 0, filteredCapsules_1 = filteredCapsules; _i < filteredCapsules_1.length; _i++) {
+                var capsule = filteredCapsules_1[_i];
+                _this.lastSavedWords.push(capsule.item);
+            }
             // update the url with the new title
             _this.router.navigate(['/list', _this.username, _this.listTitle]);
             // stop showing error message if any is being shown
@@ -159,6 +165,13 @@ var ListComponent = (function () {
         console.log('cancel function triggered');
     };
     ListComponent.prototype.completeCancel = function () {
+        var capsules = [];
+        for (var _i = 0, _a = this.lastSavedWords; _i < _a.length; _i++) {
+            var word = _a[_i];
+            capsules.push(new Capsule_1.Capsule(word));
+        }
+        this.wordCapsules = capsules;
+        this.listTitle = this.lastSavedListTitle;
     };
     ListComponent.prototype.delete = function () {
         // the reason to show the confirmation box is to cancel
