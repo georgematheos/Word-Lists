@@ -14,20 +14,29 @@ var forms_1 = require('@angular/forms');
 var authentication_service_1 = require('../authentication.service');
 var list_service_1 = require('../list.service');
 var Capsule_1 = require('../types/Capsule');
+var ConfirmationItem_1 = require('../types/ConfirmationItem');
 // constants for use in the methods
 // messages for when the changes are saved or unsaved
 var changesUnsavedMessage = "Changes Unsaved";
 var changesSavedMessage = "Changes Saved";
+// messages for confirmation box
+var confirmCancelMessage = "Are you sure you want to undo all unsaved changes?";
+var confirmDeleteMessage = "Are you sure you want to permenantly delete this word list?";
 var ListComponent = (function () {
     function ListComponent(authenticationService, listService, route, router) {
         this.authenticationService = authenticationService;
         this.listService = listService;
         this.route = route;
         this.router = router;
+        // these allow the enum items to be accessed in the template
+        this.CANCEL_ITEM = ConfirmationItem_1.ConfirmationItem.Cancel;
+        this.DELETE_ITEM = ConfirmationItem_1.ConfirmationItem.Delete;
         // show the loading message right away
         this.showLoadingMessage = true;
         // do not show error message until error occurs
         this.showErrorMessage = false;
+        // do not show popup until confirmation is needed
+        this.showConfirmationPopup = false;
         // start with the saved changes as false (change it once data is loaded from server)
         this.changesSaved = false;
         this.saveStatusMessage = changesUnsavedMessage;
@@ -141,11 +150,43 @@ var ListComponent = (function () {
             this.listService.updateList(this.username, this.lastSavedListTitle, newListBody).subscribe(handleSuccess, handleError);
         }
     };
+    // show the confirmation for the cancel
     ListComponent.prototype.cancel = function () {
+        // the reason to show the confirmation box is to cancel
+        this.confirmationReason = ConfirmationItem_1.ConfirmationItem.Cancel;
+        this.confirmationMessage = confirmCancelMessage;
+        this.showConfirmationPopup = true;
         console.log('cancel function triggered');
     };
+    ListComponent.prototype.completeCancel = function () {
+    };
     ListComponent.prototype.delete = function () {
+        // the reason to show the confirmation box is to cancel
+        this.confirmationReason = ConfirmationItem_1.ConfirmationItem.Delete;
+        this.confirmationMessage = confirmDeleteMessage;
+        this.showConfirmationPopup = true;
         console.log('delete function triggered');
+    };
+    ListComponent.prototype.completeDelete = function () {
+    };
+    ListComponent.prototype.yesConfirmClick = function () {
+        // confirmation is true
+        this.confirmation = true;
+        // complete the item depending on what the confirmation reason is
+        switch (this.confirmationReason) {
+            case ConfirmationItem_1.ConfirmationItem.Cancel:
+                this.completeCancel();
+            case ConfirmationItem_1.ConfirmationItem.Delete:
+                this.completeDelete();
+        }
+        // hide the confirmation popup
+        this.showConfirmationPopup = false;
+    };
+    ListComponent.prototype.noConfirmClick = function () {
+        // confirmation is false
+        this.confirmation = true;
+        // hide the confirmation popup
+        this.showConfirmationPopup = false;
     };
     ListComponent = __decorate([
         core_1.Component({

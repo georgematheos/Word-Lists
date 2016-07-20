@@ -118,11 +118,11 @@
     </form>
 </div>
 
-<div class="wl-background-fader"></div>
-<div class="wl-confirmation-popup">
-    <h4 class="wl-delete-confirm-msg">Are you sure you want to permenantly delete this word list?</h4>
+<div class="wl-background-fader" [class.wl-show]="showConfirmationPopup"></div>
+<div class="wl-confirmation-popup" [class.wl-show]="showConfirmationPopup">
+    <h4 class="wl-delete-confirm-msg" [class.wl-cancel-confirm-msg]="confirmationReason == CANCEL_ITEM" [class.wl-delete-confirm-msg]="confirmationReason == DELETE_ITEM">{{confirmationMessage}}</h4>
     <div class="form-group">
-        <button type="button" class="btn btn-default wl-no-btn">No</button>
-        <button type="button" class="btn btn-default wl-yes-btn">Yes</button>
+        <button type="button" class="btn btn-default wl-no-btn" (click)="noConfirmClick()">No</button>
+        <button type="button" class="btn btn-default wl-yes-btn" (click)="yesConfirmClick()">Yes</button>
     </div>
 </div>

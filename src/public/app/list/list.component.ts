@@ -7,12 +7,17 @@ import { ListService } from '../list.service';
 
 import { Capsule } from '../types/Capsule';
 import { WordListData } from '../types/WordListData';
+import { ConfirmationItem } from '../types/ConfirmationItem';
 
 // constants for use in the methods
 
 // messages for when the changes are saved or unsaved
 const changesUnsavedMessage = "Changes Unsaved";
 const changesSavedMessage = "Changes Saved";
+
+// messages for confirmation box
+const confirmCancelMessage = "Are you sure you want to undo all unsaved changes?";
+const confirmDeleteMessage = "Are you sure you want to permenantly delete this word list?";
 
 @Component({
     moduleId: module.id,
@@ -45,12 +50,23 @@ export class ListComponent implements OnInit {
     showErrorMessage: boolean;
     changesSaved: boolean;
 
+    showConfirmationPopup: boolean;
+
     // messages, input field placeholders, etc.
     loadingMessage: string;
     errorMessage: string;
     saveStatusMessage: string;
+    confirmationMessage: string;
     titlePlaceholder: string;
     wordPlaceholder: string;
+
+    // yes or no from confirmation box
+    private confirmation;
+    confirmationReason: ConfirmationItem;
+
+    // these allow the enum items to be accessed in the template
+    CANCEL_ITEM = ConfirmationItem.Cancel;
+    DELETE_ITEM = ConfirmationItem.Delete;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -62,6 +78,9 @@ export class ListComponent implements OnInit {
 
         // do not show error message until error occurs
         this.showErrorMessage = false;
+
+        // do not show popup until confirmation is needed
+        this.showConfirmationPopup = false;
 
         // start with the saved changes as false (change it once data is loaded from server)
         this.changesSaved = false;
@@ -201,11 +220,55 @@ export class ListComponent implements OnInit {
         }
     }
 
+    // show the confirmation for the cancel
     cancel() {
+        // the reason to show the confirmation box is to cancel
+        this.confirmationReason = ConfirmationItem.Cancel;
+
+        this.confirmationMessage = confirmCancelMessage;
+        this.showConfirmationPopup = true;
         console.log('cancel function triggered');
     }
 
+    private completeCancel() {
+
+    }
+
     delete() {
+        // the reason to show the confirmation box is to cancel
+        this.confirmationReason = ConfirmationItem.Delete;
+
+        this.confirmationMessage = confirmDeleteMessage;
+        this.showConfirmationPopup = true;
+
         console.log('delete function triggered');
+    }
+
+    private completeDelete() {
+
+    }
+
+    yesConfirmClick() {
+        // confirmation is true
+        this.confirmation = true;
+
+        // complete the item depending on what the confirmation reason is
+        switch(this.confirmationReason) {
+            case ConfirmationItem.Cancel:
+                this.completeCancel();
+            case ConfirmationItem.Delete:
+                this.completeDelete();
+        }
+
+        // hide the confirmation popup
+        this.showConfirmationPopup = false;
+    }
+
+    noConfirmClick() {
+        // confirmation is false
+        this.confirmation = true;
+
+        // hide the confirmation popup
+        this.showConfirmationPopup = false;
     }
 }
