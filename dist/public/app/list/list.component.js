@@ -172,6 +172,9 @@ var ListComponent = (function () {
         }
         this.wordCapsules = capsules;
         this.listTitle = this.lastSavedListTitle;
+        // we are back to the same state as the last save
+        this.saveStatusMessage = changesSavedMessage;
+        this.changesSaved = true;
     };
     ListComponent.prototype.delete = function () {
         // the reason to show the confirmation box is to cancel

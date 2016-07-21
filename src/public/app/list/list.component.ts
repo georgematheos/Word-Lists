@@ -244,6 +244,10 @@ export class ListComponent implements OnInit {
 
         this.wordCapsules = capsules;
         this.listTitle = this.lastSavedListTitle;
+
+        // we are back to the same state as the last save
+        this.saveStatusMessage = changesSavedMessage;
+        this.changesSaved = true;
     }
 
     delete() {
