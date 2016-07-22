@@ -13,25 +13,17 @@
   .container .wl-nav-btns {
     margin-bottom: 10px;
     height: 47.5px; }
-    .container .wl-nav-btns .wl-logout,
     .container .wl-nav-btns .wl-new-list {
       position: absolute;
       top: 0;
-      cursor: pointer; }
-      .container .wl-nav-btns .wl-logout svg,
-      .container .wl-nav-btns .wl-new-list svg {
-        fill: #00D59B; }
-        .container .wl-nav-btns .wl-logout svg:hover,
-        .container .wl-nav-btns .wl-new-list svg:hover {
-          fill: #00b685; }
-    .container .wl-nav-btns .wl-new-list {
+      cursor: pointer;
       left: 0;
       height: 47.5px;
       width: 47px; }
-    .container .wl-nav-btns .wl-logout {
-      right: 0;
-      height: 47.5px;
-      width: 43px; }
+      .container .wl-nav-btns .wl-new-list svg {
+        fill: #00D59B; }
+        .container .wl-nav-btns .wl-new-list svg:hover {
+          fill: #00b685; }
   .container .wl-lists-list ul {
     list-style: none;
     padding: 0; }

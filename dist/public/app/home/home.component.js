@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var logout_component_1 = require('../logout/logout.component');
 var authentication_service_1 = require('../authentication.service');
 var list_service_1 = require('../list.service');
 var HomeComponent = (function () {
@@ -55,7 +56,7 @@ var HomeComponent = (function () {
             selector: 'wl-home',
             templateUrl: 'home.component.html',
             styleUrls: ['home.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES, logout_component_1.LogoutComponent]
         }), 
         __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, list_service_1.ListService])
     ], HomeComponent);

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 import { disableDeprecatedForms, provideForms, FORM_DIRECTIVES } from '@angular/forms';
 
+import { LogoutComponent } from '../logout/logout.component';
+
 import { AuthenticationService } from '../authentication.service';
 import { ListService } from '../list.service';
 
@@ -26,7 +28,8 @@ const confirmDeleteMessage = "Are you sure you want to permenantly delete this w
     styleUrls: ['list.component.css'],
     directives: [
         ROUTER_DIRECTIVES,
-        FORM_DIRECTIVES
+        FORM_DIRECTIVES,
+        LogoutComponent
     ],
 
     // use newer forms version for this component:

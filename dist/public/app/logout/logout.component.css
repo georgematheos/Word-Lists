@@ -1,0 +1,15 @@
+.wl-logout {
+  position: absolute;
+  top: 0;
+  cursor: pointer; }
+  .wl-logout svg {
+    fill: #00D59B; }
+    .wl-logout svg:hover {
+      fill: #00b685; }
+
+.wl-logout {
+  right: 0;
+  height: 47.5px;
+  width: 43px; }
+
+/*# sourceMappingURL=logout.component.css.map */

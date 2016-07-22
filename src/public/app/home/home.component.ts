@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ROUTER_DIRECTIVES } from '@angular/router';
 
+import { LogoutComponent } from '../logout/logout.component';
+
 import { AuthenticationService } from '../authentication.service';
 import { ListService } from '../list.service';
 
@@ -9,7 +11,7 @@ import { ListService } from '../list.service';
   selector: 'wl-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css'],
-  directives: [ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES, LogoutComponent]
 })
 export class HomeComponent implements OnInit {
     private listTitles: Array<string>;

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var forms_1 = require('@angular/forms');
+var logout_component_1 = require('../logout/logout.component');
 var authentication_service_1 = require('../authentication.service');
 var list_service_1 = require('../list.service');
 var Capsule_1 = require('../types/Capsule');
@@ -219,7 +220,8 @@ var ListComponent = (function () {
             styleUrls: ['list.component.css'],
             directives: [
                 router_1.ROUTER_DIRECTIVES,
-                forms_1.FORM_DIRECTIVES
+                forms_1.FORM_DIRECTIVES,
+                logout_component_1.LogoutComponent
             ],
             // use newer forms version for this component:
             providers: [

@@ -27,7 +27,6 @@ $margin-height: 10px;
         margin-bottom: $margin-height;
         height: $nav_btn_height;
 
-        .wl-logout,
         .wl-new-list {
             position: absolute;
             top: 0;
@@ -40,20 +39,11 @@ $margin-height: 10px;
                 }
             }
             cursor: pointer; // make it look clickable
-        }
 
-        .wl-new-list {
             left: 0;
 
             height: $nav_btn_height;
             width: 47px;
-        }
-
-        .wl-logout {
-            right: 0;
-
-            height: $nav_btn_height;
-            width: 43px;
         }
     }
 

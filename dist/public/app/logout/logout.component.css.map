@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAWA,UAAW;EACP,QAAQ,EAAE,QAAQ;EAClB,GAAG,EAAE,CAAC;EASN,MAAM,EAAE,OAAO;EAPf,cAAI;IACA,IAAI,ECdE,OAAO;IDgBb,oBAAQ;MACJ,IAAI,ECbG,OAAwB;;ADmB3C,UAAW;EACP,KAAK,EAAE,CAAC;EAER,MAAM,EApBO,MAAM;EAqBnB,KAAK,EAAE,IAAI",
+"sources": ["../../../../src/public/app/logout/logout.component.scss","../../../../src/public/styles/global-variables.scss"],
+"names": [],
+"file": "logout.component.css"
+}

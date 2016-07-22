@@ -1,0 +1,31 @@
+@import "../misc_libraries/bourbon/bourbon"; // the default path is /src, since I run the command sass --watch src:dist
+
+// MIXINS
+@import 'public/styles/global-mixins';
+
+// variables
+@import 'public/styles/global-variables';
+
+$nav_btn_height: 47.5px;
+$margin-height: 10px;
+
+.wl-logout {
+    position: absolute;
+    top: 0;
+
+    svg {
+        fill: $green_color;
+
+        &:hover {
+            fill: $dark_green_color;
+        }
+    }
+    cursor: pointer; // make it look clickable
+}
+
+.wl-logout {
+    right: 0;
+
+    height: $nav_btn_height;
+    width: 43px;
+}
