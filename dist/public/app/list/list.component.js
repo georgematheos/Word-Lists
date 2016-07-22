@@ -184,6 +184,13 @@ var ListComponent = (function () {
         console.log('delete function triggered');
     };
     ListComponent.prototype.completeDelete = function () {
+        var _this = this;
+        this.listService.deleteList(this.username, this.lastSavedListTitle).subscribe(function (res) {
+            // go to the home page
+            _this.router.navigate(['/home', _this.username]);
+        }, function (err) {
+            // TODO: handle failure case
+        });
     };
     ListComponent.prototype.yesConfirmClick = function () {
         // confirmation is true

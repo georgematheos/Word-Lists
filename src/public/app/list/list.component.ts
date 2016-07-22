@@ -261,7 +261,13 @@ export class ListComponent implements OnInit {
     }
 
     private completeDelete() {
-
+        this.listService.deleteList(this.username, this.lastSavedListTitle).subscribe(res => {
+            // go to the home page
+            this.router.navigate(['/home', this.username]);
+        },
+        err => {
+            // TODO: handle failure case
+        });
     }
 
     yesConfirmClick() {

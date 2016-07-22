@@ -76,7 +76,8 @@ $margin-height: 10px;
                 @include focus-glow($red_color);
 
                 svg {
-                    height: 100%;
+                    height: 40px;
+                    width: 25px;
 
                     .cls-1 {
                         fill: $red_color;
