@@ -1,4 +1,9 @@
 ### Yet to be done
+- Auto focus in word box after adding a word slot
+- Alphabetize word lists?
+- Tally number of word lists?
+- Show a message at home screen if there are no word lists
+- Keyboard shortcuts to navigate the list view
 - Show confirmation box before navigating away and maybe save changed before navigation as well.
 - Animations for the confirm cancel/delete dialouge?
 - Make sure that the username in the url is the same as the username of the signed in user for the home page and the list page
