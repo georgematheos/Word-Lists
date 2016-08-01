@@ -103,6 +103,11 @@ var ListComponent = (function () {
     ListComponent.prototype.deleteWord = function (event, index) {
         this.wordCapsules.splice(index, 1);
     };
+    ListComponent.prototype.tabInWordSlot = function (index) {
+        if (index == this.wordCapsules.length - 1) {
+            this.newWord();
+        }
+    };
     ListComponent.prototype.save = function () {
         var _this = this;
         // filter away all the empty word capsules

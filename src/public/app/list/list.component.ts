@@ -166,6 +166,12 @@ export class ListComponent implements OnInit {
         this.wordCapsules.splice(index, 1);
     }
 
+    tabInWordSlot(index: number) {
+        if (index == this.wordCapsules.length - 1) {
+            this.newWord();
+        }
+    }
+
     save() {
         // filter away all the empty word capsules
         let filteredCapsules = this.wordCapsules.filter(capsule => capsule.item !== '');
