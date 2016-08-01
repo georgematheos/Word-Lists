@@ -34,7 +34,17 @@ export class HomeComponent implements OnInit {
 
         // get the word lists the user has
         this.listService.getLists(this.username).subscribe((lists) => {
-            this.listTitles = lists;
+            this.listTitles = lists.sort((a, b) => {
+                let A = a.toLowerCase();
+                let B = b.toLowerCase();
+                if (A < B) { return -1; }
+                else if (A > B) { return 1; }
+                else {
+                    if (a < b) { return -1; }
+                    if (a > b) { return 1; }
+                    else { return 0; }
+                }
+            }); // alphabetize the lists
             console.log(lists);
         }, (err) => {
             // TODO: NAVIGATE TO ERROR PAGE

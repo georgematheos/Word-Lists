@@ -36,7 +36,27 @@ var HomeComponent = (function () {
         }
         // get the word lists the user has
         this.listService.getLists(this.username).subscribe(function (lists) {
-            _this.listTitles = lists;
+            _this.listTitles = lists.sort(function (a, b) {
+                var A = a.toLowerCase();
+                var B = b.toLowerCase();
+                if (A < B) {
+                    return -1;
+                }
+                else if (A > B) {
+                    return 1;
+                }
+                else {
+                    if (a < b) {
+                        return -1;
+                    }
+                    if (a > b) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                }
+            }); // alphabetize the lists
             console.log(lists);
         }, function (err) {
             // TODO: NAVIGATE TO ERROR PAGE
