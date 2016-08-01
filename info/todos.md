@@ -1,6 +1,5 @@
 ### Yet to be done
 - Auto focus in word box after adding a word slot
-- Alphabetize word lists?
 - Tally number of word lists?
 - Show a message at home screen if there are no word lists
 - Show confirmation box before navigating away and maybe save changed before navigation as well.
