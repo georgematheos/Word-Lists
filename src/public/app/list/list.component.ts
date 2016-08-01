@@ -281,8 +281,12 @@ export class ListComponent implements OnInit {
         switch(this.confirmationReason) {
             case ConfirmationItem.Cancel:
                 this.completeCancel();
+                console.log('completed the cancel');
+                break;
             case ConfirmationItem.Delete:
                 this.completeDelete();
+                console.log('completed the delete');
+                break;
         }
 
         // hide the confirmation popup

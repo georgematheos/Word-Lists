@@ -200,8 +200,12 @@ var ListComponent = (function () {
         switch (this.confirmationReason) {
             case ConfirmationItem_1.ConfirmationItem.Cancel:
                 this.completeCancel();
+                console.log('completed the cancel');
+                break;
             case ConfirmationItem_1.ConfirmationItem.Delete:
                 this.completeDelete();
+                console.log('completed the delete');
+                break;
         }
         // hide the confirmation popup
         this.showConfirmationPopup = false;
