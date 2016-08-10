@@ -13,6 +13,11 @@ var router_1 = require('@angular/router');
 var logout_component_1 = require('../logout/logout.component');
 var authentication_service_1 = require('../authentication.service');
 var list_service_1 = require('../list.service');
+// TODO: maybe make it easier to have special ones, like when there is 0 or 1 list
+var listNumberMessagePrefix = 'You have ';
+var listNumberMessageSuffix = ' lists';
+var noListsMessage = 'You have no lists. Make one!';
+var oneListMessage = 'You have 1 list';
 var HomeComponent = (function () {
     function HomeComponent(router, authenticationService, listService) {
         this.router = router;
@@ -58,6 +63,18 @@ var HomeComponent = (function () {
                 }
             }); // alphabetize the lists
             console.log(lists);
+            var listNumber = _this.listTitles.length;
+            switch (listNumber) {
+                case 0:
+                    _this.listNumberMessage = noListsMessage;
+                    break;
+                case 1:
+                    _this.listNumberMessage = oneListMessage;
+                    break;
+                default:
+                    _this.listNumberMessage = listNumberMessagePrefix + String(listNumber) + listNumberMessageSuffix;
+                    break;
+            }
         }, function (err) {
             // TODO: NAVIGATE TO ERROR PAGE
             console.log(err);

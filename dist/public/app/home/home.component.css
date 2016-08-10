@@ -24,6 +24,11 @@
         fill: #00D59B; }
         .container .wl-nav-btns .wl-new-list svg:hover {
           fill: #00b685; }
+  .container .wl-list-count {
+    font-weight: normal;
+    font-size: 20px;
+    color: #00D59B;
+    margin-top: -5px; }
   .container .wl-lists-list ul {
     list-style: none;
     padding: 0; }

@@ -26,6 +26,7 @@
         </a>
         <wl-logout></wl-logout>
     </div>
+    <h4 class="wl-list-count" *ngIf="listNumberMessage">{{listNumberMessage}}</h4>
     <div class="wl-lists-list" *ngIf="listTitles">
         <ul>
             <li *ngFor="let listTitle of listTitles">

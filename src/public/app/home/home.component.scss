@@ -47,6 +47,13 @@ $margin-height: 10px;
         }
     }
 
+    .wl-list-count {
+        font-weight: normal;
+        font-size: 20px;
+        color: $green_color;
+        margin-top: -5px;
+    }
+
     .wl-lists-list {
         ul {
             list-style: none;

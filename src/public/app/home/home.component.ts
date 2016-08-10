@@ -6,6 +6,12 @@ import { LogoutComponent } from '../logout/logout.component';
 import { AuthenticationService } from '../authentication.service';
 import { ListService } from '../list.service';
 
+// TODO: maybe make it easier to have special ones, like when there is 0 or 1 list
+const listNumberMessagePrefix = 'You have ';
+const listNumberMessageSuffix = ' lists';
+const noListsMessage = 'You have no lists. Make one!';
+const oneListMessage = 'You have 1 list';
+
 @Component({
   moduleId: module.id,
   selector: 'wl-home',
@@ -16,6 +22,8 @@ import { ListService } from '../list.service';
 export class HomeComponent implements OnInit {
     private listTitles: Array<string>;
     private username: string;
+
+    listNumberMessage: string;
 
     constructor(private router: Router, private authenticationService: AuthenticationService, private listService: ListService) {
         this.username = this.authenticationService.getUsername();
@@ -46,6 +54,14 @@ export class HomeComponent implements OnInit {
                 }
             }); // alphabetize the lists
             console.log(lists);
+
+            let listNumber = this.listTitles.length;
+            switch (listNumber) {
+                case 0: this.listNumberMessage = noListsMessage; break;
+                case 1: this.listNumberMessage = oneListMessage; break;
+                default: this.listNumberMessage = listNumberMessagePrefix + String(listNumber) + listNumberMessageSuffix; break;
+            }
+
         }, (err) => {
             // TODO: NAVIGATE TO ERROR PAGE
             console.log(err);
