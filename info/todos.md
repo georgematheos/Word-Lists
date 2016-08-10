@@ -3,7 +3,6 @@
 - Tally number of word lists?
 - Show a message at home screen if there are no word lists
 - Show confirmation box before navigating away and maybe save changed before navigation as well.
-- Animations for the confirm cancel/delete dialouge?
 - Make sure that the username in the url is the same as the username of the signed in user for the home page and the list page
 - Make the browser update the jwt periodically
 - Should the browser check to make sure the server still thinks the jwt is valid periodically?
