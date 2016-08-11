@@ -1,5 +1,5 @@
 ### Yet to be done
-- Save a copy of unsaved changes to the server periodically and before navigating away from the webpage.
+- Autosave periodically and before leaving the webpage rather than having the user save or cancel the changes.
 - Make sure that the username in the url is the same as the username of the signed in user for the home page and the list page
 - Make the browser update the jwt periodically
 - Should the browser check to make sure the server still thinks the jwt is valid periodically?
