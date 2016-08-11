@@ -99,6 +99,10 @@ var ListComponent = (function () {
     };
     ListComponent.prototype.newWord = function () {
         this.wordCapsules.push(new Capsule_1.Capsule(''));
+        // this setTimeout is done so the ngFor updates and adds the new input before focusing this
+        setTimeout(function () {
+            $('.wl-words-wrapper div:last-child input')[0].focus(); // focus the new word slot
+        }, 0);
     };
     ListComponent.prototype.deleteWord = function (event, index) {
         this.wordCapsules.splice(index, 1);

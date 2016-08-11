@@ -160,6 +160,11 @@ export class ListComponent implements OnInit {
 
     newWord() {
         this.wordCapsules.push(new Capsule(''));
+
+        // this setTimeout is done so the ngFor updates and adds the new input before focusing this
+        setTimeout(() => {
+            $('.wl-words-wrapper div:last-child input')[0].focus(); // focus the new word slot
+        }, 0);
     }
 
     deleteWord(event: Event, index: number) {

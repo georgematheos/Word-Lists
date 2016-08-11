@@ -1,5 +1,4 @@
 ### Yet to be done
-- Auto focus in word box after adding a word slot
 - Show confirmation box before navigating away and maybe save changed before navigation as well.
 - Make sure that the username in the url is the same as the username of the signed in user for the home page and the list page
 - Make the browser update the jwt periodically
