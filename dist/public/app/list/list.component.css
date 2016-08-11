@@ -185,9 +185,9 @@
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
   transform: scale(0);
-  -webkit-transition: -webkit-transform 0ms 400ms;
-  -moz-transition: -moz-transform 0ms 400ms;
-  transition: transform 0ms 400ms; }
+  -webkit-transition: -webkit-transform 0ms 300ms;
+  -moz-transition: -moz-transform 0ms 300ms;
+  transition: transform 0ms 300ms; }
   .wl-background-fader.wl-show {
     transform: scale(1);
     -webkit-transition: -webkit-transform 0ms;
@@ -209,12 +209,12 @@
     opacity: 0; } }
 .wl-show .wl-confirmation-popup {
   animation-name: sinkIn;
-  animation-duration: 400ms;
+  animation-duration: 300ms;
   animation-timing-function: ease-in-out; }
 
 .wl-confirmation-popup {
   animation-name: sinkOut;
-  animation-duration: 400ms;
+  animation-duration: 300ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards; }
 
