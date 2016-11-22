@@ -1,6 +1,6 @@
 {
   "name": "word-lists",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A web application that allows users to create, view, and modify lists of words.",
   "main": "javascript/server.js",
   "scripts": {
