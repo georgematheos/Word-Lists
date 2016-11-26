@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
-import { disableDeprecatedForms, provideForms, FORM_DIRECTIVES } from '@angular/forms';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { LogoutComponent } from '../logout/logout.component';
 
@@ -26,17 +25,7 @@ const confirmDeleteMessage = "Are you sure you want to permenantly delete this w
     selector: 'wl-list',
     templateUrl: 'list.component.html',
     styleUrls: ['list.component.css'],
-    directives: [
-        ROUTER_DIRECTIVES,
-        FORM_DIRECTIVES,
-        LogoutComponent
-    ],
-
-    // use newer forms version for this component:
-    providers: [
-        disableDeprecatedForms(),
-        provideForms()
-    ]
+    entryComponents: [ LogoutComponent ],
 })
 export class ListComponent implements OnInit {
     username: string;

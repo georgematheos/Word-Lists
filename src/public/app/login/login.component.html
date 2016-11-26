@@ -2,7 +2,7 @@
     <div class="wl-form-wrapper" [class.wl-alert-visible]="displayError">
         <h5 class="wl-error-alert" [hidden]="!displayError">{{displayErrorText}}</h5>
 
-        <form [ngFormModel]="form">
+        <form [formGroup]="form">
 
             <div class="form-group wl-input-container" [class.wl-empty-input]="usernameEmpty">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="575 1619 56.051 66.773">
@@ -12,7 +12,7 @@
                     </g>
                 </svg>
 
-                <input type="text" class="form-control wl-username" placeholder="Username" ngControl="username">
+                <input type="text" class="form-control wl-username" placeholder="Username" [formControl]="form.controls['username']">
             </div>
 
             <div class="form-group wl-input-container" [class.wl-empty-input]="passwordEmpty">
@@ -21,7 +21,7 @@
                         transform="translate(1078 4414)" />
                 </svg>
 
-                <input type="PASSWORD" class="form-control wl-password" placeholder="Password" ngControl="password">
+                <input type="PASSWORD" class="form-control wl-password" placeholder="Password" [formControl]="form.controls['password']">
             </div>
 
             <button type="submit" (click)="onSubmit($event)" [disabled]="!form.valid" class="btn btn-default">

@@ -1,8 +1,6 @@
-import { bootstrap } from '@angular/platform-browser-dynamic';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { APP_ROUTER_PROVIDERS } from './app.routes';
+import { AppModule } from './app.module';
 
-import { AppComponent } from './app.component';
-
-bootstrap(AppComponent, [ APP_ROUTER_PROVIDERS ])
-.catch(err => console.log(err));
+const platform = platformBrowserDynamic();
+platform.bootstrapModule(AppModule);

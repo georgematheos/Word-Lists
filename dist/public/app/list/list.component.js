@@ -8,14 +8,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var forms_1 = require('@angular/forms');
-var logout_component_1 = require('../logout/logout.component');
-var authentication_service_1 = require('../authentication.service');
-var list_service_1 = require('../list.service');
-var Capsule_1 = require('../types/Capsule');
-var ConfirmationItem_1 = require('../types/ConfirmationItem');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var logout_component_1 = require("../logout/logout.component");
+var authentication_service_1 = require("../authentication.service");
+var list_service_1 = require("../list.service");
+var Capsule_1 = require("../types/Capsule");
+var ConfirmationItem_1 = require("../types/ConfirmationItem");
 // constants for use in the methods
 // messages for when the changes are saved or unsaved
 var changesUnsavedMessage = "Changes Unsaved";
@@ -225,26 +224,20 @@ var ListComponent = (function () {
         // hide the confirmation popup
         this.showConfirmationPopup = false;
     };
-    ListComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'wl-list',
-            templateUrl: 'list.component.html',
-            styleUrls: ['list.component.css'],
-            directives: [
-                router_1.ROUTER_DIRECTIVES,
-                forms_1.FORM_DIRECTIVES,
-                logout_component_1.LogoutComponent
-            ],
-            // use newer forms version for this component:
-            providers: [
-                forms_1.disableDeprecatedForms(),
-                forms_1.provideForms()
-            ]
-        }), 
-        __metadata('design:paramtypes', [authentication_service_1.AuthenticationService, list_service_1.ListService, router_1.ActivatedRoute, router_1.Router])
-    ], ListComponent);
     return ListComponent;
 }());
+ListComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'wl-list',
+        templateUrl: 'list.component.html',
+        styleUrls: ['list.component.css'],
+        entryComponents: [logout_component_1.LogoutComponent],
+    }),
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService,
+        list_service_1.ListService,
+        router_1.ActivatedRoute,
+        router_1.Router])
+], ListComponent);
 exports.ListComponent = ListComponent;
 //# sourceMappingURL=list.component.js.map

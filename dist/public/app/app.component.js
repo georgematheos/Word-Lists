@@ -8,38 +8,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var http_1 = require('@angular/http');
-var authentication_service_1 = require('./authentication.service');
-var list_service_1 = require('./list.service');
-var home_component_1 = require('./home/home.component');
-var login_component_1 = require('./login/login.component');
-var unrecognized_path_component_1 = require('./unrecognized-path/unrecognized-path.component');
+var core_1 = require("@angular/core");
+// TODO: FIGURE OUT HTTP STUFF
+// TODO: REMOVE?
+var authentication_service_1 = require("./authentication.service");
+var list_service_1 = require("./list.service");
 var AppComponent = (function () {
     function AppComponent() {
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'wl-app',
-            moduleId: module.id,
-            templateUrl: 'app.component.html',
-            styleUrls: ['app.component.css'],
-            directives: [
-                login_component_1.LoginComponent,
-                home_component_1.HomeComponent,
-                unrecognized_path_component_1.UnrecognizedPathComponent,
-                router_1.ROUTER_DIRECTIVES
-            ],
-            providers: [
-                http_1.HTTP_PROVIDERS,
-                authentication_service_1.AuthenticationService,
-                list_service_1.ListService
-            ]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
     return AppComponent;
 }());
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'wl-app',
+        moduleId: module.id,
+        templateUrl: 'app.component.html',
+        styleUrls: ['app.component.css'],
+        providers: [
+            authentication_service_1.AuthenticationService,
+            list_service_1.ListService
+        ]
+    }),
+    __metadata("design:paramtypes", [])
+], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.component.js.map

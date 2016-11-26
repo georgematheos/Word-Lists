@@ -1,4 +1,6 @@
 ### Yet to be done
+- Refactor code so that list and home components are on a different ngmodule than the rest
+- Make svgs into imported imgs
 - Autosave periodically and before leaving the webpage rather than having the user save or cancel the changes.
 - Make sure that the username in the url is the same as the username of the signed in user for the home page and the list page
 - Make the browser update the jwt periodically
