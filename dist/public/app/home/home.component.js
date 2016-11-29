@@ -8,11 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var logout_component_1 = require('../logout/logout.component');
-var authentication_service_1 = require('../authentication.service');
-var list_service_1 = require('../list.service');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var authentication_service_1 = require("../authentication.service");
+var list_service_1 = require("../list.service");
 // TODO: maybe make it easier to have special ones, like when there is 0 or 1 list
 var listNumberMessagePrefix = 'You have ';
 var listNumberMessageSuffix = ' lists';
@@ -87,17 +86,16 @@ var HomeComponent = (function () {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
     };
-    HomeComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'wl-home',
-            templateUrl: 'home.component.html',
-            styleUrls: ['home.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES, logout_component_1.LogoutComponent]
-        }), 
-        __metadata('design:paramtypes', [router_1.Router, authentication_service_1.AuthenticationService, list_service_1.ListService])
-    ], HomeComponent);
     return HomeComponent;
 }());
+HomeComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'wl-home',
+        templateUrl: 'home.component.html',
+        styleUrls: ['home.component.css']
+    }),
+    __metadata("design:paramtypes", [router_1.Router, authentication_service_1.AuthenticationService, list_service_1.ListService])
+], HomeComponent);
 exports.HomeComponent = HomeComponent;
 //# sourceMappingURL=home.component.js.map

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ROUTER_DIRECTIVES } from '@angular/router';
-
-import { LogoutComponent } from '../logout/logout.component';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../authentication.service';
 import { ListService } from '../list.service';
@@ -16,8 +14,7 @@ const oneListMessage = 'You have 1 list';
   moduleId: module.id,
   selector: 'wl-home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css'],
-  directives: [ROUTER_DIRECTIVES, LogoutComponent]
+  styleUrls: ['home.component.css']
 })
 export class HomeComponent implements OnInit {
     private listTitles: Array<string>;

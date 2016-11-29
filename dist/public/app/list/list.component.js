@@ -10,7 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var logout_component_1 = require("../logout/logout.component");
 var authentication_service_1 = require("../authentication.service");
 var list_service_1 = require("../list.service");
 var Capsule_1 = require("../types/Capsule");
@@ -231,8 +230,7 @@ ListComponent = __decorate([
         moduleId: module.id,
         selector: 'wl-list',
         templateUrl: 'list.component.html',
-        styleUrls: ['list.component.css'],
-        entryComponents: [logout_component_1.LogoutComponent],
+        styleUrls: ['list.component.css']
     }),
     __metadata("design:paramtypes", [authentication_service_1.AuthenticationService,
         list_service_1.ListService,

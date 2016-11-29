@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { LogoutComponent } from '../logout/logout.component';
-
 import { AuthenticationService } from '../authentication.service';
 import { ListService } from '../list.service';
 
@@ -24,8 +22,7 @@ const confirmDeleteMessage = "Are you sure you want to permenantly delete this w
     moduleId: module.id,
     selector: 'wl-list',
     templateUrl: 'list.component.html',
-    styleUrls: ['list.component.css'],
-    entryComponents: [ LogoutComponent ],
+    styleUrls: ['list.component.css']
 })
 export class ListComponent implements OnInit {
     username: string;
