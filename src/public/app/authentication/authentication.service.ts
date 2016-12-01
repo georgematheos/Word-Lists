@@ -3,7 +3,7 @@ import { Http, Response, Headers } from '@angular/http';
 
 import { Observable, Observer } from 'rxjs/Rx';
 
-import { AuthenticateBody } from './types/AuthenticateBody';
+import { AuthenticateBody } from '../types/AuthenticateBody';
 
 
 @Injectable()

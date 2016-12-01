@@ -9,19 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var router_1 = require("@angular/router");
+var authentication_service_1 = require("../authentication.service");
+var LogoutComponent = (function () {
+    function LogoutComponent(authenticationService, router) {
+        this.authenticationService = authenticationService;
+        this.router = router;
     }
-    return AppComponent;
+    LogoutComponent.prototype.logout = function () {
+        this.authenticationService.logout();
+        this.router.navigate(['/login']);
+    };
+    return LogoutComponent;
 }());
-AppComponent = __decorate([
+LogoutComponent = __decorate([
     core_1.Component({
-        selector: 'wl-app',
         moduleId: module.id,
-        templateUrl: 'app.component.html',
-        styleUrls: ['app.component.css'],
+        selector: 'wl-logout',
+        templateUrl: 'logout.component.html',
+        styleUrls: ['logout.component.css']
     }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+    __metadata("design:paramtypes", [authentication_service_1.AuthenticationService, router_1.Router])
+], LogoutComponent);
+exports.LogoutComponent = LogoutComponent;
+//# sourceMappingURL=logout.component.js.map

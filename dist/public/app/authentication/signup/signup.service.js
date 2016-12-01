@@ -9,19 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var AppComponent = (function () {
-    function AppComponent() {
+var http_1 = require("@angular/http");
+var SignupService = (function () {
+    function SignupService(http) {
+        this.http = http;
     }
-    return AppComponent;
+    SignupService.prototype.signup = function (username, password) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        var url = 'http://' + location.host + '/api/users/';
+        var body = JSON.stringify({
+            username: username,
+            password: password
+        });
+        return this.http.post(url, body, { headers: headers });
+    };
+    return SignupService;
 }());
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'wl-app',
-        moduleId: module.id,
-        templateUrl: 'app.component.html',
-        styleUrls: ['app.component.css'],
-    }),
-    __metadata("design:paramtypes", [])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+SignupService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http])
+], SignupService);
+exports.SignupService = SignupService;
+//# sourceMappingURL=signup.service.js.map

@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var authentication_service_1 = require("../authentication.service");
+var authentication_service_1 = require("../authentication/authentication.service");
 var list_service_1 = require("../list.service");
 var Capsule_1 = require("../types/Capsule");
 var ConfirmationItem_1 = require("../types/ConfirmationItem");

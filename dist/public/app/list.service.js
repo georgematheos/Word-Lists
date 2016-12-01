@@ -8,10 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var http_1 = require('@angular/http');
-var Rx_1 = require('rxjs/Rx');
-var authentication_service_1 = require('./authentication.service');
+var core_1 = require("@angular/core");
+var http_1 = require("@angular/http");
+var Rx_1 = require("rxjs/Rx");
+var authentication_service_1 = require("./authentication/authentication.service");
 var ListService = (function () {
     function ListService(http, authenticationService) {
         this.http = http;
@@ -116,11 +116,11 @@ var ListService = (function () {
         // if all goes well, return the property
         return body[propertyName];
     };
-    ListService = __decorate([
-        core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http, authentication_service_1.AuthenticationService])
-    ], ListService);
     return ListService;
 }());
+ListService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [http_1.Http, authentication_service_1.AuthenticationService])
+], ListService);
 exports.ListService = ListService;
 //# sourceMappingURL=list.service.js.map

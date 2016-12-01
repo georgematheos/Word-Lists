@@ -1,0 +1,184 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  box-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  -o-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: justify; }
+  .container .wl-outer-form-wrapper {
+    -webkit-box-flex: 3;
+    -moz-box-flex: 3;
+    box-flex: 3;
+    -webkit-flex: 3 1 400px;
+    -moz-flex: 3 1 400px;
+    -ms-flex: 3 1 400px;
+    flex: 3 1 400px;
+    max-width: 400px;
+    position: relative;
+    height: 100%; }
+    .container .wl-outer-form-wrapper .wl-inner-form-wrapper {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%) translateY(5px) translateY(0.5em);
+      -moz-transform: translateY(-50%) translateY(5px) translateY(0.5em);
+      -ms-transform: translateY(-50%) translateY(5px) translateY(0.5em);
+      -o-transform: translateY(-50%) translateY(5px) translateY(0.5em);
+      transform: translateY(-50%) translateY(5px) translateY(0.5em); }
+      .container .wl-outer-form-wrapper .wl-inner-form-wrapper.wl-alert-visible {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%); }
+      .container .wl-outer-form-wrapper .wl-inner-form-wrapper .wl-error-alert {
+        line-height: 1em;
+        margin: 0 0 10px;
+        color: #C46D6D;
+        font-weight: bold; }
+      .container .wl-outer-form-wrapper .wl-inner-form-wrapper .wl-link {
+        display: block;
+        line-height: 1em;
+        margin-top: 10px;
+        color: #00D59B;
+        font-weight: bold; }
+        .container .wl-outer-form-wrapper .wl-inner-form-wrapper .wl-link:hover {
+          text-decoration: none;
+          color: #00a276; }
+      .container .wl-outer-form-wrapper .wl-inner-form-wrapper form button,
+      .container .wl-outer-form-wrapper .wl-inner-form-wrapper form input {
+        font-size: 30px;
+        height: 50px; }
+      .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container {
+        position: relative;
+        margin: auto auto 10px; }
+        .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input {
+          margin: 0;
+          padding-left: 45px;
+          color: black; }
+          .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input::-webkit-input-placeholder {
+            color: #95989A; }
+          .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input::-moz-placeholder {
+            color: #95989A; }
+          .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input:-moz-placeholder {
+            color: #95989A; }
+          .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input:-ms-input-placeholder {
+            color: #95989A; }
+          .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input:not(.wl-not-matched), .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input.ng-valid {
+            border-right: 7.5px solid #27A7FF; }
+            .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input:not(.wl-not-matched):focus, .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input.ng-valid:focus {
+              border-color: #27A7FF;
+              -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(39, 167, 255, 0.6);
+              box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(39, 167, 255, 0.6);
+              outline: 0 none; }
+          .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input.wl-not-matched, .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input.ng-invalid {
+            border-right: 7.5px solid #C46D6D; }
+            .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input.wl-not-matched:focus, .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container input.ng-invalid:focus {
+              border-color: #C46D6D;
+              -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(196, 109, 109, 0.6);
+              box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(196, 109, 109, 0.6);
+              outline: 0 none; }
+        .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container svg {
+          position: absolute;
+          bottom: 8px;
+          left: 7.5px;
+          width: 28px;
+          height: 33px; }
+        .container .wl-outer-form-wrapper .wl-inner-form-wrapper form .wl-input-container.wl-empty-input svg {
+          fill: #95989A; }
+      .container .wl-outer-form-wrapper .wl-inner-form-wrapper form button {
+        width: 100%;
+        text-align: center;
+        color: white;
+        background-color: #27A7FF; }
+        .container .wl-outer-form-wrapper .wl-inner-form-wrapper form button:disabled {
+          color: rgba(255, 255, 255, 0.75);
+          background-color: rgba(39, 167, 255, 0.5); }
+        .container .wl-outer-form-wrapper .wl-inner-form-wrapper form button:focus {
+          border-color: #27A7FF;
+          -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(39, 167, 255, 0.6);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(39, 167, 255, 0.6);
+          outline: 0 none; }
+        .container .wl-outer-form-wrapper .wl-inner-form-wrapper form button .wl-login-btn-text {
+          position: relative;
+          top: -4px; }
+  .container .wl-left-side-space-filler,
+  .container .wl-requirements-outer {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex: 1 3 0px;
+    -moz-flex: 1 3 0px;
+    -ms-flex: 1 3 0px;
+    flex: 1 3 0px; }
+    .container .wl-left-side-space-filler .wl-requirements-inner,
+    .container .wl-requirements-outer .wl-requirements-inner {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translateY(-50%) translateY(-25px);
+      -moz-transform: translateY(-50%) translateY(-25px);
+      -ms-transform: translateY(-50%) translateY(-25px);
+      -o-transform: translateY(-50%) translateY(-25px);
+      transform: translateY(-50%) translateY(-25px); }
+      .container .wl-left-side-space-filler .wl-requirements-inner .wl-requirement-wrapper,
+      .container .wl-requirements-outer .wl-requirements-inner .wl-requirement-wrapper {
+        position: relative;
+        height: 50px;
+        margin: auto auto 10px; }
+        .container .wl-left-side-space-filler .wl-requirements-inner .wl-requirement-wrapper ul,
+        .container .wl-requirements-outer .wl-requirements-inner .wl-requirement-wrapper ul {
+          height: 100%;
+          margin: 0;
+          padding: 0 0 0 2px;
+          list-style-type: none;
+          display: -webkit-box;
+          display: -moz-box;
+          display: box;
+          display: -webkit-flex;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -moz-box-orient: vertical;
+          box-orient: vertical;
+          -webkit-box-direction: normal;
+          -moz-box-direction: normal;
+          box-direction: normal;
+          -webkit-flex-direction: column;
+          -moz-flex-direction: column;
+          flex-direction: column;
+          -ms-flex-direction: column;
+          -webkit-box-pack: distribute;
+          -moz-box-pack: distribute;
+          box-pack: distribute;
+          -webkit-justify-content: space-around;
+          -moz-justify-content: space-around;
+          -ms-justify-content: space-around;
+          -o-justify-content: space-around;
+          justify-content: space-around;
+          -ms-flex-pack: distribute; }
+          .container .wl-left-side-space-filler .wl-requirements-inner .wl-requirement-wrapper ul li,
+          .container .wl-requirements-outer .wl-requirements-inner .wl-requirement-wrapper ul li {
+            text-align: left;
+            white-space: pre;
+            font-weight: 500;
+            color: #C46D6D; }
+            .container .wl-left-side-space-filler .wl-requirements-inner .wl-requirement-wrapper ul li.wl-valid-req,
+            .container .wl-requirements-outer .wl-requirements-inner .wl-requirement-wrapper ul li.wl-valid-req {
+              color: #27A7FF; }
+
+/*# sourceMappingURL=signup.component.css.map */

@@ -14,11 +14,10 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var app_routing_module_1 = require("./app-routing.module");
+var authentication_module_1 = require("./authentication/authentication.module");
+var list_service_1 = require("./list.service");
 var home_component_1 = require("./home/home.component");
-var login_component_1 = require("./login/login.component");
 var list_component_1 = require("./list/list.component");
-var signup_component_1 = require("./signup/signup.component");
-var logout_component_1 = require("./logout/logout.component");
 var unrecognized_path_component_1 = require("./unrecognized-path/unrecognized-path.component");
 var AppModule = (function () {
     function AppModule() {
@@ -30,19 +29,17 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
-            forms_1.ReactiveFormsModule,
             http_1.HttpModule,
-            app_routing_module_1.AppRoutingModule
+            app_routing_module_1.AppRoutingModule,
+            authentication_module_1.AuthenticationModule
         ],
         declarations: [
             app_component_1.AppComponent,
             home_component_1.HomeComponent,
-            login_component_1.LoginComponent,
             list_component_1.ListComponent,
-            logout_component_1.LogoutComponent,
-            signup_component_1.SignupComponent,
             unrecognized_path_component_1.UnrecognizedPathComponent
         ],
+        providers: [list_service_1.ListService],
         bootstrap: [app_component_1.AppComponent]
     }),
     __metadata("design:paramtypes", [])

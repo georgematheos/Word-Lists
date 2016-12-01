@@ -3,8 +3,8 @@ import { RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from "./signup/signup.component";
+import { LoginComponent } from './authentication/login/login.component';
+import { SignupComponent } from "./authentication/signup/signup.component";
 import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path.component';
 
 
