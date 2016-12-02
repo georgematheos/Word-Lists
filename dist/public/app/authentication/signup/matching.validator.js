@@ -10,12 +10,12 @@ function matching(secondControlName, reverse) {
     return function (control) {
         var controlRoot = control.root;
         if (!controlRoot) {
-            console.log('ERROR: No control root found.');
+            console.log('No control root found.');
             return null;
         }
         var control2 = controlRoot.get(secondControlName);
         if (!control2) {
-            console.log('ERROR: No control with provided name on the control root.');
+            console.log('No control with provided name on the control root.');
             return null;
         }
         // if this is not the reverse, and the control and control2 do not have the same value, add an error

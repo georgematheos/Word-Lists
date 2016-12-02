@@ -11,13 +11,13 @@ export function matching(secondControlName: string, reverse = false) {
 
         const controlRoot = control.root;
         if (!controlRoot) {
-            console.log('ERROR: No control root found.');
+            console.log('No control root found.');
             return null;
         }
 
         let control2 = controlRoot.get(secondControlName);
         if (!control2) {
-            console.log('ERROR: No control with provided name on the control root.');
+            console.log('No control with provided name on the control root.');
             return null;
         }
 
