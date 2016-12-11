@@ -13,8 +13,8 @@ import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path
         RouterModule.forRoot([
             {path: '', pathMatch: 'full', redirectTo: '/login'},
             {path: 'home', component: HomeComponent},
-            {path: 'list/:username', component: ListComponent}, // new list
-            {path: 'list/:username/:title', component: ListComponent}, // already-created list
+            {path: 'list', component: ListComponent}, // new list
+            {path: 'list/:title', component: ListComponent}, // already-created list
             {path: 'login', component: LoginComponent},
             {path: 'signup', component: SignupComponent},
             {path: '**', component: UnrecognizedPathComponent}

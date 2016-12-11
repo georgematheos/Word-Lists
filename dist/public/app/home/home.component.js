@@ -80,7 +80,7 @@ var HomeComponent = (function () {
         });
     };
     HomeComponent.prototype.titleButtonClick = function (listTitle) {
-        this.router.navigate(['/list', this.username, listTitle]);
+        this.router.navigate(['/list', listTitle]);
     };
     HomeComponent.prototype.logout = function () {
         this.authenticationService.logout();

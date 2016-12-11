@@ -85,7 +85,11 @@ export class ListComponent implements OnInit {
 
     ngOnInit() {
         this.route.params.subscribe(params => {
-            this.username = params['username']; // TODO: MAKE SURE THIS USERNAME IS THE SAME AS THE ONE FROM AUTHENTICATIONSERVICE
+            if (!this.authenticationService.isLoggedIn()) {
+                this.router.navigate(['/login']);
+            }
+            this.username = this.authenticationService.getUsername();
+
             this.listTitle = params['title'];
 
             // if no list title is provided, this list must be new

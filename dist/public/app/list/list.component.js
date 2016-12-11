@@ -48,7 +48,10 @@ var ListComponent = (function () {
     ListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.route.params.subscribe(function (params) {
-            _this.username = params['username']; // TODO: MAKE SURE THIS USERNAME IS THE SAME AS THE ONE FROM AUTHENTICATIONSERVICE
+            if (!_this.authenticationService.isLoggedIn()) {
+                _this.router.navigate(['/login']);
+            }
+            _this.username = _this.authenticationService.getUsername();
             _this.listTitle = params['title'];
             // if no list title is provided, this list must be new
             if (!_this.listTitle) {

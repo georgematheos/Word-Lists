@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
     }
 
     titleButtonClick(listTitle) {
-        this.router.navigate(['/list', this.username, listTitle]);
+        this.router.navigate(['/list', listTitle]);
     }
 
     logout() {

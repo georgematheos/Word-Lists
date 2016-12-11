@@ -26,8 +26,8 @@ AppRoutingModule = __decorate([
             router_1.RouterModule.forRoot([
                 { path: '', pathMatch: 'full', redirectTo: '/login' },
                 { path: 'home', component: home_component_1.HomeComponent },
-                { path: 'list/:username', component: list_component_1.ListComponent },
-                { path: 'list/:username/:title', component: list_component_1.ListComponent },
+                { path: 'list', component: list_component_1.ListComponent },
+                { path: 'list/:title', component: list_component_1.ListComponent },
                 { path: 'login', component: login_component_1.LoginComponent },
                 { path: 'signup', component: signup_component_1.SignupComponent },
                 { path: '**', component: unrecognized_path_component_1.UnrecognizedPathComponent }
