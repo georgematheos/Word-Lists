@@ -145,7 +145,7 @@ var ListComponent = (function () {
                 _this.lastSavedWords.push(capsule.item);
             }
             // update the url with the new title
-            _this.router.navigate(['/list', _this.username, _this.listTitle]);
+            _this.router.navigate(['/list', _this.listTitle]);
             // stop showing error message if any is being shown
             _this.showErrorMessage = false;
         };
@@ -200,7 +200,7 @@ var ListComponent = (function () {
         var _this = this;
         this.listService.deleteList(this.username, this.lastSavedListTitle).subscribe(function (res) {
             // go to the home page
-            _this.router.navigate(['/home', _this.username]);
+            _this.router.navigate(['/home']);
         }, function (err) {
             // TODO: handle failure case
         });

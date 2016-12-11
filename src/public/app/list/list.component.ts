@@ -204,7 +204,7 @@ export class ListComponent implements OnInit {
             }
 
             // update the url with the new title
-            this.router.navigate(['/list', this.username, this.listTitle]);
+            this.router.navigate(['/list', this.listTitle]);
 
             // stop showing error message if any is being shown
             this.showErrorMessage = false;
@@ -269,7 +269,7 @@ export class ListComponent implements OnInit {
     private completeDelete() {
         this.listService.deleteList(this.username, this.lastSavedListTitle).subscribe(res => {
             // go to the home page
-            this.router.navigate(['/home', this.username]);
+            this.router.navigate(['/home']);
         },
         err => {
             // TODO: handle failure case
