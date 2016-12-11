@@ -1,5 +1,4 @@
 ### Yet to be done
-- Change the way routing is done so that everything behaves in a logical way when one tries to go to the address "/list/not-logged-in-user" or "/list/user/non-existant-word-list"
 - Refactor code so that list and home components are on a different ngmodule than the rest
 - Make svgs into imported imgs
 - Autosave periodically and before leaving the webpage rather than having the user save or cancel the changes.
