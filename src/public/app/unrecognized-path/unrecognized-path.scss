@@ -1,0 +1,7 @@
+@import "../misc_libraries/bourbon/bourbon"; // the default path is /src, since I run the command sass --watch src:dist
+
+// MIXINS
+@import 'public/styles/global-mixins';
+
+// variables
+@import 'public/styles/global-variables';

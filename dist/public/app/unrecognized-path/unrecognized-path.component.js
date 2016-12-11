@@ -8,19 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
 var UnrecognizedPathComponent = (function () {
-    function UnrecognizedPathComponent() {
+    function UnrecognizedPathComponent(router) {
+        this.router = router;
     }
-    UnrecognizedPathComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'wl-unrecognized-path',
-            templateUrl: 'unrecognized-path.component.html',
-        }), 
-        __metadata('design:paramtypes', [])
-    ], UnrecognizedPathComponent);
     return UnrecognizedPathComponent;
 }());
+UnrecognizedPathComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'wl-unrecognized-path',
+        templateUrl: 'unrecognized-path.component.html',
+        styleUrls: ['unrecognized-path.component.css']
+    }),
+    __metadata("design:paramtypes", [router_1.Router])
+], UnrecognizedPathComponent);
 exports.UnrecognizedPathComponent = UnrecognizedPathComponent;
 //# sourceMappingURL=unrecognized-path.component.js.map
