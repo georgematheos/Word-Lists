@@ -120,6 +120,8 @@ export class ListComponent implements OnInit {
                         // changes are saved
                         this.changesSaved = true;
                         this.saveStatusMessage = changesSavedMessage;
+                    }, err => {
+                        this.router.navigate(['unrecognized-path']);
                     });
             }
         })

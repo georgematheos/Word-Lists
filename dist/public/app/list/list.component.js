@@ -76,6 +76,8 @@ var ListComponent = (function () {
                     // changes are saved
                     _this.changesSaved = true;
                     _this.saveStatusMessage = changesSavedMessage;
+                }, function (err) {
+                    _this.router.navigate(['unrecognized-path']);
                 });
             }
         });
