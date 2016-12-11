@@ -25,7 +25,7 @@ AppRoutingModule = __decorate([
         imports: [
             router_1.RouterModule.forRoot([
                 { path: '', pathMatch: 'full', redirectTo: '/login' },
-                { path: 'home/:username', component: home_component_1.HomeComponent },
+                { path: 'home', component: home_component_1.HomeComponent },
                 { path: 'list/:username', component: list_component_1.ListComponent },
                 { path: 'list/:username/:title', component: list_component_1.ListComponent },
                 { path: 'login', component: login_component_1.LoginComponent },

@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit{
 
     ngOnInit() {
         if (this.authenticationService.isLoggedIn()) {
-            this.router.navigate(['/home', this.authenticationService.getUsername()]);
+            this.router.navigate(['/home']);
         }
     }
 
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit{
     onSubmit(event) {
         this.authenticationService.login(this.form.controls['username'].value, this.form.controls['password'].value)
             .subscribe((token) => {
-                this.router.navigate(['/home', this.authenticationService.getUsername()]);
+                this.router.navigate(['/home']);
             }, (err) => {
                 switch (err.status) {
                     // username not recognized

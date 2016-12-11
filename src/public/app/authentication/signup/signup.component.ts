@@ -70,7 +70,7 @@ export class SignupComponent {
         this.signupService.signup(this.form.controls['username'].value, this.form.controls['password'].value).subscribe((res) => {
             // log in the newly created user
             this.authenticationService.login(this.form.controls['username'].value, this.form.controls['password'].value).subscribe((res) => {
-                this.router.navigate(['/home', this.authenticationService.getUsername()]);
+                this.router.navigate(['/home']);
                 // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
             }, err => console.log(err));
         },

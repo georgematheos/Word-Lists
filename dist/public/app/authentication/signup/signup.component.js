@@ -88,7 +88,7 @@ var SignupComponent = (function () {
         this.signupService.signup(this.form.controls['username'].value, this.form.controls['password'].value).subscribe(function (res) {
             // log in the newly created user
             _this.authenticationService.login(_this.form.controls['username'].value, _this.form.controls['password'].value).subscribe(function (res) {
-                _this.router.navigate(['/home', _this.authenticationService.getUsername()]);
+                _this.router.navigate(['/home']);
                 // TODO: DO I NEED TO DO ANYTHING IN HERE OR ANY SORT OF ERROR HANDLING???
             }, function (err) { return console.log(err); });
         }, function (err) {

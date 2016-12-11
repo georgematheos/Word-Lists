@@ -12,7 +12,7 @@ import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path
     imports: [
         RouterModule.forRoot([
             {path: '', pathMatch: 'full', redirectTo: '/login'},
-            {path: 'home/:username', component: HomeComponent},
+            {path: 'home', component: HomeComponent},
             {path: 'list/:username', component: ListComponent}, // new list
             {path: 'list/:username/:title', component: ListComponent}, // already-created list
             {path: 'login', component: LoginComponent},
