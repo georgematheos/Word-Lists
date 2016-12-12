@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAQA,CAAE;EACE,SAAS,EAAE,MAAM;EACjB,KAAK,ECJU,OAAwB;EDMvC,OAAQ;IACJ,KAAK,ECXC,OAAO;IDYb,eAAe,EAAE,IAAI",
+"sources": ["../../../../src/public/app/unrecognized-path/unrecognized-path.component.scss","../../../../src/public/styles/global-variables.scss"],
+"names": [],
+"file": "unrecognized-path.component.css"
+}

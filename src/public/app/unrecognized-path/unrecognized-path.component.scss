@@ -5,3 +5,13 @@
 
 // variables
 @import 'public/styles/global-variables';
+
+a {
+    font-size: 1.15em;
+    color: $dark_green_color;
+
+    &:hover {
+        color: $green_color;
+        text-decoration: none;
+    }
+}
