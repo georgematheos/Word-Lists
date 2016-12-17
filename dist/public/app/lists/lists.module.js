@@ -13,22 +13,23 @@ var common_1 = require("@angular/common");
 var forms_1 = require("@angular/forms"); // TODO: REACTIVE FORMS?
 var http_1 = require("@angular/http");
 var router_1 = require("@angular/router");
-var authentication_service_1 = require("./authentication.service");
-var login_component_1 = require("./login/login.component");
-var signup_component_1 = require("./signup/signup.component");
-var AuthenticationModule = (function () {
-    function AuthenticationModule() {
+var home_component_1 = require("./home/home.component");
+var list_component_1 = require("./list/list.component");
+var logout_component_1 = require("./logout/logout.component");
+var list_service_1 = require("./list.service");
+var ListsModule = (function () {
+    function ListsModule() {
     }
-    return AuthenticationModule;
+    return ListsModule;
 }());
-AuthenticationModule = __decorate([
+ListsModule = __decorate([
     core_1.NgModule({
         imports: [common_1.CommonModule, forms_1.FormsModule, forms_1.ReactiveFormsModule, router_1.RouterModule, http_1.HttpModule],
-        exports: [login_component_1.LoginComponent, signup_component_1.SignupComponent],
-        declarations: [login_component_1.LoginComponent, signup_component_1.SignupComponent],
-        providers: [authentication_service_1.AuthenticationService]
+        exports: [home_component_1.HomeComponent, list_component_1.ListComponent],
+        declarations: [home_component_1.HomeComponent, list_component_1.ListComponent, logout_component_1.LogoutComponent],
+        providers: [list_service_1.ListService]
     }),
     __metadata("design:paramtypes", [])
-], AuthenticationModule);
-exports.AuthenticationModule = AuthenticationModule;
-//# sourceMappingURL=authentication.module.js.map
+], ListsModule);
+exports.ListsModule = ListsModule;
+//# sourceMappingURL=lists.module.js.map

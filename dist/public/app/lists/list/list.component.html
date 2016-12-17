@@ -1,0 +1,107 @@
+<div class="container">
+    <div class="wl-nav-btns">
+        <a [routerLink]="['/login']"> <!-- TODO: MAKE THIS LINK TO THE USER's HOMEPAGE INSTEAD OF THE LOGIN PAGE -->
+            <div class="wl-home-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="6517 8034.352 65.608 95.027">
+                  <defs>
+                    <style>
+                      .cls-1 {
+                        font-size: 23px;
+                        font-family: HelveticaNeue-Medium, Helvetica Neue;
+                        font-weight: 500;
+                      }
+                    </style>
+                  </defs>
+                  <g id="group-88" transform="translate(6173 7863.352)">
+                    <text id="New_List" data-name="New List" class="cls-1" transform="translate(377 261.027)"><tspan x="-31.521" y="0">Home</tspan></text>
+                    <g id="group-70" transform="translate(344 171)">
+                      <rect id="rectangle-21" class="cls-2" width="4.217" height="43.018" transform="translate(7.501 26.007)"/>
+                      <path id="path-22" class="cls-2" d="M0,44.284V2.109A2.106,2.106,0,0,1,2.109,0H44.284a2.109,2.109,0,0,1,0,4.217H4.218V44.284a2.109,2.109,0,0,1-4.218,0Z" transform="translate(32.804 0) rotate(45)"/>
+                      <rect id="rectangle-21-2" data-name="rectangle-21" class="cls-2" width="50.61" height="4.217" transform="translate(7.501 64.807)"/>
+                      <rect id="rectangle-21-3" data-name="rectangle-21" class="cls-2" width="4.217" height="43.018" transform="translate(53.893 26.007)"/>
+                      <rect id="rectangle-22" class="cls-2" width="4.217" height="33.74" rx="3" ry="3" transform="translate(22.262 35.285)"/>
+                      <rect id="rectangle-22-2" data-name="rectangle-22" class="cls-2" width="4.217" height="33.74" rx="3" ry="3" transform="translate(39.132 35.285)"/>
+                      <rect id="rectangle-22-3" data-name="rectangle-22" class="cls-2" width="21.087" height="4.217" rx="3" ry="3" transform="translate(22.262 34.442)"/>
+                      <rect id="rectangle-22-4" data-name="rectangle-22" class="cls-2" width="4.217" height="6.748" transform="translate(39.132 4.919)"/>
+                      <rect id="rectangle-22-5" data-name="rectangle-22" class="cls-2" width="4.217" height="15.183" transform="translate(48.41 5.763)"/>
+                      <rect id="rectangle-22-6" data-name="rectangle-22" class="cls-2" width="13.496" height="4.217" transform="translate(39.132 4.919)"/>
+                    </g>
+                  </g>
+                </svg>
+            </div>
+        </a>
+        <wl-logout></wl-logout>
+    </div>
+
+    <div class="wl-error-message" *ngIf="showErrorMessage">
+        <h5>{{errorMessage}}</h5>
+    </div>
+
+    <form #listForm="ngForm">
+        <div class="form-group">
+            <input type="text" name="title" class="form-control wl-list-title" (input)="onChange()" (blur)="titleBlur()" (focus)="titleFocus()" placeholder="{{titlePlaceholder}}" [(ngModel)]="listTitle" required>
+        </div>
+
+        <div class="wl-saved-changes-marker" [class.wl-changes-saved]="changesSaved">{{saveStatusMessage}}</div>
+
+        <div class="form-group wl-list-buttons">
+            <div class="wl-button-wrapper">
+                <button tabindex=-1 type="button" (click)="delete()" class="btn btn-default wl-delete-button">
+                    <div class="wl-button-text">Delete</div>
+                </button>
+            </div>
+            <div class="wl-button-wrapper">
+                <button tabindex=-1 type="button" (click)="cancel()" class="btn btn-default wl-cancel-button">
+                    <div class="wl-button-text">Cancel</div>
+                </button>
+            </div>
+
+            <div class="wl-button-wrapper">
+                <button tabindex=-1 type="button" (click)="save()" class="btn btn-default wl-save-button" [disabled]="!listForm.form.valid">
+                    <div class="wl-button-text">Save</div>
+                </button>
+            </div>
+        </div>
+        
+        <div class="wl-words-wrapper">
+            <div class="form-group wl-word-input-wrapper" *ngFor="let w of wordCapsules; let i = index">
+                <div (click)="deleteWord($event, i); onChange();" class="wl-delete-word">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="6116 10676 50 80">
+                        <g id="group-98" transform="translate(5957 10296)">
+                            <path id="rectangle-25" class="cls-1" d="M8,0H50a0,0,0,0,1,0,0V80a0,0,0,0,1,0,0H8a8,8,0,0,1-8-8V8A8,8,0,0,1,8,0Z" transform="translate(159 380)" />
+                            <g id="group-74" transform="translate(134.48 -17.701) rotate(45)">
+                                <path id="rectangle-24" class="cls-2" d="M1,0H24a1,1,0,0,1,1,1V4a1,1,0,0,1-1,1H1A1,1,0,0,1,0,4V1A1,1,0,0,1,1,0Z" transform="translate(332 272)" />
+                                <rect id="rectangle-24-2" data-name="rectangle-24" class="cls-2" width="25" height="5" rx="1" ry="1" transform="translate(347 262) rotate(90)" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- I use [value] and (change) because there seem to be issues with [ngModel] and thus also [(ngModel)] at the moment -->
+                <input type="text" name="word" class="form-control" (keydown.tab)="tabInWordSlot(i)" [value]="w.item" (input)="w.item=$event.target.value; onChange()" placeholder="{{wordPlaceholder}}" (blur)="wordBlur($event)" (focus)="wordFocus($event)">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <button type="button" (click)="newWord(); onChange();" class="btn btn-default wl-plus-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="6887 10056 60 60">
+                    <g id="group-55" transform="translate(6242 10014)">
+                        <rect id="rectangle-13" class="cls-1" width="4.286" height="60" rx="3" ry="3" transform="translate(673.286 42)" />
+                        <rect id="rectangle-13-2" data-name="rectangle-13" class="cls-1" width="4.286" height="60" rx="3" ry="3" transform="translate(705 70.286) rotate(90)" />
+                    </g>
+                </svg>
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="wl-background-fader" [class.wl-show]="showConfirmationPopup">
+    <div class="wl-confirmation-popup">
+        <h4 class="wl-delete-confirm-msg" [class.wl-cancel-confirm-msg]="confirmationReason == CANCEL_ITEM" [class.wl-delete-confirm-msg]="confirmationReason == DELETE_ITEM">{{confirmationMessage}}</h4>
+        <div class="form-group">
+            <button type="button" class="btn btn-default wl-no-btn" (click)="noConfirmClick()">No</button>
+            <button type="button" class="btn btn-default wl-yes-btn" (click)="yesConfirmClick()">Yes</button>
+        </div>
+    </div>
+</div>

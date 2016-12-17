@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="wl-nav-btns">
+        <a [routerLink]="['/list']">
+            <div class="wl-new-list">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="4527 1170.004 94 94.88">
+                    <defs>
+                        <style>
+                            .cls-2 {
+                                font-size: 23px;
+                                font-family: HelveticaNeue-Medium, Helvetica Neue;
+                                font-weight: 500;
+                            }
+                        </style>
+                    </defs>
+                    <g id="group-86" transform="translate(4471 1034.004)">
+                        <g id="group-55" transform="translate(71.515 136)">
+                            <rect id="rectangle-13" class="cls-1" width="4.849" height="67.88" rx="1" ry="1" transform="translate(32)" />
+                            <rect id="rectangle-13-2" data-name="rectangle-13" class="cls-1" width="4.849" height="67.88" rx="1" ry="1" transform="translate(67.88 32) rotate(90)" />
+                        </g>
+                        <text id="New_List" data-name="New List" class="cls-2" transform="translate(103 225.88)">
+                            <tspan x="-46.012" y="0">New List</tspan>
+                        </text>
+                    </g>
+                </svg>
+            </div>
+        </a>
+        <wl-logout></wl-logout>
+    </div>
+    <h4 class="wl-list-count" *ngIf="listNumberMessage">{{listNumberMessage}}</h4>
+    <div class="wl-lists-list" *ngIf="listTitles">
+        <ul>
+            <li *ngFor="let listTitle of listTitles">
+                <div class="btn-group">
+                    <button class="btn btn-default" (click)="titleButtonClick(listTitle)">
+                        <div class="wl-btn-text">{{listTitle}}</div>
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

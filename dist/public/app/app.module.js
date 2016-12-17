@@ -15,9 +15,7 @@ var http_1 = require("@angular/http");
 var app_component_1 = require("./app.component");
 var app_routing_module_1 = require("./app-routing.module");
 var authentication_module_1 = require("./authentication/authentication.module");
-var list_service_1 = require("./list.service");
-var home_component_1 = require("./home/home.component");
-var list_component_1 = require("./list/list.component");
+var lists_module_1 = require("./lists/lists.module");
 var unrecognized_path_component_1 = require("./unrecognized-path/unrecognized-path.component");
 var AppModule = (function () {
     function AppModule() {
@@ -31,15 +29,14 @@ AppModule = __decorate([
             forms_1.FormsModule,
             http_1.HttpModule,
             app_routing_module_1.AppRoutingModule,
-            authentication_module_1.AuthenticationModule
+            authentication_module_1.AuthenticationModule,
+            lists_module_1.ListsModule
         ],
         declarations: [
             app_component_1.AppComponent,
-            home_component_1.HomeComponent,
-            list_component_1.ListComponent,
             unrecognized_path_component_1.UnrecognizedPathComponent
         ],
-        providers: [list_service_1.ListService],
+        providers: [],
         bootstrap: [app_component_1.AppComponent]
     }),
     __metadata("design:paramtypes", [])

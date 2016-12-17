@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 import { ListService } from '../list.service';
 
 // TODO: maybe make it easier to have special ones, like when there is 0 or 1 list

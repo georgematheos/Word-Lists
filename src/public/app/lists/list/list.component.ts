@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthenticationService } from '../../authentication/authentication.service';
 import { ListService } from '../list.service';
 
-import { Capsule } from '../types/Capsule';
-import { WordListData } from '../types/WordListData';
-import { ConfirmationItem } from '../types/ConfirmationItem';
+import { Capsule } from '../../types/Capsule';
+import { WordListData } from '../../types/WordListData';
+import { ConfirmationItem } from '../../types/ConfirmationItem';
 
 // constants for use in the methods
 

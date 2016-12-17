@@ -7,11 +7,8 @@ import { AppComponent }  from './app.component';
 import { AppRoutingModule } from './app-routing.module'
 
 import { AuthenticationModule } from './authentication/authentication.module';
+import { ListsModule } from './lists/lists.module';
 
-import { ListService } from './list.service';
-
-import { HomeComponent } from './home/home.component';
-import { ListComponent } from './list/list.component';
 import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path.component';
 
 @NgModule({
@@ -20,15 +17,14 @@ import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path
       FormsModule, // TODO: REMOVE THIS (if that is doable)
       HttpModule,
       AppRoutingModule,
-      AuthenticationModule
+      AuthenticationModule,
+      ListsModule
   ],
   declarations: [
       AppComponent,
-      HomeComponent,
-      ListComponent,
       UnrecognizedPathComponent
   ],
-  providers: [ ListService ],
+  providers: [ ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

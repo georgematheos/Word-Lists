@@ -3,9 +3,9 @@ import { Http, Response, Headers } from '@angular/http';
 
 import { Observable, Observer } from 'rxjs/Rx';
 
-import { AuthenticationService } from './authentication/authentication.service';
+import { AuthenticationService } from '../authentication/authentication.service';
 
-import { WordListData } from './types/WordListData';
+import { WordListData } from '../types/WordListData';
 
 @Injectable()
 export class ListService {

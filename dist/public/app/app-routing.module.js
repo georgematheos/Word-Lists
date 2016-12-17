@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
-var home_component_1 = require("./home/home.component");
-var list_component_1 = require("./list/list.component");
+var home_component_1 = require("./lists/home/home.component");
+var list_component_1 = require("./lists/list/list.component");
 var login_component_1 = require("./authentication/login/login.component");
 var signup_component_1 = require("./authentication/signup/signup.component");
 var unrecognized_path_component_1 = require("./unrecognized-path/unrecognized-path.component");

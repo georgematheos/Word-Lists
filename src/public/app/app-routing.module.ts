@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { ListComponent } from './list/list.component';
+import { HomeComponent } from './lists/home/home.component';
+import { ListComponent } from './lists/list/list.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { SignupComponent } from "./authentication/signup/signup.component";
 import { UnrecognizedPathComponent } from './unrecognized-path/unrecognized-path.component';
-
 
 @NgModule({
     imports: [
